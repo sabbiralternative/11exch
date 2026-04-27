@@ -3,10 +3,7 @@ import App from "../App";
 import Home from "../pages/Home/Home";
 import APK from "../pages/APK/APK";
 import Login from "../pages/Login/Login";
-import ExchangeSports from "../pages/ExchangeSports/ExchangeSports";
 import EventDetails from "../pages/EventDetails/EventDetails";
-import ChangePassword from "../pages/ChangePassword/ChangePassword";
-import Rules from "../pages/Rules/Rules";
 import Casino from "../pages/Casino/Casino";
 import BonusStatement from "../pages/BonusStatement/BonusStatement";
 import Promotions from "../pages/Promotions/Promotions";
@@ -24,9 +21,9 @@ import OpenBets from "../pages/OpenBets/OpenBets";
 import BettingProfitLoss from "../pages/BettingProfitLoss/BettingProfitLoss";
 import IFrame from "../pages/IFrame/IFrame";
 import Account from "../pages/Account/Account";
-import MultiMarkets from "../pages/MultiMarkets/MultiMarkets";
 import Register from "../pages/Register/Register";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
+import Sports from "../pages/Sports/Sports";
 
 export const router = createBrowserRouter(
   [
@@ -44,23 +41,12 @@ export const router = createBrowserRouter(
           path: "/apk",
           element: <APK />,
         },
-        {
-          path: "/exchange_sports/:eventName/:eventTypeId",
-          element: <ExchangeSports />,
-        },
 
         {
           path: "/event-details/:eventTypeId/:eventId",
           element: <EventDetails />,
         },
-        {
-          path: "/change-password",
-          element: <ChangePassword />,
-        },
-        {
-          path: "/rules",
-          element: <Rules />,
-        },
+
         {
           path: "/casino",
           element: <Casino />,
@@ -130,10 +116,7 @@ export const router = createBrowserRouter(
           path: "/account",
           element: <Account />,
         },
-        {
-          path: "/multi-markets",
-          element: <MultiMarkets />,
-        },
+
         {
           path: "/login",
           element: <Login />,
@@ -145,6 +128,10 @@ export const router = createBrowserRouter(
         {
           path: "/forgot-password",
           element: <ForgotPassword />,
+        },
+        {
+          path: "/sports",
+          element: <Sports />,
         },
       ],
     },

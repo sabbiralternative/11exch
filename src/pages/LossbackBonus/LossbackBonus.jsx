@@ -1,6 +1,5 @@
 import toast from "react-hot-toast";
-import { LeftSidebar } from "../../components/shared/Sidebar/LeftSidebar";
-import { RightSidebar } from "../../components/shared/Sidebar/RightSidebar";
+
 import { useBonusMutation, useBonusQuery } from "../../hooks/bonus";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -56,7 +55,6 @@ const LossbackBonus = () => {
   }, []);
   return (
     <div className="flex-1 flex white bg-gray1">
-      <LeftSidebar />
       <div className="h-full w-full overflow-auto hide-scrollbar mb-6 md:mb-0 md:px-2 md:pl-[15px] md:pr-3">
         <div className="w-full router-ctn max-md:pb-9">
           <main className="flex w-full flex-col">
@@ -262,7 +260,6 @@ const LossbackBonus = () => {
           </main>
         </div>
       </div>
-      <RightSidebar />
     </div>
   );
 };

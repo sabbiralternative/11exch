@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
 import toast from "react-hot-toast";
-import { RightSidebar } from "../../components/shared/Sidebar/RightSidebar";
-import { LeftSidebar } from "../../components/shared/Sidebar/LeftSidebar";
+
 import { useAccountStatement } from "../../hooks/accountStatement";
 import { from_date, to_date } from "../../utils/default-date";
 import { useBankAccountMutation } from "../../redux/features/deposit/event.api";
@@ -54,7 +53,7 @@ const WithdrawReport = () => {
         <Complaint setComplaintId={setComplaintId} method="withdraw" />
       )}
       {image && <ShowImage image={image} setShowImage={setImage} />}
-      <LeftSidebar />
+
       <div className="h-full w-full overflow-auto hide-scrollbar mb-6 md:mb-0 md:px-2 md:pl-[15px] md:pr-3">
         <div className="w-full router-ctn max-md:pb-9">
           <main className="flex w-full flex-col">
@@ -186,7 +185,6 @@ const WithdrawReport = () => {
           </main>
         </div>
       </div>
-      <RightSidebar />
     </div>
   );
 };

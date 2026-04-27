@@ -9,8 +9,6 @@ import {
   useVideoMutation,
 } from "../../redux/features/events/events";
 import { setPredictOdd } from "../../redux/features/events/eventSlice";
-import { LeftSidebar } from "../../components/shared/Sidebar/LeftSidebar";
-import { RightSidebar } from "../../components/shared/Sidebar/RightSidebar";
 import { HorseGreyhoundEventDetails } from "../../components/modules/EventDetails/HorseGreyhoundEventDetails";
 import Score from "../../components/modules/EventDetails/Score";
 import { FaTv } from "react-icons/fa6";
@@ -149,121 +147,150 @@ const EventDetails = () => {
   }, []);
 
   return (
-    <div className="flex-1 flex white bg-gray1">
-      {showOpenBetsModal && (
-        <OpenBets setShowOpenBetsModal={setShowOpenBetsModal} />
-      )}
-      <LeftSidebar />
-      <div className="h-full w-full overflow-auto hide-scrollbar mb-6 md:mb-0 md:px-2 md:pl-[15px] md:pr-3">
-        <div className="w-full router-ctn max-md:pb-9">
-          <main className="flex w-full">
-            <div className="w-full">
-              <div className=" ">
-                <div className="relative flex flex-col gap-[1px] pb-[65px] md:pb-1 ">
-                  <div className="flex flex-col gap-[1px]">
-                    <div className="flex flex-col md:gap-[1px] overflow-hidden" />
-
-                    <div className="flex items-center justify-between gap-2 px-2 py-1.5 text-white bg-section-gradient">
-                      <div className="flex items-center gap-2">
-                        <span className="md:text-[15px] text-[12px] font-medium">
-                          {data?.result?.[0]?.eventName}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        {data?.score?.tracker && (
-                          <div
-                            onClick={() => setShowScore((prev) => !prev)}
-                            className="cursor-pointer"
-                          >
-                            <img
-                              src="/src/assets/img/Score-DC8zPSAW.svg"
-                              alt="Live Score"
-                              className="h-5 w-5 invert"
-                              title="Toggle score"
-                            />
-                          </div>
-                        )}
-
-                        {data?.score?.hasVideo && (
-                          <div
-                            onClick={() => setShowVideo((prev) => !prev)}
-                            className="cursor-pointer"
-                          >
-                            <FaTv className="h-5 w-5" title="Toggle video" />
-                          </div>
-                        )}
-
-                        <div
-                          onClick={() => setShowOpenBetsModal(true)}
-                          className="md:hidden font-[400] active:bg-blue5 rounded-[3px] cursor-pointer flex items-center justify-center"
-                          title="Bets"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={24}
-                            height={24}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="lucide lucide-receipt w-5 h-5"
-                          >
-                            <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z" />
-                            <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
-                            <path d="M12 17.5v-11" />
-                          </svg>
-                        </div>
-                      </div>
+    <main className="w-full flex-1  pt-1  bg-bg_appBackgroundColor">
+      <div className="w-full">
+        <div className=" w-full sticky -top-0.5 left-0 right-0 z-[99]">
+          <div className="w-full overflow-hidden ">
+            <div className="flex items-center justify-between gap-y-1 flex-col w-full px-4 py-2 relative bg-bg_inputBgColor">
+              <div className="absolute bottom-[-5.879px] top-0 w-[38%] left-0 h-[108%] z-0 bg-bg_topBarEventDetailsBg blur-97" />
+              <div className="absolute bottom-[-5.879px] top-0 w-[38%] right-0 h-[108%] z-0 bg-bg_topBarEventDetailsBg blur-[157px]" />
+              <div className="flex items-center justify-between relative w-full z-10">
+                <div className="flex items-center gap-x-1 w-full ">
+                  <span className="w-6 h-6">
+                    <svg
+                      _ngcontent-byj-c191
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={22}
+                      height={22}
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      className="ng-tns-c191-0"
+                    >
+                      <path
+                        _ngcontent-byj-c191
+                        d="M13.1213 17.0759L6.25 10.2046L13.1213 3.33325L14.0833 4.31242L8.19115 10.2046L14.0833 16.0968L13.1213 17.0759Z"
+                        fill="#D71082"
+                        className="ng-tns-c191-0"
+                      />
+                    </svg>
+                  </span>
+                  <div className="flex items-center justify-center px-1.5 py-1.5 rounded-full gap-0.5 pr-2.5 bg-giftBoxGradient shadow-sm">
+                    <div className="relative w-max flex items-center justify-center">
+                      <span className="inline-block w-2.5 h-2.5 z-0 rounded-full bg-red-600 animate-pulse " />
+                      <span className=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 inline-block z-2 rounded-full bg-red-600" />
                     </div>
-
-                    {eventTypeId == 4 && data?.iscore && (
-                      <Score iscore={data?.iscore} />
-                    )}
-                    {data?.score &&
-                      data?.score?.tracker !== null &&
-                      showScore && (
-                        <div className="w-full overflow-hidden h-[125px]">
-                          <iframe
-                            id="videoComponent"
-                            className="w-full h-auto relative overflow-hidden   bg-transparent"
-                            src={data?.score?.tracker}
-                            width="100%"
-                            allowfullscreen=""
-                          ></iframe>
-                        </div>
-                      )}
-                    {iframe?.result?.url &&
-                      data?.score?.hasVideo &&
-                      showVideo && (
-                        <iframe
-                          id="videoComponent"
-                          className="w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px] relative overflow-hidden h-[55vw] md:h-[58vw] bg-transparent"
-                          src={iframe?.result?.url}
-                          width="100%"
-                          allowfullscreen=""
-                        ></iframe>
-                      )}
-                    <div />
-                  </div>
-                  <div className>
-                    {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
-                    {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
-                    {data?.result?.length > 0 && <Fancy data={data?.result} />}
-                    {eventTypeId == 7 || eventTypeId == 4339 ? (
-                      <HorseGreyhoundEventDetails data={data?.result} />
-                    ) : null}
-                    {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
+                    <span className="font-roboto text-xs font-medium leading-120 text-text_secondary">
+                      Upcoming (Opens in 42s)
+                    </span>
                   </div>
                 </div>
+                <button
+                  className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out cursor-pointer active:scale-90 transition-all duration-300 ease-in-out 
+      cursor-pointer
+      
+      "
+                  type="button"
+                >
+                  <svg
+                    width={18}
+                    height={18}
+                    viewBox="0 0 17 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clipPath="url(#clip0_1717_31141)">
+                      <path
+                        d="M8.5 0.5C4.07841 0.5 0.5 4.078 0.5 8.5C0.5 12.9215 4.078 16.5 8.5 16.5C12.9216 16.5 16.5 12.922 16.5 8.5C16.5 4.07847 12.922 0.5 8.5 0.5ZM8.5 15.3837C4.70431 15.3837 1.61628 12.2957 1.61628 8.5C1.61628 4.70428 4.70431 1.61628 8.5 1.61628C12.2957 1.61628 15.3837 4.70428 15.3837 8.5C15.3837 12.2957 12.2957 15.3837 8.5 15.3837Z"
+                        fill="var(--color-icon_secondary)"
+                      />
+                      <path
+                        d="M8.5003 7.1687C8.02642 7.1687 7.68945 7.36883 7.68945 7.66367V11.6757C7.68945 11.9285 8.02642 12.1812 8.5003 12.1812C8.95311 12.1812 9.32164 11.9285 9.32164 11.6757V7.66361C9.32164 7.36879 8.95311 7.1687 8.5003 7.1687Z"
+                        fill="var(--color-icon_secondary)"
+                      />
+                      <path
+                        d="M8.50019 4.69409C8.01578 4.69409 7.63672 5.04159 7.63672 5.44175C7.63672 5.84194 8.01581 6.19997 8.50019 6.19997C8.97406 6.19997 9.35319 5.84194 9.35319 5.44175C9.35319 5.04159 8.97403 4.69409 8.50019 4.69409Z"
+                        fill="var(--color-icon_secondary)"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1717_31141">
+                        <rect
+                          width={16}
+                          height={16}
+                          fill="white"
+                          transform="translate(0.5 0.5)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              </div>
+              <div className=" w-full flex items-start justify-between gap-x-2 min-h-max">
+                <div className=" w-[52%]  h-max">
+                  <div className="flex items-start justify-start gap-y-[2px] flex-col w-full h-max">
+                    <span className="font-roboto leading-120 text-text_secondary text-base font-semibold w-full break-words whitespace-normal">
+                      {data?.result?.[0]?.eventName}
+                    </span>
+                    {/* <span className="font-roboto leading-120 text-[13px] text-text_secondary5 font-medium">
+                      Womens International Twenty20 Matches
+                    </span> */}
+                  </div>
+                </div>
+                <div className="w-[48%] h-fiull text-end">
+                  <div className="flex items-end justify-center relative z-1 flex-col gap-1 w-full">
+                    <div className="font-roboto text-x1 font-normal leading-120 text-text_tertiary4" />
+                    <div className="font-roboto text-x1 font-normal leading-120 text-text_tertiary4">
+                      <span>In Play</span>: <span />
+                    </div>
+                  </div>
+                </div>
+                <div />
               </div>
             </div>
-          </main>
+          </div>
+          <div className="w-full border-b border-border_tertiary23 bg-bg_appBackgroundColor">
+            <div className=" flex flex-row font-manrope-regular items-center justify-start gap-0 text-nowrap capitalize text-[12px] px-1 relative">
+              <div className="cursor-pointer w-full flex flex-row items-center justify-center">
+                <span className=" text-text_secondary  py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ">
+                  Market
+                </span>
+              </div>
+              <div className="cursor-pointer w-full flex flex-row items-center justify-center">
+                <span className=" text-text_tertiary8  text-[12px] py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ">
+                  Match Info
+                </span>
+              </div>
+              <div className="cursor-pointer w-full flex flex-row items-center justify-center">
+                <span className=" text-text_tertiary8  text-[12px] py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ">
+                  Open Bets
+                </span>
+              </div>
+              <div
+                className="w-full h-1  absolute bottom-0 z-1 transition-all ease-in-out duration-150 bg-bg_eventTopActiveTab"
+                style={{
+                  width: "156.016px",
+                  bottom: "0px",
+                  left: "3.48959px",
+                  height: "3px",
+                  borderRadius: "10px",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="w-full h-max">
+          <div className="flex items-start justify-start flex-col w-full pb-20">
+            {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
+            {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
+            {data?.result?.length > 0 && <Fancy data={data?.result} />}
+            {eventTypeId == 7 || eventTypeId == 4339 ? (
+              <HorseGreyhoundEventDetails data={data?.result} />
+            ) : null}
+            {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
+          </div>
         </div>
       </div>
-      <RightSidebar />
-    </div>
+    </main>
   );
 };
 

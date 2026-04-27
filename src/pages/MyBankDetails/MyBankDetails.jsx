@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { LeftSidebar } from "../../components/shared/Sidebar/LeftSidebar";
-import { RightSidebar } from "../../components/shared/Sidebar/RightSidebar";
+
 import { useNavigate } from "react-router-dom";
 import { useBankAccountQuery } from "../../hooks/bankAccount";
 import Swal from "sweetalert2";
@@ -103,7 +102,7 @@ const MyBankDetails = () => {
           setShowUSDTModal={setShowUSDTModal}
         />
       )}
-      <LeftSidebar />
+
       <div className="h-full w-full overflow-auto hide-scrollbar mb-6 md:mb-0 md:px-2 md:pl-[15px] md:pr-3">
         <div className="w-full router-ctn max-md:pb-9">
           <main className="flex w-full">
@@ -386,7 +385,6 @@ const MyBankDetails = () => {
           </main>
         </div>
       </div>
-      <RightSidebar />
     </div>
   );
 };

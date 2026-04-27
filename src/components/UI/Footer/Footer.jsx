@@ -1,39 +1,24 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { Settings } from "../../../api";
-import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
-  const [showWarning, setShowWarning] = useState(false);
-  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
-  const { token, bonusToken } = useSelector((state) => state.auth);
-  const handleNavigateToIFrame = (name, id) => {
-    if (token) {
-      if (bonusToken) {
-        return toast.error("Bonus wallet is available only on sports.");
-      }
-      if (Settings.casino_currency !== "AED") {
-        navigate(`/casino/${name}/${id}`);
-      } else {
-        setGameInfo({ gameName: "", gameId: "" });
-        setGameInfo({ gameName: name, gameId: id });
-        setShowWarning(true);
-      }
-    } else {
-      toast.error("Please login to access the game");
-    }
-  };
+
   return (
     <div className>
       <div className="w-full flex items-center justify-center px-1.5 fixed bottom-1 left-0 right-0 z-[101] z-51">
         <div className="w-full lg:w-[475px] bg-bg_primary2 flex items-center justify-start px-2 py-1.5 rounded-xl">
           <div className="w-[39%] flex items-center justify-between gap-x-1">
-            <nav className="flex items-center justify-center flex-col gap-y-1 relative cursor-pointer active:scale-95 transition-all ease-in-out duration-300 w-full">
-              <div className="absolute h-[3px] top-[-8px] left-0 rounded-md " />
-              <span className="w-6 h-6 opacity-50">
+            <nav
+              onClick={() => navigate("/casino")}
+              className="flex items-center justify-center flex-col gap-y-1 relative cursor-pointer active:scale-95 transition-all ease-in-out duration-300 w-full"
+            >
+              <div
+                className={`absolute h-[3px] top-[-8px] left-0 rounded-md  ${pathname === "/casino" ? "bg-exchLoginGradient smoothIncreaseWidth" : ""}`}
+              />
+              <span
+                className={`w-6 h-6  ${pathname === "/casino" ? "opacity-100" : "opacity-50"}`}
+              >
                 <svg
                   width="100%"
                   height="100%"
@@ -60,13 +45,22 @@ const Footer = () => {
                   </defs>
                 </svg>
               </span>
-              <span className="text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px] opacity-30">
+              <span
+                className={`text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px]  ${pathname === "/casino" ? "opacity-100" : "opacity-30"}`}
+              >
                 Casino
               </span>
             </nav>
-            <nav className="flex items-center justify-center flex-col gap-y-1 relative cursor-pointer active:scale-95 transition-all ease-in-out duration-300 w-full">
-              <div className="absolute h-[3px] top-[-8px] left-0 rounded-md " />
-              <span className="w-6 h-6 opacity-50">
+            <nav
+              onClick={() => navigate("/sports?eventTypeId=4")}
+              className="flex items-center justify-center flex-col gap-y-1 relative cursor-pointer active:scale-95 transition-all ease-in-out duration-300 w-full"
+            >
+              <div
+                className={`absolute h-[3px] top-[-8px] left-0 rounded-md  ${pathname === "/sports" ? "bg-exchLoginGradient smoothIncreaseWidth" : ""}`}
+              />
+              <span
+                className={`w-6 h-6  ${pathname === "/sports" ? "opacity-100" : "opacity-50"}`}
+              >
                 <svg
                   width="100%"
                   height="100%"
@@ -93,14 +87,21 @@ const Footer = () => {
                   </defs>
                 </svg>
               </span>
-              <span className="text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px] opacity-30">
+              <span
+                className={`text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px]  ${pathname === "/sports" ? "opacity-100" : "opacity-30"}`}
+              >
                 Sports
               </span>
             </nav>
           </div>
           <div className="w-[22%] h-full relative">
-            <nav className="flex w-max p-2 absolute left-1/2 -translate-x-1/2 top-1/4 -translate-y-[70%] min-w-max min-h-max items-center justify-center active:scale-95 transition-all ease-in-out duration-300 cursor-pointer rounded-full bg-bg_appBackgroundColor aspect-square">
-              <div className="min-w-max flex items-center justify-center aspect-square rounded-full p-3 border-[0.2px] border-solid border-border_primary bg-exchLoginGradient opacity-100">
+            <nav
+              onClick={() => navigate("/")}
+              className="flex w-max p-2 absolute left-1/2 -translate-x-1/2 top-1/4 -translate-y-[70%] min-w-max min-h-max items-center justify-center active:scale-95 transition-all ease-in-out duration-300 cursor-pointer rounded-full bg-bg_appBackgroundColor aspect-square"
+            >
+              <div
+                className={`min-w-max flex items-center justify-center aspect-square rounded-full p-3 border-[0.2px] border-solid border-border_primary  opacity-100 ${pathname === "/" ? "bg-exchLoginGradient" : "bg-bg_suspendedBg"}`}
+              >
                 <svg
                   width={20}
                   height={20}
@@ -137,9 +138,16 @@ const Footer = () => {
             </nav>
           </div>
           <div className="w-[39%] flex items-center justify-between gap-x-1">
-            <nav className="flex items-center justify-center flex-col gap-y-1 relative cursor-pointer active:scale-95 transition-all ease-in-out duration-300 w-full">
-              <div className="absolute h-[3px] top-[-8px] left-0 rounded-md " />
-              <span className="w-6 h-6 opacity-50">
+            <nav
+              onClick={() => navigate("/open-bets")}
+              className="flex items-center justify-center flex-col gap-y-1 relative cursor-pointer active:scale-95 transition-all ease-in-out duration-300 w-full"
+            >
+              <div
+                className={`absolute h-[3px] top-[-8px] left-0 rounded-md  ${pathname === "/open-bets" ? "bg-exchLoginGradient smoothIncreaseWidth" : ""}`}
+              />
+              <span
+                className={`w-6 h-6  ${pathname === "/open-bets" ? "opacity-100" : "opacity-50"}`}
+              >
                 <svg
                   width="100%"
                   height="100%"
@@ -156,13 +164,22 @@ const Footer = () => {
                   </g>
                 </svg>
               </span>
-              <span className="text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px] opacity-30">
+              <span
+                className={`text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px]  ${pathname === "/open-bets" ? "opacity-100" : "opacity-30"}`}
+              >
                 Open Bets
               </span>
             </nav>
-            <nav className="flex items-center justify-center flex-col gap-y-1 relative cursor-pointer active:scale-95 transition-all ease-in-out duration-300 w-full">
-              <div className="absolute h-[3px] top-[-8px] left-0 rounded-md " />
-              <span className="w-6 h-6 opacity-50">
+            <nav
+              onClick={() => navigate("/menu")}
+              className="flex items-center justify-center flex-col gap-y-1 relative cursor-pointer active:scale-95 transition-all ease-in-out duration-300 w-full"
+            >
+              <div
+                className={`absolute h-[3px] top-[-8px] left-0 rounded-md  ${pathname === "/menu" ? "bg-exchLoginGradient smoothIncreaseWidth" : ""}`}
+              />
+              <span
+                className={`w-6 h-6  ${pathname === "/menu" ? "opacity-100" : "opacity-50"}`}
+              >
                 <svg
                   width="100%"
                   height="100%"
@@ -196,7 +213,9 @@ const Footer = () => {
                   </g>
                 </svg>
               </span>
-              <span className="text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px] opacity-30">
+              <span
+                className={`text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px]  ${pathname === "/menu" ? "opacity-100" : "opacity-30"}`}
+              >
                 Menu
               </span>
             </nav>

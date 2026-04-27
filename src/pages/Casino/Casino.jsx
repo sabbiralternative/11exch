@@ -1,11 +1,10 @@
 import { useSelector } from "react-redux";
-import { LeftSidebar } from "../../components/shared/Sidebar/LeftSidebar";
+
 import { useIndexQuery } from "../../hooks";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import Tab from "./Tab";
 import Tab2 from "./Tab2";
-import { RightSidebar } from "../../components/shared/Sidebar/RightSidebar";
 
 const Casino = () => {
   const { token } = useSelector((state) => state.auth);
@@ -92,7 +91,6 @@ const Casino = () => {
 
   return (
     <div className="flex-1 flex white bg-gray1">
-      <LeftSidebar />
       <div className="h-full w-full overflow-auto hide-scrollbar mb-6 md:mb-0 md:px-2 md:pl-[15px] md:pr-3">
         <div className="w-full router-ctn max-md:pb-9">
           <main className="flex w-full">
@@ -161,7 +159,6 @@ const Casino = () => {
           </main>
         </div>
       </div>
-      <RightSidebar />
     </div>
   );
 };

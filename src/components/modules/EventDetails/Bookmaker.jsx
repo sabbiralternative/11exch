@@ -240,313 +240,199 @@ export const Bookmaker = ({ data }) => {
           return (
             <div
               key={game?.id}
-              className="flex flex-col  rounded-md border border-solid border-neutral-200 max-md:max-w-full"
+              className="flex items-center justify-center w-full px-3 pt-1"
             >
-              <div className="relative">
-                <div className="flex items-center justify-between w-full bg-[#374151] px-2 py-1 text-xs font-bold text-white">
-                  <div className="flex items-center gap-2">
-                    <span title="Add To Multi Markets">
-                      <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        strokeWidth={0}
-                        viewBox="0 0 16 16"
-                        className="multi-add-icon cursor-pointer h-[100%] text-white hidden md:block"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354" />
-                      </svg>
-                      <img
-                        src="data:image/svg+xml,%3csvg%20width='23'%20height='23'%20viewBox='0%200%2023%2023'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_4_278)'%3e%3cg%20clip-path='url(%23clip1_4_278)'%3e%3cg%20clip-path='url(%23clip2_4_278)'%3e%3cpath%20d='M11.1299%2022.7305C5.05436%2022.7305%200.129883%2017.806%200.129883%2011.7305C0.129883%205.65495%205.05436%200.730469%2011.1299%200.730469C17.2054%200.730469%2022.1299%205.65495%2022.1299%2011.7305C22.1299%2017.806%2017.2054%2022.7305%2011.1299%2022.7305ZM11.1299%2021.8505C16.7179%2021.8505%2021.2499%2017.3185%2021.2499%2011.7305C21.2499%206.14247%2016.7179%201.61047%2011.1299%201.61047C5.54188%201.61047%201.00988%206.14247%201.00988%2011.7305C1.00988%2017.3185%205.54188%2021.8505%2011.1299%2021.8505ZM15.6091%2011.2218C17.0224%2011.6759%2017.7299%2012.2162%2017.7299%2013.149C17.7299%2013.4773%2017.6709%2013.6911%2017.5539%2013.7914C17.4351%2013.8926%2017.1992%2013.9437%2016.8464%2013.9437H12.0715L11.3587%2020.9731H10.887L10.1874%2013.9437H5.41252C5.06052%2013.9437%204.82292%2013.8865%204.70588%2013.7729C4.58884%2013.6603%204.52988%2013.4526%204.52988%2013.1499C4.52988%2012.2171%205.2374%2011.6768%206.65068%2011.2227C6.72988%2011.2227%206.80908%2011.1963%206.88828%2011.147C7.31948%2010.9957%207.59404%2010.7563%207.71196%2010.4289L8.77148%205.96647V5.77639C8.77148%205.57399%208.57612%205.41119%208.18364%205.28535L8.12468%205.24751H8.06572C7.59404%205.12167%207.3582%204.90695%207.3582%204.60511C7.3582%204.25135%207.4374%204.03135%207.59404%203.94247C7.75244%203.85447%208.02524%203.81047%208.41948%203.81047H13.8403C14.2336%203.81047%2014.5091%203.85447%2014.6657%203.94247C14.8224%204.03047%2014.9016%204.25047%2014.9016%204.60423C14.9016%204.90695%2014.6657%205.12167%2014.194%205.24663H14.1351L14.0761%205.28535C13.6836%205.41119%2013.4865%205.57575%2013.4865%205.77639V5.96559L14.5478%2010.4272C14.6657%2010.7545%2014.9403%2010.9939%2015.3724%2011.1453C15.4516%2011.1954%2015.5308%2011.2209%2015.61%2011.2209L15.6091%2011.2218Z'%20fill='%237E97A7'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_4_278'%3e%3crect%20width='22'%20height='22'%20fill='white'%20transform='translate(0.129883%200.730469)'/%3e%3c/clipPath%3e%3cclipPath%20id='clip1_4_278'%3e%3crect%20width='22'%20height='22'%20fill='white'%20transform='translate(0.129883%200.730469)'/%3e%3c/clipPath%3e%3cclipPath%20id='clip2_4_278'%3e%3crect%20width='22'%20height='22'%20fill='white'%20transform='translate(0.129883%200.730469)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e"
-                        alt="multipin"
-                        className="w-5 h-5 md:hidden cursor-pointer"
-                      />
-                    </span>
-                    <span className="capitalize">
-                      {" "}
+              <div className="flex items-center justify-center flex-col border text-text_secondary border-solid border-border_tertiary20 border-b-0 w-full rounded-md font-roboto">
+                <div className="flex items-center justify-between py-1.5 px-2 w-full bg-cricketHeaderGradient relative rounded-tl-md rounded-tr-md">
+                  <div className="absolute top-0 left-0 h-full w-[88%] border-tl-xl vector one-cricket-bg" />
+                  <div className="absolute top-0 right-[7%] h-full w-[29%] vector2 circket-2-bg" />
+                  <div className="flex items-center justify-between relative z-1 gap-1 w-[60%]">
+                    <span className="font-roboto text-xs font-medium leading-150 capitalize">
                       {game?.name?.toUpperCase()}
                     </span>
-                    <div className="cursor-pointer">
-                      <img
-                        src="data:image/svg+xml,%3csvg%20width='15'%20height='14'%20viewBox='0%200%2015%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M8.15625%204.82031H6.84375V3.47656H8.15625V4.82031ZM8.15625%2010.1641H6.84375V6.16406H8.15625V10.1641ZM7.5%200.164062C6.625%200.164062%205.77604%200.330729%204.95312%200.664062C4.13021%200.997396%203.40625%201.47656%202.78125%202.10156C2.15625%202.72656%201.67708%203.45052%201.34375%204.27344C1.01042%205.09635%200.84375%205.94531%200.84375%206.82031C0.84375%207.69531%201.01042%208.54427%201.34375%209.36719C1.67708%2010.1901%202.15625%2010.9141%202.78125%2011.5391C3.40625%2012.1641%204.13021%2012.6432%204.95312%2012.9766C5.77604%2013.3099%206.625%2013.4766%207.5%2013.4766C8.375%2013.4766%209.22396%2013.3099%2010.0469%2012.9766C10.8698%2012.6432%2011.5938%2012.1641%2012.2188%2011.5391C12.8438%2010.9141%2013.3229%2010.1901%2013.6562%209.36719C13.9896%208.54427%2014.1562%207.69531%2014.1562%206.82031C14.1562%205.94531%2013.9896%205.09635%2013.6562%204.27344C13.3229%203.45052%2012.8438%202.72656%2012.2188%202.10156C11.5938%201.47656%2010.8698%200.997396%2010.0469%200.664062C9.22396%200.330729%208.375%200.164062%207.5%200.164062Z'%20fill='white'/%3e%3c/svg%3e"
-                        alt="info-icon"
-                        className="h-[13px] w-[13px] min-w-[13px]"
-                      />
+                    <div className="flex items-center justify-center gap-[3px]">
+                      {Settings.cashout &&
+                        game?.runners?.length !== 3 &&
+                        game?.status === "OPEN" &&
+                        !speedCashOut && (
+                          <button
+                            onClick={() =>
+                              handleCashOutPlaceBet(
+                                game,
+                                "lay",
+                                dispatch,
+                                pnlBySelection,
+                                token,
+                                teamProfitForGame,
+                              )
+                            }
+                            style={{
+                              cursor: `${
+                                !teamProfitForGame ? "not-allowed" : "pointer"
+                              }`,
+                              opacity: `${!teamProfitForGame ? "0.6" : "1"}`,
+                            }}
+                            type="button"
+                            className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-bg_cashoutBtnGrad rounded-md px-1.5 py-0.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-col flex-wrap w-max h-max mr-1 text-text_secondary2  active:scale-[98%] transition-all duration-300 ease-in-out 
+      cursor-pointer
+      
+      "
+                          >
+                            <div className="text-[10px] md:text-[12px] text-text_secondary2  whitespace-nowrap">
+                              Cashout{" "}
+                              {teamProfitForGame?.profit &&
+                                `(${teamProfitForGame.profit.toFixed(0)})`}
+                            </div>
+                          </button>
+                        )}
+                      {Settings.cashout &&
+                        game?.runners?.length !== 3 &&
+                        game?.status === "OPEN" &&
+                        game?.name !== "toss" &&
+                        speedCashOut && (
+                          <button
+                            onClick={() =>
+                              setSpeedCashOut({
+                                ...speedCashOut,
+                                market_name: game?.name,
+                                event_name: game?.eventName,
+                              })
+                            }
+                            disabled={isGameSuspended(game)}
+                            type="button"
+                            className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out bg-bg_cashoutBtnGrad rounded-md px-1.5 py-0.5 text-center shadow-[inset_-12px_-8px_40px_#46464620] flex items-center justify-center flex-col flex-wrap w-max h-max mr-1 text-text_secondary2  active:scale-[98%] transition-all duration-300 ease-in-out 
+      cursor-pointer
+      
+      "
+                          >
+                            <div className="text-[10px] md:text-[12px] text-text_secondary2  whitespace-nowrap">
+                              Speed Cashout
+                            </div>
+                          </button>
+                        )}
+
+                      <div className="flex items-center justify-center gap-0.5 py-0.5 px-1 bg-bg_primary5 rounded">
+                        <span className="w-4 h-4">
+                          <svg
+                            width={14}
+                            height={14}
+                            viewBox="0 0 10 10"
+                            fill="var(--color-icon_secondary)"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g id="Watch">
+                              <g id="62-Stopwatch">
+                                <path
+                                  id="Vector"
+                                  d="M7.85933 3.20625L8.34683 2.72188C8.37597 2.69274 8.39908 2.65815 8.41485 2.62008C8.43062 2.58201 8.43874 2.54121 8.43874 2.5C8.43874 2.45879 8.43062 2.41799 8.41485 2.37992C8.39908 2.34185 8.37597 2.30726 8.34683 2.27813C8.31769 2.24899 8.2831 2.22588 8.24503 2.21011C8.20696 2.19434 8.16616 2.18622 8.12496 2.18622C8.08375 2.18622 8.04295 2.19434 8.00488 2.21011C7.96681 2.22588 7.93222 2.24899 7.90308 2.27813L7.41871 2.76563C6.8256 2.26054 6.08886 1.95448 5.31246 1.89063V1.25H5.93746C6.02034 1.25 6.09982 1.21708 6.15843 1.15847C6.21703 1.09987 6.24996 1.02038 6.24996 0.9375C6.24996 0.85462 6.21703 0.775134 6.15843 0.716529C6.09982 0.657924 6.02034 0.625 5.93746 0.625H4.06246C3.97958 0.625 3.90009 0.657924 3.84149 0.716529C3.78288 0.775134 3.74996 0.85462 3.74996 0.9375C3.74996 1.02038 3.78288 1.09987 3.84149 1.15847C3.90009 1.21708 3.97958 1.25 4.06246 1.25H4.68746V1.89063C3.84938 1.95984 3.0589 2.30873 2.44297 2.88126C1.82704 3.45379 1.42143 4.21673 1.29128 5.04753C1.16114 5.87832 1.31401 6.72875 1.72535 7.46221C2.13668 8.19566 2.78261 8.76958 3.55937 9.09176C4.33613 9.41394 5.19863 9.46569 6.00834 9.2387C6.81805 9.01171 7.52797 8.51915 8.02406 7.84014C8.52014 7.16112 8.77361 6.33508 8.74373 5.49468C8.71386 4.65429 8.40238 3.84832 7.85933 3.20625ZM4.99996 8.75C4.38189 8.75 3.7777 8.56672 3.2638 8.22334C2.7499 7.87996 2.34936 7.39191 2.11283 6.82089C1.87631 6.24987 1.81442 5.62153 1.935 5.01534C2.05558 4.40915 2.35321 3.85233 2.79025 3.41529C3.22729 2.97825 3.78411 2.68062 4.3903 2.56005C4.99649 2.43947 5.62482 2.50135 6.19584 2.73788C6.76686 2.9744 7.25492 3.37494 7.5983 3.88884C7.94168 4.40275 8.12496 5.00693 8.12496 5.625C8.12496 6.03538 8.04413 6.44174 7.88708 6.82089C7.73003 7.20003 7.49985 7.54453 7.20967 7.83471C6.91948 8.12489 6.57499 8.35508 6.19584 8.51212C5.8167 8.66917 5.41034 8.75 4.99996 8.75Z"
+                                  fill="var(--color-icon_secondary)"
+                                />
+                                <path
+                                  id="Vector_2"
+                                  d="M5.31251 5.49688V3.75C5.31251 3.66712 5.27958 3.58763 5.22098 3.52903C5.16237 3.47042 5.08289 3.4375 5.00001 3.4375C4.91713 3.4375 4.83764 3.47042 4.77903 3.52903C4.72043 3.58763 4.68751 3.66712 4.68751 3.75V5.625C4.68727 5.66613 4.69515 5.7069 4.7107 5.74497C4.72625 5.78305 4.74917 5.81767 4.77813 5.84687L5.71563 6.78437C5.74468 6.81366 5.77924 6.83691 5.81733 6.85278C5.85541 6.86864 5.89625 6.87681 5.93751 6.87681C5.97876 6.87681 6.0196 6.86864 6.05769 6.85278C6.09577 6.83691 6.13033 6.81366 6.15938 6.78437C6.18867 6.75532 6.21192 6.72076 6.22778 6.68268C6.24365 6.6446 6.25182 6.60375 6.25182 6.5625C6.25182 6.52125 6.24365 6.4804 6.22778 6.44232C6.21192 6.40424 6.18867 6.36968 6.15938 6.34063L5.31251 5.49688Z"
+                                  fill="var(--color-icon_secondary)"
+                                />
+                              </g>
+                            </g>
+                          </svg>
+                        </span>
+                        <span className="font-roboto text-xs font-medium leading-150 text-text_secondary tracking-widest">
+                          0s
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    {Settings.cashout &&
-                      game?.runners?.length !== 3 &&
-                      game?.status === "OPEN" &&
-                      !speedCashOut && (
-                        <button
-                          onClick={() =>
-                            handleCashOutPlaceBet(
-                              game,
-                              "lay",
-                              dispatch,
-                              pnlBySelection,
-                              token,
-                              teamProfitForGame,
-                            )
-                          }
-                          style={{
-                            cursor: `${
-                              !teamProfitForGame ? "not-allowed" : "pointer"
-                            }`,
-                            opacity: `${!teamProfitForGame ? "0.6" : "1"}`,
-                          }}
-                          className={`active:opacity-70 px-2 tracking-wide text-white font-bold leading-none relative overflow-hidden text-[11px] transition-all duration-150 ease-in-out rounded-md text-center flex items-center justify-center flex-row h-[26px]  shadow-[0_2px_6px_rgba(0,0,0,0.35)] border border-white/20 loss ${
-                            teamProfitForGame?.profit > 0
-                              ? "bg-bg_cashOutBtnGrd"
-                              : "bg-bg_color_clearBtn"
-                          }`}
-                        >
-                          <span className="text-white whitespace-nowrap">
-                            CASHOUT
-                            {/* {teamProfitForGame?.profit?.toString()?.length >
-                              2 && <br className="lg:hidden" />} */}
-                            {teamProfitForGame?.profit &&
-                              `(${teamProfitForGame.profit.toFixed(0)})`}
-                          </span>
-                        </button>
-                      )}
-
-                    {Settings.cashout &&
-                      game?.runners?.length !== 3 &&
-                      game?.status === "OPEN" &&
-                      game?.name !== "toss" &&
-                      speedCashOut && (
-                        <button
-                          onClick={() =>
-                            setSpeedCashOut({
-                              ...speedCashOut,
-                              market_name: game?.name,
-                              event_name: game?.eventName,
-                            })
-                          }
-                          disabled={isGameSuspended(game)}
-                          className=" active:opacity-70 loss-cut-btn px-2 tracking-wide text-white font-bold leading-none relative overflow-hidden text-[11px] transition-all duration-150 ease-in-out rounded-md text-center flex items-center justify-center flex-row h-[26px] cursor-pointer shadow-[0_2px_6px_rgba(0,0,0,0.35)] border border-white/20"
-                          style={{ background: "#82371b" }}
-                        >
-                          <span className="text-white whitespace-nowrap">
-                            Speed Cashout
-                          </span>
-                        </button>
-                      )}
-                  </div>
-                </div>
-                <div className="flex items-center justify-between w-full bg-blue15 px-4 py-1 text-xs font-bold text-black border-b border-gray6">
-                  <div className="flex items-center gap-2" />
-                  <div className="flex items-center gap-1">
-                    <span className="rounded-sm px-4 text-[10px] font-normal text-white bg-[#374151]">
-                      Min
+                  <div className="flex items-center justify-around relative z-1 gap-1 w-[40%]">
+                    <span className="font-roboto text-center font-normal leading-150 uppercase w-[50%] text-text_secondary text-x">
+                      Back
                     </span>
-                    <span className="text-[11px] font-medium">
-                      {game?.minLiabilityPerBet}
-                    </span>
-                    <span className="rounded-sm px-4 text-[10px] font-normal text-white bg-[#374151]">
-                      Max
-                    </span>
-                    <span className="text-[11px] font-medium">
-                      {game?.maxLiabilityPerBet}
+                    <span className="font-roboto text-center font-normal leading-150 uppercase w-[50%] text-text_secondary text-x">
+                      Lay
                     </span>
                   </div>
                 </div>
-                <table className="w-full text-[14px] font-medium text-black bg-yellow1 [&_td]:p-[0.2px] [&_th]:p-0">
-                  <thead>
-                    <tr className="border-b border-b-gray13 h-[24px] bg-yellow1">
-                      <th className="w-[60%] md:hidden bg-blue17" />
-                      <th className="md:w-[40%] hidden md:table-cell" />
-                      <th className="md:w-[10%] hidden md:table-cell" />
-                      <th className="md:w-[10%] hidden md:table-cell" />
-                      <th className="w-[20%] md:w-[10%] font-bold text-black text-xs py-1.5 text-center">
-                        Back
-                      </th>
-                      <th className="w-[20%] md:w-[10%] font-bold text-black text-xs py-1.5 text-center">
-                        Lay
-                      </th>
-                      <th className="md:w-[20%] hidden md:table-cell" />
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {game?.runners?.map((runner) => {
-                      const pnl = pnlBySelection?.find(
-                        (pnl) => pnl?.RunnerId === runner?.id,
-                      );
-                      const predictOddValues = predictOdd?.find(
-                        (val) => val?.id === runner?.id,
-                      );
-                      return (
-                        <Fragment key={runner?.id}>
-                          <tr className=" border-b  border-b-gray13 h-[43px] w-full">
-                            <td className="text-start pl-2 w-[60%] md:w-[40%] h-[43px]">
-                              <div className="flex items-center gap-1 h-full pl-2">
-                                <div className="flex items-center h-full">
-                                  <span className=" text-[12px] font-[700] font-sans">
-                                    {runner?.name}
-                                  </span>
-                                </div>
-                                {pnl && (
-                                  <div
-                                    className={`text-[11px]  ${
-                                      pnl?.pnl > 0
-                                        ? "text-green-500"
-                                        : "text-red-500"
-                                    }`}
-                                  >
-                                    {pnl?.pnl}
-                                  </div>
-                                )}
-                                {stake && runnerId && predictOddValues && (
-                                  <div
-                                    className={`text-[11px]  ${
-                                      predictOddValues?.exposure > 0
-                                        ? "text-green-500"
-                                        : "text-red-500"
-                                    }`}
-                                  >
-                                    » {predictOddValues?.exposure}
-                                  </div>
-                                )}
-                              </div>
-                            </td>
-                            <td
-                              className="w-[20%] md:w-[30%] h-[43px]"
-                              colSpan={windowWidth > 500 ? 3 : 1}
+                {game?.runners?.map((runner) => {
+                  const pnl = pnlBySelection?.find(
+                    (pnl) => pnl?.RunnerId === runner?.id,
+                  );
+                  const predictOddValues = predictOdd?.find(
+                    (val) => val?.id === runner?.id,
+                  );
+                  return (
+                    <div
+                      key={runner?.id}
+                      className="flex items-center justify-between w-full border-b border-solid border-b-border_tertiary20 py-0.5 pr-0.5 pl-2"
+                    >
+                      <div className="w-[60%] grid grid-cols-3 items-center">
+                        <div className="flex items-start justify-start gap-y-[1px] flex-col w-full col-span-3">
+                          <div className="font-roboto text-md font-medium leading-120 capitalize text-text_secondary  w-full truncate">
+                            {runner?.name}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-[1px] w-[40%]">
+                        <div
+                          title="2.08-2.1"
+                          className={`w-full relative ${runner?.status !== "OPEN" ? "opacity-70" : "cursor-pointer"}`}
+                        >
+                          <div className=" rounded-none rounded-sm w-full rounded-[0.375rem] grid grid-cols-2 text-[13px] text-text_secondary overflow-hidden">
+                            <button
+                              disabled={runner?.status !== "OPEN"}
+                              title="leftOption-2.08"
+                              onClick={() =>
+                                handleBetSlip(
+                                  "back",
+                                  game,
+                                  runner,
+                                  runner?.back?.[0]?.price,
+                                )
+                              }
+                              className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out h-[43px] col-span-1 w-full flex items-center justify-center bg-bg_backBtnBgColor  h-[2.1875rem] active:opacity-70 flex flex-col items-center justify-center  leading-4 disabled:opacity-80 font-bold    disabled:cursor-not-allowed 
+      cursor-pointer
+      active:scale-[98%]
+      "
+                              type="button"
                             >
-                              <div
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "back",
-                                    game,
-                                    runner,
-                                    runner?.back?.[0]?.price,
-                                  )
-                                }
-                                className="hidden md:flex h-full"
-                                style={{
-                                  background:
-                                    "linear-gradient(90deg, rgba(130, 183, 221, 0.15) 0%, rgba(130, 183, 221, 0.8) 65%)",
-                                }}
-                              >
-                                <div className="w-full h-full flex justify-center items-center disabled opacity-60 transparent exch-odd-button" />
-                                <div className="w-full h-full flex justify-center items-center disabled opacity-60 transparent exch-odd-button" />
-                                <div
-                                  className={`w-full h-full  exch-odd-button cursor-pointer flex justify-center items-center  
-              text-white bg-blue13 ${runner?.status !== "OPEN" ? "disable opacity-60" : ""}`}
-                                >
-                                  {runner?.status === "OPEN" && (
-                                    <div className="flex flex-col justify-center items-center gap-1  border border-white rounded h-[90%] w-[90%] ">
-                                      <div className="text-[11px] text-black font-[700]">
-                                        {runner?.back?.[0]?.price}
-                                      </div>
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-                              <div
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "back",
-                                    game,
-                                    runner,
-                                    runner?.back?.[0]?.price,
-                                  )
-                                }
-                                className="flex md:hidden h-full"
-                              >
-                                <div
-                                  className={`w-full h-full  exch-odd-button cursor-pointer flex justify-center items-center  
-              text-white bg-blue13 ${runner?.status !== "OPEN" ? "disable opacity-60" : ""}`}
-                                >
-                                  {runner?.status === "OPEN" && (
-                                    <div className="flex flex-col justify-center items-center gap-1  border border-white rounded h-[90%] w-[90%] ">
-                                      <div className="text-[11px] text-black font-[700]">
-                                        {runner?.back?.[0]?.price}
-                                      </div>
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-                            </td>
-                            <td
-                              className="w-[20%] md:w-[30%] h-[43px] relative"
-                              colSpan={windowWidth > 500 ? 3 : 1}
+                              <span className=" text-sm">
+                                {" "}
+                                {runner?.back?.[0]?.price}
+                              </span>
+                              <span className="text-x">
+                                {runner?.back?.[0]?.size}
+                              </span>
+                            </button>
+                            <button
+                              disabled={runner?.status !== "OPEN"}
+                              onClick={() =>
+                                handleBetSlip(
+                                  "back",
+                                  game,
+                                  runner,
+                                  runner?.back?.[0]?.price,
+                                )
+                              }
+                              title="rightOption-2.1"
+                              className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out h-[43px] col-span-1 w-full flex items-center justify-center bg-bg_layBtnBgColor h-[2.1875rem] active:opacity-70 flex flex-col items-center justify-center leading-4  font-bold   disabled:cursor-not-allowed 
+      cursor-pointer
+      active:scale-[98%]
+      "
+                              type="button"
                             >
-                              <div
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "lay",
-                                    game,
-                                    runner,
-                                    runner?.lay?.[0]?.price,
-                                  )
-                                }
-                                className="hidden md:flex h-full"
-                                style={{
-                                  background:
-                                    "linear-gradient(270deg, rgba(231, 170, 184, 0.15) 5%, rgba(231, 170, 184, 0.8) 60%)",
-                                }}
-                              >
-                                <div
-                                  className={`w-full h-full  exch-odd-button cursor-pointer flex justify-center items-center  
-              text-white bg-pink1 ${runner?.status !== "OPEN" ? "disable opacity-60" : ""}`}
-                                >
-                                  {runner?.status === "OPEN" && (
-                                    <div className="flex flex-col justify-center items-center gap-1  border border-white rounded h-[90%] w-[90%] ">
-                                      <div className="text-[11px] text-black font-[700]">
-                                        {runner?.lay?.[0]?.price}
-                                      </div>
-                                    </div>
-                                  )}
-                                </div>
-                                <div className="w-full h-full flex justify-center items-center disabled opacity-60 transparent exch-odd-button" />
-                                <div className="w-full h-full flex justify-center items-center disabled opacity-60 transparent exch-odd-button" />
-                              </div>
-                              <div
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "lay",
-                                    game,
-                                    runner,
-                                    runner?.lay?.[0]?.price,
-                                  )
-                                }
-                                className="flex md:hidden h-full"
-                              >
-                                <div
-                                  className={`w-full h-full  exch-odd-button cursor-pointer flex justify-center items-center  
-              text-white bg-pink1 ${runner?.status !== "OPEN" ? "disable opacity-60" : ""}`}
-                                >
-                                  {runner?.status === "OPEN" && (
-                                    <div className="flex flex-col justify-center items-center gap-1  border border-white rounded h-[90%] w-[90%] ">
-                                      <div className="text-[11px] text-black font-[700]">
-                                        {runner?.lay?.[0]?.price}
-                                      </div>
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-                              {runner?.status !== "OPEN" && (
-                                <div className="absolute top-0 bottom-0 left-[-100%] w-[200%] bg-black bg-opacity-25 z-10 flex items-center justify-center pointer-events-none">
-                                  <span className="text-white text-[11px]">
-                                    {runner?.status}
-                                  </span>
-                                </div>
-                              )}
-                            </td>
-                          </tr>
-                          {runner?.id === runnerId && (
-                            <BetSlip currentPlaceBetEvent={game} />
-                          )}
-                        </Fragment>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                              <span className="text-sm">
+                                {" "}
+                                {runner?.back?.[0]?.price}
+                              </span>
+                              <span className="text-x">
+                                {" "}
+                                {runner?.back?.[0]?.size}
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           );
