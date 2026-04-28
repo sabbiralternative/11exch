@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const menuItems = [
   { id: 1, label: "Aviator", href: "/aviator" },
   { id: 2, label: "Aura", href: "/aura" },
-  { id: 3, label: "Live Casino", href: "/live-casino" },
+  { id: 3, label: "Live Casino", href: "/casino" },
   { id: 4, label: "Sports", href: "/sports?eventTypeId=4" },
   { id: 5, label: "Sportsbook", href: "/sportsbook" },
   { id: 6, label: "Virtual Sports", href: "/virtual-sports" },
@@ -38,7 +38,7 @@ const QuickAccessNavList = () => {
             {item.label}
           </span>
           <div
-            className={`h-[3px] rounded-xl bg-exchLoginGradient  ${pathname === item?.href ? "opacity-100 smoothIncreaseWidth" : "opacity-0"}`}
+            className={`h-[3px] rounded-xl bg-exchLoginGradient  ${pathname === item?.href?.split("?")[0] ? "opacity-100 smoothIncreaseWidth" : "opacity-0"}`}
           />
         </div>
       ))}

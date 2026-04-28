@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Menu from "../../modals/Menu/Menu";
 
 const Footer = () => {
+  const [showMenuModal, setShowMenuModal] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   return (
     <div className>
+      {showMenuModal && <Menu setShowMenuModal={setShowMenuModal} />}
       <div className="w-full flex items-center justify-center px-1.5 fixed bottom-1 left-0 right-0 z-[101] z-51">
         <div className="w-full lg:w-[475px] bg-bg_primary2 flex items-center justify-start px-2 py-1.5 rounded-xl">
           <div className="w-[39%] flex items-center justify-between gap-x-1">
@@ -171,14 +175,14 @@ const Footer = () => {
               </span>
             </nav>
             <nav
-              onClick={() => navigate("/menu")}
+              onClick={() => setShowMenuModal((prev) => !prev)}
               className="flex items-center justify-center flex-col gap-y-1 relative cursor-pointer active:scale-95 transition-all ease-in-out duration-300 w-full"
             >
               <div
-                className={`absolute h-[3px] top-[-8px] left-0 rounded-md  ${pathname === "/menu" ? "bg-exchLoginGradient smoothIncreaseWidth" : ""}`}
+                className={`absolute h-[3px] top-[-8px] left-0 rounded-md  ${showMenuModal ? "bg-exchLoginGradient smoothIncreaseWidth" : ""}`}
               />
               <span
-                className={`w-6 h-6  ${pathname === "/menu" ? "opacity-100" : "opacity-50"}`}
+                className={`w-6 h-6  ${showMenuModal ? "opacity-100" : "opacity-50"}`}
               >
                 <svg
                   width="100%"
@@ -214,7 +218,7 @@ const Footer = () => {
                 </svg>
               </span>
               <span
-                className={`text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px]  ${pathname === "/menu" ? "opacity-100" : "opacity-30"}`}
+                className={`text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px]  ${showMenuModal ? "opacity-100" : "opacity-30"}`}
               >
                 Menu
               </span>

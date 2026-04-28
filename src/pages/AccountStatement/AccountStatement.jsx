@@ -1,29 +1,4 @@
-import { useNavigate } from "react-router-dom";
-
-import { useAccountStatement } from "../../hooks/accountStatement";
-import { from_date, to_date } from "../../utils/default-date";
-import { useSelector } from "react-redux";
-import { userToken } from "../../redux/features/auth/authSlice";
-import moment from "moment";
-
-const BettingProfitLoss = () => {
-  const { passbook } = useAccountStatement({
-    from: from_date,
-    to: to_date,
-    type: "GR",
-  });
-  const navigate = useNavigate();
-  const token = useSelector(userToken);
-  const handleNavigateSinglePassbook = (item) => {
-    if (item?.plDetails) {
-      navigate(`/betting-profit-loss/${item?.marketId}`);
-    }
-  };
-
-  const getUniqueDate = Array.from(
-    new Set(passbook?.map((item) => item?.settledTime)),
-  );
-
+const AccountStatement = () => {
   return (
     <main className="w-full flex-1  pt-1 overflow-y-auto scroll-smooth bg-bg_appBackgroundColor">
       <nav className="flex items-center py-2  h-max justify-start gap-1.5 w-full text-text_secondary font-roboto text-sm font-normal leading-120 py-2 bg-bg_appBackgroundColor w-full z-10 capitalize border-b border-solid border-border_secondary px-3">
@@ -41,10 +16,10 @@ const BettingProfitLoss = () => {
             className="ng-tns-c191-0"
           />
         </svg>
-        <span className="text-text_secondary">Betting Profit &amp; Loss</span>
+        <span className="text-text_secondary">Account Statement</span>
       </nav>
-      <div className="flex items-center justify-center flex-col gap-y-3 w-full px-3 ">
-        <span className="z-10 w-full py-2.5 pb-0">
+      <div className="flex flex-col w-full h-full transition-all ease-in-out duration-200 font-roboto">
+        <span className="z-10 w-full py-2.5 px-3">
           <div className="undefined">
             <div className="flex flex-col bg-inputBgColor h-[88px] rounded relative">
               <div
@@ -212,42 +187,30 @@ const BettingProfitLoss = () => {
             </div>
           </div>
         </span>
-        <div className="flex items-start justify-start flex-col gap-y-3 w-full">
-          <div className="w-full max-w-md  bg-appBackgroundGradient rounded-xl shadow-xl overflow-hidden">
-            <div className="p-6 space-y-6">
-              <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={24}
-                  height={24}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-20 h-20 text-[#4fd1c5]"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                  <path d="M15 17m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                  <path d="M9 17m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                  <path d="M9 17l6 -6" />
-                  <path d="M15 17l-6 -6" />
-                </svg>
-                <h2 className="text-xl font-semibold text-text_secondary">
-                  No Betting Profit and Loss Data Found
-                </h2>
-                <p className="text-text_secondary1 text-sm text-justify">
-                  There are currently no reports available to display for the
-                  selected dates between 21 Apr 2026, 12:00:00 am and 28 Apr
-                  2026, 11:17:59 am of betting profit and loss.
-                </p>
+        <div className="w-full p-3 pt-0 flex flex-col gap-2">
+          <div className="flex justify-start items-start sticky top-[90px] lg:top-[100px]">
+            <div className="text-center bg-bg_inputBgColor rounded-lg text-xs shadow-md text-text_secondary font-medium">
+              Apr 23, 2026
+            </div>
+          </div>
+          <div className="bg-bg_inputBgColor rounded-xl shadow-md active:scale-[97%] cursor-pointer transition-all ease-in-out duration-300 relative overflow-hidden">
+            <div className="absolute top-0 left-0 transperent-bg-one z-0 blur-97 w-[8.3125rem] h-[5.625rem]" />
+            <div className="absolute top-0 right-0 transperent-bg-one z-0 blur-97 w-[7rem] h-[4.6875rem]" />
+            <div className="border-b border-solid border-b-border_secondary3 py-2 px-3 text-sm text-text_secondary font-medium z-[1] relative flex items-center gap-1">
+              <span />
+            </div>
+            <div className="flex justify-between py-2 px-3 text-sm font-medium z-[1] relative">
+              <div className=" text-text_secondary5">Account</div>
+              <div className="flex justify-start gap-1">
+                <span className="text-text_secondary5">P&amp;L</span>
+                <span className="font-bold tracking-widest text-text_success">
+                  ₹ 0
+                </span>
               </div>
-              <button className="w-full active:scale-95 py-2 bg-bg_Primary text-text_secondary font-semibold rounded-lg transition duration-200 ease-in-out">
-                Refresh Data
-              </button>
+            </div>
+            <div className="flex py-[0.375rem] px-[0.8125rem] justify-between bg-bg_primary5 rounded-b text-[10px] z-[1] relative">
+              <div className="text-text_secondary5">23/04/2026 | 16:23:50</div>
+              <div className="text-start text-text_secondary">Balance: ₹0</div>
             </div>
           </div>
         </div>
@@ -256,4 +219,4 @@ const BettingProfitLoss = () => {
   );
 };
 
-export default BettingProfitLoss;
+export default AccountStatement;

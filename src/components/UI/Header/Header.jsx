@@ -14,6 +14,7 @@ import Error from "../../modals/Error/Error";
 import Unauthorized from "./Unauthorized";
 import Authorized from "./Authorized";
 import QuickAccessNavList from "./QuickAccessNavList";
+import Notification from "./Notification";
 
 const Header = () => {
   const location = useLocation();
@@ -64,6 +65,7 @@ const Header = () => {
   return (
     <header className="w-full h-max flex flex-col bg-bg_appBackgroundColor">
       <div className=" flex flex-col w-full h-max">
+        <Notification />
         <AppPopup />
         <div className="flex h-max items-center justify-between py-2 px-3 w-full border-b border-solid border-border_secondary">
           <div

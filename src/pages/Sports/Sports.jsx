@@ -38,7 +38,7 @@ const Sports = () => {
   }, [data]);
 
   useEffect(() => {
-    if (groupedData.upcoming) {
+    if (Object.values(groupedData.upcoming).length > 0) {
       const categories = Array.from(
         new Set(
           Object.values(groupedData.upcoming)

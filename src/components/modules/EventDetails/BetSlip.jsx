@@ -213,171 +213,225 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
   };
 
   return (
-    <tr>
-      <td colSpan="7">
-        <div className>
+    <div className="w-full px-0.5">
+      <div
+        className="overflow-hidden transition-height  ease-in-out duration-200  w-full "
+        style={{ height: "250px" }}
+      >
+        <div className=" bg-bg_secondary w-full h-max p-3 font-roboto rounded-sm border-b-[5px] border-solid border-border_betSlipBackBorderColor flex flex-col gap-y-[0.385rem]">
+          <div className=" grid grid-cols-12 gap-x-2 w-full items-center">
+            <div className="bg-bg_betSlipProfitColor border-border_betSlipProfitColor col-span-6 rounded-md py-[5px] px-2 border-l-[2px]  flex items-center justify-between shadow-md">
+              <span className="text-text_tertiary9 text-xs font-medium">
+                Profit :{" "}
+              </span>
+              <span className="text-text_tertiary10 text-xs font-semibold w-[60%] truncate text-end">
+                ₹{profit}
+              </span>
+            </div>
+            <div className="col-span-6 text-end w-full truncate text-[0.6875rem] text-text_tertiary13 font-semibold">
+              Max Market: ₹ ${placeBetValues?.maxLiabilityPerBet}
+            </div>
+          </div>
           <div
-            className={` relative  ${placeBetValues?.back ? "bg-[#72BBEF]" : "bg-[#FAA9BA]"}`}
+            title="Odds-StakesInput"
+            className=" w-full grid grid-cols-12 gap-x-[0.875rem] text-text_secondary2 "
           >
-            <div className="flex flex-col px-2">
-              <span>{placeBetValues?.selectedBetName}</span>
-              <span className="text-xs">{placeBetValues?.btype}</span>
+            <div
+              title="OddsInput"
+              className=" col-span-6 grid grid-cols-5 gap-x-2"
+            >
+              <div className=" col-span-5 flex flex-col gap-y-[0.25rem]">
+                <span className=" text-text_tertiary14 text-[0.6875rem] font-medium">
+                  ODDS
+                </span>
+                <div className="flex items-center justify-between w-full disabled:cursor-not-allowed w-full text-text_tertiary15 h-[2.5rem] flex items-center justify-start rounded-lg shadow-sm">
+                  {!placeBetValues?.isWeak && (
+                    <button
+                      onClick={() => {
+                        handleDecreasePrice(
+                          price,
+                          placeBetValues,
+                          dispatch,
+                          setPrice,
+                        );
+                        setIsCashOut(false);
+                      }}
+                      className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out cursor-pointer bg-bg_increamentDecrementBtn text-white h-full px-[1px] py-1.5 min-w-[25%] flex items-center justify-center active:scale-[99.5%] active:opacity-80 transition-all duration-300 ease-in-out  rounded-l-lg 
+      cursor-pointer
+      
+      "
+                      type="button"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={12}
+                        height={12}
+                        viewBox="0 0 18 4"
+                        fill="var(--color-icon_secondary)"
+                      >
+                        <path
+                          d="M16.3363 3.1535H1.66367C1.02639 3.1535 0.51001 2.63713 0.51001 1.99985C0.51001 1.36257 1.02639 0.846191 1.66367 0.846191H16.3363C16.9736 0.846191 17.49 1.36257 17.49 1.99985C17.49 2.63713 16.9736 3.1535 16.3363 3.1535Z"
+                          fill="var(--color-icon_secondary)"
+                        />
+                      </svg>
+                    </button>
+                  )}
+
+                  <input
+                    onChange={(e) => {
+                      dispatch(setPrice(e.target.value));
+                      setIsCashOut(false);
+                    }}
+                    value={price}
+                    placeholder="Enter Odds"
+                    className="block w-full focus:outline-none   border border-l-0 border-r-0 border-solid border-border_secondary10 text-center h-full focus:border-border_primary text-sm  flex items-center text-center justify-center"
+                    autoComplete="off"
+                    type="number"
+                  />
+                  {!placeBetValues?.isWeak && (
+                    <button
+                      onClick={() => {
+                        handleIncreasePrice(
+                          price,
+                          placeBetValues,
+                          dispatch,
+                          setPrice,
+                        );
+                        setIsCashOut(false);
+                      }}
+                      className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out cursor-pointer bg-bg_increamentDecrementBtn text-white h-full px-[1px] py-1.5 min-w-[25%] flex items-center justify-center active:scale-[99.5%] active:opacity-80 transition-all duration-300 ease-in-out  rounded-r-lg 
+      cursor-pointer
+      
+      "
+                      type="button"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={12}
+                        height={12}
+                        viewBox="0 0 18 18"
+                        fill="var(--color-icon_secondary)"
+                      >
+                        <path
+                          d="M8.99997 17.4897C8.36269 17.4897 7.84631 16.9734 7.84631 16.3361V1.66342C7.84631 1.02614 8.36269 0.509766 8.99997 0.509766C9.63725 0.509766 10.1536 1.02614 10.1536 1.66342V16.3361C10.1536 16.9734 9.63725 17.4897 8.99997 17.4897Z"
+                          fill="var(--color-icon_secondary)"
+                        />
+                        <path
+                          d="M16.3363 10.1535H1.66367C1.02639 10.1535 0.51001 9.63713 0.51001 8.99985C0.51001 8.36257 1.02639 7.84619 1.66367 7.84619H16.3363C16.9736 7.84619 17.49 8.36257 17.49 8.99985C17.49 9.63713 16.9736 10.1535 16.3363 10.1535Z"
+                          fill="var(--color-icon_secondary)"
+                        />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
             <div
-              className={`${placeBetValues?.back ? "bg-[#72BBEF]" : "bg-[#FAA9BA]"}  flex items-center pt-1 justify-between mx-2 gap-2`}
+              title="StakesInput"
+              className=" col-span-6 flex flex-col gap-y-[0.25rem]"
             >
-              <div className="flex items-center w-full">
-                {!placeBetValues?.isWeak && (
-                  <button
-                    onClick={() => {
-                      handleDecreasePrice(
-                        price,
-                        placeBetValues,
-                        dispatch,
-                        setPrice,
-                      );
-                      setIsCashOut(false);
-                    }}
-                    className=" active:opacity-70 flex bg-gray-700 h-[30px] px-2 w-fit text-center items-center justify-center"
-                  >
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      strokeWidth={0}
-                      viewBox="0 0 448 512"
-                      color="white"
-                      height="1em"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style={{ color: "white" }}
-                    >
-                      <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                    </svg>
-                  </button>
-                )}
-
+              <span className=" text-text_tertiary14 text-[0.6875rem] font-medium uppercase">
+                Stakes
+              </span>
+              <span>
                 <input
-                  type="number"
                   onChange={(e) => {
-                    dispatch(setPrice(e.target.value));
+                    dispatch(setStake(e.target.value));
                     setIsCashOut(false);
                   }}
-                  value={price}
-                  className="h-[30px] w-full text-center text-[12px]"
+                  placeholder={`Max bet: ${placeBetValues?.maxLiabilityPerBet}`}
+                  value={stake || ""}
+                  className="block w-full focus:outline-none  w-full text-text_tertiary15 border border-solid focus:border-border_primary h-10 flex items-center justify-start transition-all duration-300 ease-in-out rounded-lg px-1.5 shadow-sm border-border_secondary10 flex items-center text-center justify-center"
+                  autoComplete="off"
+                  type="number"
                 />
-                {!placeBetValues?.isWeak && (
-                  <button
-                    onClick={() => {
-                      handleIncreasePrice(
-                        price,
-                        placeBetValues,
-                        dispatch,
-                        setPrice,
-                      );
-                      setIsCashOut(false);
-                    }}
-                    className=" active:opacity-70 flex bg-gray-700 h-[30px] px-2 w-fit text-center items-center justify-center"
-                  >
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      strokeWidth={0}
-                      viewBox="0 0 448 512"
-                      color="white"
-                      height="1em"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style={{ color: "white" }}
-                    >
-                      <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-              <input
-                onChange={(e) => {
-                  dispatch(setStake(e.target.value));
-                  setIsCashOut(false);
-                }}
-                className="text-[12px] h-[30px] w-full leading-[30px] text-center text-black bg-white"
-                type="text"
-                placeholder={`Max bet: ${placeBetValues?.maxLiabilityPerBet}`}
-                value={stake || ""}
-              />
+              </span>
             </div>
-            <div className=" bg-[#72BBEF]  mx-1 grid grid-cols-4 gap-1 my-2.5 text-[14px]  text-center whitespace-nowrap text-stone-900">
-              {parseButtonValues?.slice(0, 6)?.map((button, i) => (
-                <button
-                  key={i}
-                  onClick={() => handleButtonValue(button?.value)}
-                  className=" active:opacity-70 flex-1 rounded bg-[#ccc] border border-[#969494]"
-                  style={{ color: "rgb(0, 0, 0)" }}
-                >
-                  {button?.value}
-                </button>
-              ))}
-            </div>
-            <div className="flex justify-between mb-1 gap-1 mx-2">
+          </div>
+          <div className=" grid grid-cols-12 gap-x-1 gap-y-1 ">
+            {parseButtonValues?.slice(0, 6)?.map((button, i) => (
               <button
-                onClick={() => dispatch(setStake(parseButtonValues[0]?.value))}
-                className=" active:opacity-70 flex-1 w-full text-sm h-8 rounded text-black bg-[#e8e817]"
+                key={i}
+                onClick={() => handleButtonValue(button?.value)}
+                className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out  bg-bg_betSlipBtnsBgColor text-[0.875rem] font-medium rounded-[1.375rem] py-2 px-[0.9375rem] w-full col-span-3 overflow-hidden w-full text-[12px] py-2 font-semibold rounded-[4px]  bg-bg_betSlipBtnsBgColor text-text_secondary text-center border  focus:border-border_primary 
+      cursor-pointer
+      
+      "
+                type="button"
               >
-                Min Stake
+                {button?.value}
               </button>
-              <button
-                onClick={() =>
-                  dispatch(
-                    setStake(
-                      parseButtonValues?.[parseButtonValues?.length - 1]?.value,
-                    ),
-                  )
-                }
-                className=" active:opacity-70 flex-1 w-full  text-sm h-8 rounded  bg-blue-700 text-white"
-              >
-                Max Stake
-              </button>
+            ))}
+          </div>
+          <div className=" grid grid-cols-12 gap-x-1 gap-y-1 ">
+            <button
+              onClick={() => dispatch(setStake(parseButtonValues[0]?.value))}
+              className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out col-span-3 w-full text-[10px] min-h-[26px] font-semibold  rounded-[4px] bg-minBtnGrd text-text_secondary py-2 
+      cursor-pointer
+      
+      "
+              type="button"
+            >
+              MIN
+            </button>
+            <button
+              onClick={() =>
+                dispatch(
+                  setStake(
+                    parseButtonValues?.[parseButtonValues?.length - 1]?.value,
+                  ),
+                )
+              }
+              className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-maxBtnGrd text-text_secondary py-2 
+      cursor-pointer
+      
+      "
+              type="button"
+            >
+              MAX
+            </button>
 
-              <button
-                onClick={() => {
-                  dispatch(setStake(null));
-                }}
-                className=" active:opacity-70 flex-1 w-full  text-sm h-8 rounded bg-red-600 text-white"
-              >
-                Clear
-              </button>
-            </div>
-            <div className="flex justify-between pb-2 gap-1 mx-2">
-              <button
-                onClick={handleCancelBet}
-                className=" active:opacity-70 flex-1 text-sm h-8 w-full rounded bg-red-600 text-white"
-              >
-                Reset{" "}
-              </button>
+            <button
+              onClick={() => {
+                dispatch(setStake(null));
+              }}
+              className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out col-span-3 w-full text-[10px] font-semibold rounded-[4px] bg-clearBtnGrd text-text_secondary leading-4 py-2 
+      cursor-pointer
+      
+      "
+              id="clearBtn"
+              type="button"
+            >
+              CLEAR
+            </button>
+          </div>
+          <div title="BetBtns" className=" grid grid-cols-2 gap-x-2 w-full">
+            <button
+              onClick={handleCancelBet}
+              className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out  col-span-1 w-full bg-bg_betSlipCancelBtnBg text-transparent bg-clip-text font-semibold font-bold  text-base text-center border h-full border-solid border-border_cancelBtnBorderColor rounded-lg min-h-10 flex items-center justify-center shadow-sm 
+      cursor-pointer
+      
+      "
+              type="button"
+            >
+              Cancel Bet
+            </button>
+            <div className="w-full">
               <button
                 onClick={handleOrderBets}
-                className=" active:opacity-70 flex-1 h-8 w-full border border-green-700 rounded text-sm bg-green-600 text-white"
+                className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out col-span-1 w-full bg-bg_betSlipPlaceBetBtnBg font-semibold font-bold  text-base text-center border border-solid rounded-lg min-h-10 h-full flex items-center justify-center shadow-betSlipPlaceBetBtnBoxShadow text-text_tertiary17 disabled:opacity-80 disabled:cursor-not-allowed cursor-pointer 
+      cursor-pointer
+      
+      "
+                type="button"
               >
                 Place Bet
               </button>
             </div>
-            {loading && (
-              <div className="absolute top-0 left-0 flex flex-col gap-1 items-center justify-center w-full h-full z-20 bg-black/30 backdrop-blur-[2px]">
-                <div className="relative h-[70px] w-[70px] flex items-center justify-center">
-                  <div className="absolute text-lg text-white"></div>
-                  <div className="h-[80%] w-[80%] border-4 border-white rounded-full border-dotted border-t-white border-b-oneClickLoadingSpinner border-x-oneClickLoadingSpinner animate-oneClickLoadingSpinnerAnimation" />
-                </div>
-                <div className="flex flex-col items-center justify-center text-white">
-                  <div className="text-sm font-semibold">
-                    Your bet is being processed...
-                  </div>
-                  <div className="text-xs text-suspendedBg">Please wait</div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 };
 

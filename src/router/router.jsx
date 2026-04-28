@@ -24,6 +24,9 @@ import Account from "../pages/Account/Account";
 import Register from "../pages/Register/Register";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import Sports from "../pages/Sports/Sports";
+import Settings from "../pages/Settings/Settings";
+import AccountStatement from "../pages/AccountStatement/AccountStatement";
+import Bonuses from "../pages/Bonuses/Bonuses";
 
 export const router = createBrowserRouter(
   [
@@ -132,6 +135,18 @@ export const router = createBrowserRouter(
         {
           path: "/sports",
           element: <Sports />,
+        },
+        {
+          path: "/settings",
+          element: <Settings />,
+        },
+        {
+          path: "/account-statement",
+          element: <AccountStatement />,
+        },
+        {
+          path: "/bonuses",
+          element: <Bonuses />,
         },
       ],
     },
