@@ -136,7 +136,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
               UPI ID (Optional)
               <span className="text-text_Primary"></span>
             </div>
-            <div className="relative">
+            <div className="relative bg-auth rounded-lg border">
               <input
                 onChange={(e) => {
                   setBankDetails({
@@ -145,7 +145,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
                   });
                 }}
                 placeholder="Enter UPI ID"
-                className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
+                className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0 bg-auth"
                 type="text"
                 value={bankDetails.upiId}
               />
@@ -157,7 +157,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
           <div className="ml-1 text-sm">
             Account Name <span className="text-text_Primary">*</span>
           </div>
-          <div className="relative">
+          <div className="relative bg-auth rounded-lg border">
             <input
               onChange={(e) => {
                 setBankDetails({
@@ -169,7 +169,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
               label="Account Name"
               required
               placeholder="Enter Account Name"
-              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
+              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0 bg-auth"
               type="text"
               value={bankDetails.accountName}
             />
@@ -180,7 +180,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
           <div className="ml-1 text-sm">
             Account No <span className="text-text_Primary">*</span>
           </div>
-          <div className="relative">
+          <div className="relative bg-auth rounded-lg border">
             <input
               onChange={(e) => {
                 setBankDetails({
@@ -192,7 +192,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
               label="Account No"
               required
               placeholder="Enter Account Number"
-              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
+              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0 bg-auth"
               type="text"
               value={bankDetails.accountNumber}
             />
@@ -204,7 +204,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
             Confirm Account No
             <span className="text-text_Primary">*</span>
           </div>
-          <div className="relative">
+          <div className="relative bg-auth rounded-lg border">
             <input
               onChange={(e) => {
                 setBankDetails({
@@ -216,7 +216,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
               required
               id="confirmAccountNo"
               placeholder="Re-enter Account Number"
-              className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
+              className="block w-full focus:outline-none py-2  border rounded-lg bg-auth pl-4 pr-4 ml-0 mr-0"
               type="text"
               value={bankDetails.confirmAccountNumber}
             />
@@ -228,7 +228,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
             <div className="ml-1 text-sm">
               IFSC Code <span className="text-text_Primary">*</span>
             </div>
-            <div className="relative">
+            <div className="relative bg-auth rounded-lg border">
               <input
                 onChange={(e) => {
                   setBankDetails({
@@ -240,7 +240,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
                 label="IFSC Code"
                 required
                 placeholder="Enter IFSC Code"
-                className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
+                className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0 bg-auth"
                 type="text"
                 value={bankDetails.ifsc}
               />
@@ -354,7 +354,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
             </span>
           </label>
         </div>
-        <span className="text-sm text-textColor  font-[400] leading-5">
+        <span className="text-sm text-textColor text-white  font-[400] leading-5">
           I have read and agree with
           <span className="text-text_Primary underline text-sm  font-[400] leading-4 cursor-pointer">
             the terms of payment and withdrawal policy.

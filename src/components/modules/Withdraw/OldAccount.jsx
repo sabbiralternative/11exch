@@ -534,7 +534,7 @@ const OldAccount = ({ amount, bankAccounts }) => {
                     </g>
                   </svg>
                 </div>
-                <span className="text-text_Ternary font-normal text-center">
+                <span className="text-text_Ternary font-normal text-center text-white">
                   No Accounts Added.
                 </span>
               </div>

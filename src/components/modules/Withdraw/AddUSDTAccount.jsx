@@ -130,7 +130,7 @@ const AddUSDTAccount = ({ setTabs, refetchBankAccounts }) => {
                   }}
                   type="radio"
                   placeholder="Enter Wallet Address"
-                  className="pr-2"
+                  className="pr-2 appearance-auto"
                   value="BEP20"
                 />
               </div>
@@ -146,7 +146,7 @@ const AddUSDTAccount = ({ setTabs, refetchBankAccounts }) => {
                   }}
                   type="radio"
                   placeholder="Enter Wallet Address"
-                  className="pr-2"
+                  className="pr-2 appearance-auto"
                   value="TRC20"
                 />
               </div>
@@ -159,7 +159,7 @@ const AddUSDTAccount = ({ setTabs, refetchBankAccounts }) => {
             <div className="ml-1 text-sm">
               Wallet Address<span className="text-text_Primary">*</span>
             </div>
-            <div className="relative">
+            <div className="relative bg-auth rounded-lg border">
               <input
                 onChange={(e) => {
                   setUsdtDetails({
@@ -171,7 +171,7 @@ const AddUSDTAccount = ({ setTabs, refetchBankAccounts }) => {
                 label="IFSC Code"
                 required
                 placeholder="Enter Wallet Address"
-                className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0"
+                className="block w-full focus:outline-none py-2  border rounded-lg pl-4 pr-4 ml-0 mr-0 bg-auth"
                 type="text"
                 value={usdtDetails.wallet_address}
               />

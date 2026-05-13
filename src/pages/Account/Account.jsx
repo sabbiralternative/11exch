@@ -194,7 +194,10 @@ const Account = () => {
           </div>
         </div>
         <div className="flex items-center justify-between gap-x-2 w-full">
-          <div className="flex items-center justify-center px-4 py-2.5 w-full gap-1 rounded-md bg-bg_secondary6 active:scale-95 transition-all duration-300 active:opacity-85">
+          <div
+            onClick={() => navigate("/withdraw")}
+            className="flex items-center justify-center px-4 py-2.5 w-full gap-1 rounded-md bg-bg_secondary6 active:scale-95 transition-all duration-300 active:opacity-85"
+          >
             <svg
               width={18}
               height={16}
@@ -245,7 +248,10 @@ const Account = () => {
               Withdraw
             </span>
           </div>
-          <div className="flex items-center justify-center px-4 py-2.5 w-full gap-1 rounded-md bg-exchRegisterGradient active:scale-95 transition-all duration-300 active:opacity-85">
+          <div
+            onClick={() => navigate("/deposit")}
+            className="flex items-center justify-center px-4 py-2.5 w-full gap-1 rounded-md bg-exchRegisterGradient active:scale-95 transition-all duration-300 active:opacity-85"
+          >
             <svg
               width={12}
               height={11}

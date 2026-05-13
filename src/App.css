@@ -6,12 +6,12 @@
 }
 .primary-icon-color svg,
 .back-from-iframe svg {
-  stroke: var(--color-bg-primary);
+  stroke: var(--color-bg_primary1);
 }
 
 .change-password svg,
 .primary-icons svg {
-  fill: var(--color-bg-primary);
+  fill: var(--color-bg_primary1);
 }
 
 .text-secondary {
@@ -540,7 +540,7 @@ input:-moz-autofill {
 }
 
 .dropdownBG {
-  background-color: var(--color-bg-primary) !important;
+  background-color: var(--color-bg_primary1) !important;
 }
 
 .swal2-container:has(.alert-dialog) {
@@ -693,7 +693,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 /* App pop up */
 .android-popup {
   width: 100%;
-  background: var(--color-bg-primary);
+  background: var(--color-bg_primary1);
   padding: 5px;
   display: flex;
   align-items: center;
@@ -810,7 +810,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
   gap: 12px;
   flex-shrink: 0;
   border-radius: 8px;
-  background: var(--color-bg-primary);
+  background: var(--color-bg_primary1);
 }
 
 .install-btn button {
@@ -970,7 +970,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
   width: 30px;
   height: 45px;
   top: 0;
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg_primary1);
 }
 
 button.btn {
@@ -1286,7 +1286,7 @@ html * {
   }
   .sc_cw-overs-info-mobile {
     display: flex !important;
-    border-top: 0.5px solid var(--color-bg-primary) !important;
+    border-top: 0.5px solid var(--color-bg_primary1) !important;
     padding-top: 2px !important;
     padding-bottom: 2px !important;
     color: #fff !important;

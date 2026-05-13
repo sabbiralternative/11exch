@@ -685,7 +685,7 @@ const PaymentMethod = ({
                   </span>
                 </label>
               </div>
-              <span className="text-sm text-textColor  font-[400] leading-5">
+              <span className="text-sm text-textColor text-white  font-[400] leading-5">
                 I have read and agree with{" "}
                 <span className="text-text_Primary underline text-sm  font-[400] leading-4 cursor-pointer">
                   the terms of payment and withdrawal policy.

@@ -54,7 +54,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
           </div>
         </div>
       </div>
-      <div className="text-base text-text_Ternary font-roboto w-full font-medium flex flex-col items-start justify-start gap-y-1">
+      <div className="text-base text-white font-roboto w-full font-medium flex flex-col items-start justify-start gap-y-1">
         <span className="">Please fill in all required fields*</span>
       </div>
       <div
@@ -70,7 +70,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
               <div className="ml-1 text-sm">
                 Amount <span className="text-text_Primary">*</span>
               </div>
-              <div className="relative">
+              <div className="relative ">
                 <span className="px-2 absolute top-1/2 -translate-y-1/2 w-max">
                   ₹
                 </span>
@@ -80,7 +80,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
                   label="Amount"
                   required=""
                   placeholder="Enter Amount"
-                  className="block w-full focus:outline-none py-2  border rounded-lg pl-10 pr-8 ml-0 mr-0 placeholder:text-gray-300 border-primary"
+                  className="block w-full focus:outline-none py-2  border rounded-lg pl-10 pr-8 ml-0 mr-0 placeholder:text-gray-500 border-gray-400 bg-gray-200"
                   type="number"
                   value={amount}
                 />
@@ -123,7 +123,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
               </span>
             </label>
           </div>
-          <span className="text-sm text-textColor  font-[400] leading-5">
+          <span className="text-sm text-textColor text-white  font-[400] leading-5">
             I have read and agree with{" "}
             <span className="text-text_Primary underline text-sm  font-[400] leading-4 cursor-pointer">
               the terms of payment and withdrawal policy.
