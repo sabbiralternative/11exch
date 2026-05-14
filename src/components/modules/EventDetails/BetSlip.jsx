@@ -19,6 +19,7 @@ import {
   handleDecreasePrice,
   handleIncreasePrice,
 } from "../../../utils/editBetSlipPrice";
+import BetLoading from "./BetLoading";
 
 const BetSlip = ({ currentPlaceBetEvent }) => {
   const { closePopupForForever } = useSelector((state) => state.global);
@@ -214,6 +215,7 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
 
   return (
     <div className="w-full px-0.5">
+      {loading && <BetLoading absolute={true} />}
       <div
         className="overflow-hidden transition-height  ease-in-out duration-200  w-full "
         style={{ height: "250px" }}

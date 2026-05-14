@@ -20,7 +20,6 @@ export const MatchOdds = ({ data }) => {
   const dispatch = useDispatch();
   const { runnerId, stake, predictOdd } = useSelector((state) => state.event);
   const { token } = useSelector((state) => state.auth);
-  const { windowWidth } = useSelector((state) => state.global);
   const { data: exposure } = useExposure(eventId);
 
   const handleBetSlip = (betType, games, runner, price) => {
@@ -365,6 +364,30 @@ export const MatchOdds = ({ data }) => {
                           <div className="flex items-start justify-start gap-y-[1px] flex-col w-full col-span-3">
                             <div className="font-roboto text-md font-medium leading-120 capitalize text-text_secondary  w-full truncate">
                               {runner?.name}
+                            </div>
+                            <div className="w-full flex flex-row gap-x-1">
+                              {pnl && (
+                                <div
+                                  className={`text-[12px] font-bold  ${
+                                    pnl?.pnl > 0
+                                      ? "text-green-500"
+                                      : "text-red-500"
+                                  }`}
+                                >
+                                  {pnl?.pnl}
+                                </div>
+                              )}
+                              {stake && runnerId && predictOddValues && (
+                                <div
+                                  className={`text-[12px] font-bold  ${
+                                    predictOddValues?.exposure > 0
+                                      ? "text-green-500"
+                                      : "text-red-500"
+                                  } `}
+                                >
+                                  &gt;&gt; {predictOddValues?.exposure}
+                                </div>
+                              )}
                             </div>
                           </div>
                         </div>

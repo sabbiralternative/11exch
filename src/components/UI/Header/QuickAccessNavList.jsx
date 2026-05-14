@@ -1,26 +1,31 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
 const menuItems = [
-  { id: 1, label: "Aviator", href: "/aviator" },
-  { id: 2, label: "Aura", href: "/aura" },
   { id: 3, label: "Live Casino", href: "/casino" },
   { id: 4, label: "Sports", href: "/sports?eventTypeId=4" },
   { id: 5, label: "Sportsbook", href: "/sportsbook" },
-  { id: 6, label: "Virtual Sports", href: "/virtual-sports" },
-  { id: 7, label: "Poker", href: "/poker" },
-  { id: 8, label: "Slot-Games", href: "/slot-games" },
-  { id: 9, label: "Non-stop Roulette", href: "/non-stop-roulette" },
-  { id: 10, label: "Dreamwheel", href: "/dreamwheel" },
-  { id: 11, label: "Horse Racing", href: "/horse-racing" },
+  {
+    id: 11,
+    label: "Horse Racing",
+    href: "/sports?eventTypeId=7",
+  },
+  {
+    id: 11,
+    label: "Greyhound Racing",
+    href: "/sports?eventTypeId=4339",
+  },
 ];
 
 const QuickAccessNavList = () => {
-  const { pathname } = useLocation();
+  const { search, pathname } = useLocation();
+  const params = new URLSearchParams(search);
+  const eventTypeId = params.get("eventTypeId");
   const navigate = useNavigate();
 
   const handleNavigate = (link) => {
     navigate(link);
   };
+
   return (
     <div
       title="Top Nav"
@@ -33,26 +38,35 @@ const QuickAccessNavList = () => {
           className="flex cursor-pointer items-center justify-center h-full transition-all ease-in-out duration-200 whitespace-nowrap flex-col active:scale-95"
         >
           <span
-            className={`text-text_secondary font-roboto pb-1 pt-2 text-xs not-italic leading-120 font-[450] tracking-[0.3px]  ${pathname === item?.href?.split("?")[0] ? "cursor-pointer opacity-100" : "opacity-60 "}`}
+            className={`text-text_secondary font-roboto pb-1 pt-2 text-xs not-italic leading-120 font-[450] tracking-[0.3px]  ${
+              search
+                ? item?.href?.split("=")[1] == eventTypeId
+                  ? "cursor-pointer opacity-100"
+                  : "opacity-60"
+                : pathname === item?.href
+                  ? "cursor-pointer opacity-100"
+                  : "opacity-60"
+            }`}
           >
             {item.label}
           </span>
           <div
-            className={`h-[3px] rounded-xl bg-exchLoginGradient  ${pathname === item?.href?.split("?")[0] ? "opacity-100 smoothIncreaseWidth" : "opacity-0"}`}
+            className={`h-[3px] rounded-xl bg-exchLoginGradient
+              
+              ${
+                search
+                  ? item?.href?.split("=")[1] == eventTypeId
+                    ? "opacity-100 smoothIncreaseWidth"
+                    : "opacity-0"
+                  : pathname === item?.href
+                    ? "opacity-100 smoothIncreaseWidth"
+                    : "opacity-0"
+              }
+         `}
           />
         </div>
       ))}
 
-      <div className="flex cursor-pointer items-center justify-center h-full transition-all ease-in-out duration-200 whitespace-nowrap flex-col active:scale-95">
-        <span
-          className="text-text_secondary font-roboto pb-1 pt-2 text-xs not-italic leading-120 font-[450] tracking-[0.3px] cursor-pointer
-                 opacity-60
-                "
-        >
-          Grey Hound Racing
-        </span>
-        <div className="h-[3px] rounded-xl bg-exchLoginGradient opacity-0" />
-      </div>
       <div />
       <div className="sticky cursor-pointer right-0 top-1 bottom-3 pl-1.5 pr-2 bg-topMenuopenBtnBg">
         <svg

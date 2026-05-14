@@ -102,7 +102,7 @@ const Home = () => {
           <div className=" w-full py-2 flex flex-col gap-2">
             <div
               className="
-          w-full shadow-lg min-h-[70px] max-h-full rounded-xl md:col-span-1 overflow-hidden font-lato
+          w-full shadow-lg min-h-[70px] max-h-full rounded-xl md:col-span-1 overflow-hidden 
           bg-gradient-to-br from-[#5b21b6] to-[#9333ea] relative
           px-5 py-4 flex flex-col items-start gap-2 justify-start cursor-pointer
           active:scale-[0.97] md:hover:scale-[103%] transition-all duration-300
@@ -1315,7 +1315,7 @@ const Home = () => {
               </div>
               <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                 <button
-                  className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                  className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                   type="button"
                 >
                   See More

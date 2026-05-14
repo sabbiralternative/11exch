@@ -18,10 +18,10 @@ const Ladder = ({ ladderData, setLadderData, marketName }) => {
         ref={ladderRef}
       >
         <div className="flex flex-col items-start justify-center gap-y-2">
-          <div className=" text-text_Ternary  font-lato font-semibold capitalize">
+          <div className=" text-text_Ternary   font-semibold capitalize">
             {marketName}
           </div>
-          <table className="w-full table-auto font-lato">
+          <table className="w-full table-auto ">
             <thead>
               <tr>
                 <th className="text-center">Runs</th>

@@ -54,12 +54,12 @@ const AppOnlyBonus = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="flex-1 flex white bg-gray1">
-      <div className="h-full w-full overflow-auto hide-scrollbar mb-6 md:mb-0 md:px-2 md:pl-[15px] md:pr-3">
+    <div className="flex-1 flex white w-full">
+      <div className="h-full w-full overflow-auto hide-scrollbar mb-6 md:mb-0 ">
         <div className="w-full router-ctn max-md:pb-9">
           <main className="flex w-full flex-col">
             <div
-              className="text-start bg-bg_Quaternary mt-5 px-2.5 py-1  rounded text-[12px] shadow-sm mx-2 flex items-start gap-2 transition-opacity duration-500"
+              className="text-start bg-bg_Quaternary mt-5 px-2.5 py-1  rounded text-[12px] shadow-sm flex items-start gap-2 transition-opacity duration-500"
               style={{
                 opacity: fade ? 1 : 0,
               }}
@@ -72,7 +72,7 @@ const AppOnlyBonus = () => {
               <span className="font-medium">{bonusMessage[currentIndex]}</span>
             </div>
             {data?.length > 0 && (
-              <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-4 px-4 py-6 ">
+              <div className="grid grid-cols-1 h-full gap-4  py-6 ">
                 {data?.map((item) => {
                   return (
                     <div

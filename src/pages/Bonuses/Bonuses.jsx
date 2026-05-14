@@ -18,7 +18,7 @@ const Bonuses = () => {
         </svg>
         <span className="text-text_secondary">Bonuses</span>
       </nav>
-      <div className="relative flex flex-wrap w-full items-center justify-center font-lato z-[1] pb-[3.5rem] pt-2">
+      <div className="relative flex flex-wrap w-full items-center justify-center  z-[1] pb-[3.5rem] pt-2">
         <div className="w-full lg:w-[475px] px-2 flex flex-col gap-y-2">
           <div className="relative px-2 flex flex-col items-center w-full rounded-lg bg-gradient-to-br from-[#5b21b6] to-[#9333ea] overflow-hidden shadow-lg">
             <div className="absolute top-2 right-2 w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 opacity-20" />
@@ -69,17 +69,17 @@ const Bonuses = () => {
         <div className=" w-full mt-4 px-3">
           <div className=" flex flex-row font-manorape items-center justify-start gap-2.5 relative">
             <div className="cursor-pointer w-full flex flex-row items-center justify-center">
-              <span className="text-text_secondary items-center justify-center text-center     px-4 xs:px-8 py-2 text-[13px] md:text-sm lg:text-base font-bold font-lato leading-4 active:scale-95 w-full block z-10 ">
+              <span className="text-text_secondary items-center justify-center text-center     px-4 xs:px-8 py-2 text-[13px] md:text-sm lg:text-base font-bold  leading-4 active:scale-95 w-full block z-10 ">
                 All
               </span>
             </div>
             <div className="cursor-pointer w-full flex flex-row items-center justify-center">
-              <span className="text-text_secondary  border border-solid items-center justify-center text-center border-border_tertiary22 rounded-full  px-4 xs:px-8 py-2 text-[13px] md:text-sm lg:text-base font-bold font-lato leading-4 active:scale-95 w-full block z-10 ">
+              <span className="text-text_secondary  border border-solid items-center justify-center text-center border-border_tertiary22 rounded-full  px-4 xs:px-8 py-2 text-[13px] md:text-sm lg:text-base font-bold  leading-4 active:scale-95 w-full block z-10 ">
                 Active
               </span>
             </div>
             <div className="cursor-pointer w-full flex flex-row items-center justify-center">
-              <span className="text-text_secondary  border border-solid items-center justify-center text-center border-border_tertiary22 rounded-full  px-4 xs:px-8 py-2 text-[13px] md:text-sm lg:text-base font-bold font-lato leading-4 active:scale-95 w-full block z-10 ">
+              <span className="text-text_secondary  border border-solid items-center justify-center text-center border-border_tertiary22 rounded-full  px-4 xs:px-8 py-2 text-[13px] md:text-sm lg:text-base font-bold  leading-4 active:scale-95 w-full block z-10 ">
                 Expired
               </span>
             </div>
@@ -95,13 +95,13 @@ const Bonuses = () => {
           </div>
         </div>
         <div className="p-2 mt-1 w-full  ">
-          <div className=" w-full  px-[9px]  font-lato flex flex-col justify-center relative overflow-hidden rounded-lg  bg-giftBonusBgColor gap-y-1.5 pb-[9px]">
+          <div className=" w-full  px-[9px]   flex flex-col justify-center relative overflow-hidden rounded-lg  bg-giftBonusBgColor gap-y-1.5 pb-[9px]">
             <div className="flex justify-between gap-[9px] items-center h-full">
               <div className="flex flex-col items-start text-text_secondary gap-2 pt-[12px]">
-                <div className="text-[14px] md:text-[24px] font-bold  text-text_secondary font-lato">
+                <div className="text-[14px] md:text-[24px] font-bold  text-text_secondary ">
                   GIFT CARD
                 </div>
-                <div className="leading-4 text-[11px] sm:text-xs md:text-sm  tracking-wide font-normal font-lato text-text_secondary">
+                <div className="leading-4 text-[11px] sm:text-xs md:text-sm  tracking-wide font-normal  text-text_secondary">
                   Type or Paste your promocode and get rewards in your wallet.
                 </div>
               </div>
@@ -109,7 +109,7 @@ const Bonuses = () => {
             <div className="flex  items-center justify-center">
               <div className=" flex  gap-2.5 items-center w-[80%] border rounded-[4px] border-[#112856] flex-grow">
                 <input
-                  className="block w-full focus:outline-none  text-sm text-text_secondary placeholder:text-text_secondary-500 font-normal font-lato h-8 bg-bg_inputBgColor pl-2"
+                  className="block w-full focus:outline-none  text-sm text-text_secondary placeholder:text-text_secondary-500 font-normal  h-8 bg-bg_inputBgColor pl-2"
                   placeholder="ENTER PROMO CODE"
                   autoComplete="off"
                   type="text"
@@ -117,7 +117,7 @@ const Bonuses = () => {
                 />
               </div>
               <button
-                className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out w-max px-4 py-1 min-h-[32px] font-lato text-text_secondary    bg-bonusLineGradient text-sm font-bold leading-4 rounded-md ml-[12px] flex items-center  justify-center min-w-[90px] 
+                className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out w-max px-4 py-1 min-h-[32px]  text-text_secondary    bg-bonusLineGradient text-sm font-bold leading-4 rounded-md ml-[12px] flex items-center  justify-center min-w-[90px] 
       cursor-pointer
       
       "

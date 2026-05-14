@@ -16,7 +16,7 @@ const Affiliate = () => {
   const tab = params.get("tab");
 
   return (
-    <div className="flex-1 flex white bg-gray1 w-full">
+    <div className="flex-1 flex white  w-full">
       <div className="h-full w-full overflow-auto hide-scrollbar mb-6 md:mb-0 md:px-2 md:pl-[15px] md:pr-3">
         <div className="w-full router-ctn max-md:pb-9">
           <main className="flex w-full">

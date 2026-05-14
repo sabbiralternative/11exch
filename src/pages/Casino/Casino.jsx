@@ -88,7 +88,7 @@ const Casino = () => {
           </div>
           <div className=" bg-transparent w-full h-full pb-1 md:pb-0">
             <div className=" w-full">
-              <div className="w-full pb-4 font-lato">
+              <div className="w-full pb-4 ">
                 <div className="flex flex-col w-full py-0.5 font-roboto">
                   <div className="w-[100%] flex flex-row justify-between px-1.5">
                     <div className="max-w-[85%] text-text_color_primary1 font-semibold capitalize">
@@ -100,7 +100,7 @@ const Casino = () => {
                     </div>
                     <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                       <button
-                        className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                        className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                         type="button"
                       >
                         See More
@@ -244,7 +244,7 @@ const Casino = () => {
                       </div>
                       <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                         <button
-                          className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                          className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                           type="button"
                         >
                           See More
@@ -359,7 +359,7 @@ const Casino = () => {
                       </div>
                       <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                         <button
-                          className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                          className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                           type="button"
                         >
                           See More
@@ -542,7 +542,7 @@ const Casino = () => {
                       </div>
                       <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                         <button
-                          className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                          className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                           type="button"
                         >
                           See More
@@ -742,7 +742,7 @@ const Casino = () => {
                       </div>
                       <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                         <button
-                          className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                          className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                           type="button"
                         >
                           See More
@@ -925,7 +925,7 @@ const Casino = () => {
                       </div>
                       <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                         <button
-                          className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                          className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                           type="button"
                         >
                           See More
@@ -1176,7 +1176,7 @@ const Casino = () => {
                       </div>
                       <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                         <button
-                          className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                          className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                           type="button"
                         >
                           See More
@@ -1546,7 +1546,7 @@ const Casino = () => {
                       </div>
                       <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                         <button
-                          className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                          className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                           type="button"
                         >
                           See More
@@ -1916,7 +1916,7 @@ const Casino = () => {
                       </div>
                       <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                         <button
-                          className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                          className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                           type="button"
                         >
                           See More
@@ -2116,7 +2116,7 @@ const Casino = () => {
                       </div>
                       <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                         <button
-                          className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                          className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                           type="button"
                         >
                           See More
@@ -2350,7 +2350,7 @@ const Casino = () => {
                       </div>
                       <div className="flex w-[108.75px] items-center justify-end gap-[5px]">
                         <button
-                          className="relative overflow-hidden font-lato text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
+                          className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
                           type="button"
                         >
                           See More

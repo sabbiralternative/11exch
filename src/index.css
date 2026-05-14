@@ -695,6 +695,9 @@ html * {
 .bg-primary {
   background: var(--color-bg_primary1);
 }
+.bg-primary1 {
+  background: var(--color-bg_primary);
+}
 .border-primary {
   border-color: var(--color-bg_primary1);
 }
@@ -713,6 +716,7 @@ html * {
 .bg-bg_LoginButtonColor {
   background: var(--color-bg_primary);
 }
+
 .popUpOpenAnimation {
   animation: popUpOpenAnimation 0.3s ease-in-out;
 }

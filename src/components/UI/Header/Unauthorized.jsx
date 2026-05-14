@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Settings } from "../../../api";
 
 const Unauthorized = () => {
   return (
@@ -10,13 +11,15 @@ const Unauthorized = () => {
       >
         Login
       </Link>
-      <Link
-        className="flex items-center justify-center py-[0.3125rem] px-2 rounded-md bg-exchRegisterGradient text-text_secondary font-roboto text-xs not-italic font-semibold leading-150 tracking-widest h-8 active:opacity-80 active:scale-95"
-        title="Register to exch11 & Get the exciting bonuses and more!!!"
-        to="/register"
-      >
-        Register
-      </Link>
+      {Settings.registration && (
+        <Link
+          className="flex items-center justify-center py-[0.3125rem] px-2 rounded-md bg-exchRegisterGradient text-text_secondary font-roboto text-xs not-italic font-semibold leading-150 tracking-widest h-8 active:opacity-80 active:scale-95"
+          title="Register to exch11 & Get the exciting bonuses and more!!!"
+          to="/register"
+        >
+          Register
+        </Link>
+      )}
     </div>
   );
 };

@@ -18,7 +18,7 @@ const OtherSettings = () => {
         <span className>
           <label className="inline-flex items-center cursor-pointer relative transition-all ease-in-out">
             <input className="sr-only peer" type="checkbox" />
-            <div className="relative p-[2px] bg-[#B6BECD] border-[0.5px] border-border_cancelBtnBorderColor font-lato rounded-full peer-checked:bg-bg_success h-6 w-12">
+            <div className="relative p-[2px] bg-[#B6BECD] border-[0.5px] border-border_cancelBtnBorderColor  rounded-full peer-checked:bg-bg_success h-6 w-12">
               <span className="absolute top-1/2 right-[5px] transform  -translate-y-1/2 text-[10px] font-bold  text-[10px]">
                 OFF
               </span>

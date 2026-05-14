@@ -166,9 +166,64 @@ export const Fancy = ({ data }) => {
                 <Fragment key={game?.id}>
                   <div className="flex items-center justify-between w-full border-b border-solid border-b-border_tertiary20 py-0.5 pr-0.5 pl-2">
                     <div className="w-[60%] grid grid-cols-3 items-center">
-                      <div className="flex items-start justify-start gap-y-[1px] flex-col w-full col-span-3">
+                      <div className="flex items-start justify-start gap-y-[1px]  w-full col-span-3">
                         <div className="font-roboto text-md font-medium leading-120 capitalize text-text_secondary  w-full truncate">
                           {game?.name}
+                        </div>
+                        {pnl && (
+                          <div className="w-full flex flex-row gap-x-1">
+                            <div
+                              className={`text-[12px] font-bold ${
+                                pnl?.pnl > 0 ? "text-green-500" : "text-red-500"
+                              }`}
+                            >
+                              {pnl?.pnl}
+                            </div>
+                          </div>
+                        )}
+                        <div
+                          onClick={() => handleGetLadder(pnl, game?.name)}
+                          className={`${
+                            pnl?.pnl
+                              ? "opacity-100 cursor-pointer"
+                              : "opacity-50 cursor-not-allowed"
+                          }`}
+                        >
+                          <svg
+                            height={18}
+                            width={18}
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g id="63d691358b4e4026f6539708_stairs 1">
+                              <path
+                                id="Vector"
+                                d="M5.21875 3.13672V13.1367"
+                                stroke="#fff"
+                              ></path>
+                              <path
+                                id="Vector_2"
+                                d="M5.21875 5.48047H10.5312"
+                                stroke="#fff"
+                              ></path>
+                              <path
+                                id="Vector_3"
+                                d="M5.21875 8.13672H10.5312"
+                                stroke="#fff"
+                              ></path>
+                              <path
+                                id="Vector_4"
+                                d="M5.21875 11.1055H10.5312"
+                                stroke="#fff"
+                              ></path>
+                              <path
+                                id="Vector_5"
+                                d="M10.5312 3.13672V13.1367"
+                                stroke="#fff"
+                              ></path>
+                            </g>
+                          </svg>
                         </div>
                       </div>
                     </div>
