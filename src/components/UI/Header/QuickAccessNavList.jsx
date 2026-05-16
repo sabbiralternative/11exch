@@ -22,8 +22,12 @@ const QuickAccessNavList = () => {
   const eventTypeId = params.get("eventTypeId");
   const navigate = useNavigate();
 
-  const handleNavigate = (link) => {
-    navigate(link);
+  const handleNavigate = (item) => {
+    if (item?.id === 5) {
+      navigate(`/casino/sportsbook/550000`);
+    } else {
+      navigate(item.href);
+    }
   };
 
   return (
@@ -33,7 +37,7 @@ const QuickAccessNavList = () => {
     >
       {menuItems.map((item) => (
         <div
-          onClick={() => handleNavigate(item?.href)}
+          onClick={() => handleNavigate(item)}
           key={item.id}
           className="flex cursor-pointer items-center justify-center h-full transition-all ease-in-out duration-200 whitespace-nowrap flex-col active:scale-95"
         >

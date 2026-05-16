@@ -4,16 +4,21 @@ import { Fancy } from "../../components/modules/EventDetails/Fancy";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetEventDetailsQuery } from "../../redux/features/events/events";
+import {
+  useGetEventDetailsQuery,
+  useVideoMutation,
+} from "../../redux/features/events/events";
 import { setPredictOdd } from "../../redux/features/events/eventSlice";
 import { HorseGreyhoundEventDetails } from "../../components/modules/EventDetails/HorseGreyhoundEventDetails";
+import { Settings } from "../../api";
 
 const EventDetails = () => {
+  const [tab, setTab] = useState("market");
   const { eventTypeId, eventId } = useParams();
   const [profit, setProfit] = useState(0);
   const dispatch = useDispatch();
   const { placeBetValues, price, stake } = useSelector((state) => state.event);
-
+  const [sportsVideo, { data: iframe }] = useVideoMutation();
   const { data } = useGetEventDetailsQuery(
     { eventTypeId, eventId },
     {
@@ -121,6 +126,21 @@ const EventDetails = () => {
       game?.visible == true &&
       game?.name === "tied match",
   );
+
+  useEffect(() => {
+    if (tab === "match_info") {
+      const handleGetVideo = async () => {
+        const payload = {
+          eventTypeId: eventTypeId,
+          eventId: eventId,
+          type: "video",
+          casinoCurrency: Settings.casino_currency,
+        };
+        await sportsVideo(payload).unwrap();
+      };
+      handleGetVideo();
+    }
+  }, [tab]);
   return (
     <main className="w-full flex-1  pt-1  bg-bg_appBackgroundColor">
       <div className="w-full">
@@ -143,18 +163,33 @@ const EventDetails = () => {
           </div>
           <div className="w-full border-b border-border_tertiary23 bg-bg_appBackgroundColor">
             <div className=" flex flex-row font-manrope-regular items-center justify-start gap-0 text-nowrap capitalize text-[12px] px-1 relative">
-              <div className="cursor-pointer w-full flex flex-row items-center justify-center">
-                <span className=" text-text_secondary  py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ">
+              <div
+                onClick={() => setTab("market")}
+                className="cursor-pointer w-full flex flex-row items-center justify-center"
+              >
+                <span
+                  className={`   py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ${tab === "market" ? "text-text_secondary" : "text-text_tertiary8"}`}
+                >
                   Market
                 </span>
               </div>
-              <div className="cursor-pointer w-full flex flex-row items-center justify-center">
-                <span className=" text-text_tertiary8  text-[12px] py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ">
+              <div
+                onClick={() => setTab("match_info")}
+                className="cursor-pointer w-full flex flex-row items-center justify-center"
+              >
+                <span
+                  className={`   py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ${tab === "match_info" ? "text-text_secondary" : "text-text_tertiary8"}`}
+                >
                   Match Info
                 </span>
               </div>
-              <div className="cursor-pointer w-full flex flex-row items-center justify-center">
-                <span className=" text-text_tertiary8  text-[12px] py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ">
+              <div
+                onClick={() => setTab("open_bets")}
+                className="cursor-pointer w-full flex flex-row items-center justify-center"
+              >
+                <span
+                  className={`   py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ${tab === "open_bets" ? "text-text_secondary" : "text-text_tertiary8"}`}
+                >
                   Open Bets
                 </span>
               </div>
@@ -163,7 +198,12 @@ const EventDetails = () => {
                 style={{
                   width: "156.016px",
                   bottom: "0px",
-                  left: "3.48959px",
+                  left:
+                    tab === "market"
+                      ? "3.48956px"
+                      : tab === "match_info"
+                        ? "154.505px"
+                        : "305.508px",
                   height: "3px",
                   borderRadius: "10px",
                 }}
@@ -173,6 +213,26 @@ const EventDetails = () => {
         </div>
         <div className="w-full h-max">
           <div className="flex items-start justify-start flex-col w-full pb-20">
+            {data?.score && data?.score?.tracker !== null && (
+              <div className="w-full overflow-hidden h-[125px]">
+                <iframe
+                  id="videoComponent"
+                  className="w-full h-auto relative overflow-hidden   bg-transparent"
+                  src={data?.score?.tracker}
+                  width="100%"
+                  allowfullscreen=""
+                ></iframe>
+              </div>
+            )}
+            {iframe?.result?.url && data?.score?.hasVideo && (
+              <iframe
+                id="videoComponent"
+                className="w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px] relative overflow-hidden h-[55vw] md:h-[58vw] bg-transparent"
+                src={iframe?.result?.url}
+                width="100%"
+                allowfullscreen=""
+              ></iframe>
+            )}
             {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
             {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
             {data?.result?.length > 0 && <Fancy data={data?.result} />}

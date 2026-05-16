@@ -11,7 +11,7 @@ const Banner = () => {
     <div className="w-full ">
       {data?.banner?.length > 0 && (
         <Swiper
-          slidesPerView={2}
+          slidesPerView={1}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
