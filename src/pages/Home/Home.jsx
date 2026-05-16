@@ -6,7 +6,7 @@ import HomeFooter from "../../components/modules/Home/HomeFooter";
 import IndianCardGame from "../../components/modules/Home/IndianCardGame";
 import InPlay from "../../components/modules/Home/InPlay";
 import LossBackCard from "../../components/modules/Home/LossBackCard";
-import TrendingGame from "../../components/modules/Home/TrendingGame";
+// import TrendingGame from "../../components/modules/Home/TrendingGame";
 import WhatsApp from "../../components/modules/Home/WhatsApp";
 import Footer from "../../components/UI/Footer/Footer";
 import { useLotusHomeLobby } from "../../hooks/lotusHomeLobby";
@@ -75,7 +75,7 @@ const Home = () => {
               </div>
             </div>
             <LossBackCard />
-            <TrendingGame />
+            {/* <TrendingGame /> */}
             <EventNameList />
           </div>
           <GameProvider casinoProviders={lotusLobby?.casinoProviders} />
