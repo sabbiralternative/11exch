@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
 const menuItems = [
-  { id: 3, label: "Live Casino", href: "/casino" },
+  { id: 3, label: "Live Casino", href: "/live-casino" },
   { id: 4, label: "Sports", href: "/sports?eventTypeId=4" },
   { id: 5, label: "Sportsbook", href: "/sportsbook" },
   {

@@ -113,10 +113,7 @@ const DownloadAPK = () => {
               experience 💎
             </p>
 
-            <a
-              onClick={handleDownload}
-              className="download-button text-primary"
-            >
+            <a onClick={handleDownload} className="download-button text-white">
               <GrAndroid className="android-icon" />
               <span>Download Official App Now ↓</span>
             </a>

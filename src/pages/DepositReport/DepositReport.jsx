@@ -425,7 +425,7 @@ const DepositReport = () => {
                                   onClick={() =>
                                     setComplaintId(data?.referenceNo)
                                   }
-                                  className="px-2 py-1 text-xs  font-medium text-primary rounded h-fit tracking-normal"
+                                  className="px-2 py-1 text-xs  font-medium text-white rounded h-fit tracking-normal"
                                 >
                                   Report Issue
                                 </button>

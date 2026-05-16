@@ -166,12 +166,12 @@ export const Fancy = ({ data }) => {
                 <Fragment key={game?.id}>
                   <div className="flex items-center justify-between w-full border-b border-solid border-b-border_tertiary20 py-0.5 pr-0.5 pl-2">
                     <div className="w-[60%] grid grid-cols-3 items-center">
-                      <div className="flex items-start justify-start gap-y-[1px]  w-full col-span-3">
+                      <div className="flex items-center justify-between gap-y-[1px]  w-full col-span-3">
                         <div className="font-roboto text-md font-medium leading-120 capitalize text-text_secondary  w-full truncate">
                           {game?.name}
                         </div>
                         {pnl && (
-                          <div className="w-full flex flex-row gap-x-1">
+                          <div className="w-fit flex flex-row gap-x-1 items-center justify-end ml-5">
                             <div
                               className={`text-[12px] font-bold ${
                                 pnl?.pnl > 0 ? "text-green-500" : "text-red-500"
@@ -183,7 +183,7 @@ export const Fancy = ({ data }) => {
                         )}
                         <div
                           onClick={() => handleGetLadder(pnl, game?.name)}
-                          className={`${
+                          className={`w-full flex items-center justify-end ${
                             pnl?.pnl
                               ? "opacity-100 cursor-pointer"
                               : "opacity-50 cursor-not-allowed"

@@ -237,12 +237,12 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
                   ? "Hash Code"
                   : " Unique Transaction Reference"}
 
-                <span className="text-primary">*</span>
+                <span className="text-white">*</span>
               </div>
               <div className="w-full relative ">
                 <input
                   onChange={handleUTRChange}
-                  className="block w-full focus:outline-none border-[1px]  px-3 py-2.5 rounded-[4px]  placeholder: font-medium text-base border-quinary focus:border-ternary"
+                  className="block w-full focus:outline-none border-[1px]  px-3 py-2.5 rounded-[4px]  placeholder: font-medium text-base border-green-500 focus:border-ternary border-solid"
                   placeholder={
                     tabs === "usdt" || tabs === "usdt_bep20"
                       ? "Enter Hash code"
@@ -284,7 +284,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
                     type="checkbox"
                     defaultChecked
                   />
-                  <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-primary opacity-0 transition-opacity peer-checked:opacity-100">
+                  <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-3.5 w-3.5"
@@ -316,7 +316,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
                   cursor: `${!filePath || !utr ? "not-allowed" : "pointer"}`,
                 }}
                 onClick={handleDepositSubmit}
-                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary flex items-center justify-center gap-x-2 w-full text-primary h-10 text-base rounded-md font-[500] leading-4 disabled:bg-bg_Quinary cursor-pointer"
+                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary flex items-center justify-center gap-x-2 w-full text-white h-10 text-base rounded-md font-[500] leading-4 disabled:bg-bg_Quinary cursor-pointer"
               >
                 <span>I have made the payment</span>
               </button>

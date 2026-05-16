@@ -1,6 +1,44 @@
-const GameShow = () => {
+import { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Settings } from "../../../api";
+import toast from "react-hot-toast";
+import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
+import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
+
+const GameShow = ({ popularGames }) => {
+  const [showSeeAll, setShowSeeAll] = useState(false);
+  const ref = useRef();
+  const navigate = useNavigate();
+  const [showWarning, setShowWarning] = useState(false);
+  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
+  const { token, bonusToken } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const handleNavigate = (game) => {
+    if (token) {
+      if (bonusToken) {
+        return toast.error("Bonus wallet is available only on sports.");
+      }
+      if (Settings.casino_currency !== "AED") {
+        navigate(
+          `/casino/${game?.game_name.replace(/ /g, "")}/${game?.game_id}`,
+        );
+      } else {
+        setGameInfo({ gameName: "", gameId: "" });
+        setGameInfo({ gameName: game?.game_name, gameId: game?.game_id });
+        setShowWarning(true);
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
+
   return (
     <div className="w-full py-2 mt-0.5">
+      {showWarning && (
+        <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
+      )}
       <div
         title="Game Shows"
         className="flex items-start flex-col gap-0.5 w-full"
@@ -26,7 +64,18 @@ const GameShow = () => {
             </span>
           </div>
           <div className="flex items-center justify-center gap-1.5">
+            <button
+              onClick={() => setShowSeeAll(!showSeeAll)}
+              className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out text-text_secondary text-x not-italic mr-[8px] 
+      cursor-pointer
+      
+      "
+              type="button"
+            >
+              {showSeeAll ? "View Less" : "View All"}
+            </button>
             <svg
+              onClick={() => scrollToLeft(ref)}
               xmlns="http://www.w3.org/2000/svg"
               width={20}
               height={20}
@@ -42,6 +91,7 @@ const GameShow = () => {
               <path d="M15 6l-6 6l6 6" />
             </svg>
             <svg
+              onClick={() => scrollToRight(ref)}
               xmlns="http://www.w3.org/2000/svg"
               width={20}
               height={20}
@@ -58,163 +108,32 @@ const GameShow = () => {
             </svg>
           </div>
         </div>
-        <div className=" w-full h-max scroll-smooth no-scrollbar flex items-start justify-start overflow-x-auto gap-x-2 pt-1 pb-2">
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/FUNKYTIME-1691760822997"
-              alt="FUNKY TIME"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="FUNKY TIME - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src='https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/"XXXTREMELIGHTINGROULETTE"-1691760908430'
-              alt='"XXXTREME LIGHTING ROULETTE"'
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title='"XXXTREME LIGHTING ROULETTE" - exch11'
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/CRAZYTIME-1691760949698"
-              alt="CRAZY TIME"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="CRAZY TIME - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/IMPERIALQUEST-1691760989037"
-              alt="IMPERIAL QUEST"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="IMPERIAL QUEST - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/DEALNODEAL-1691761036177"
-              alt="DEAL NO DEAL"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="DEAL NO DEAL - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/EXTRACHILLIEPICSPINS-1691761099184"
-              alt="EXTRA CHILLI EPIC SPINS"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="EXTRA CHILLI EPIC SPINS - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/DREAMCATCHER-1691761147220"
-              alt="DREAM CATCHER"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="DREAM CATCHER - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/FOOTBALLSTUDIO-1691761185312"
-              alt="FOOTBALL STUDIO"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="FOOTBALL STUDIO - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/LIGHTNINGDICE-1691761232968"
-              alt="LIGHTNING DICE"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="LIGHTNING DICE - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/MONOPOLYLIVE-1691761266790"
-              alt="MONOPOLY LIVE"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="MONOPOLY LIVE - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/MEGABALL-1691761311219"
-              alt="MEGA BALL"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="MEGA BALL - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/CASHORCRASH-1691761356630"
-              alt="CASH OR CRASH"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="CASH OR CRASH - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[160px] w-[160px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-[4/5] object-cover rounded-md cursor-pointer  mr-1.5"
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://promotions-material.s3.ap-south-1.amazonaws.com/popularBanners/GONZO’STREASUREHUNT-1691761393356"
-              alt="GONZO’S TREASURE HUNT"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="GONZO’S TREASURE HUNT - exch11"
-            />
-          </div>
+        <div
+          ref={ref}
+          className={`  ${showSeeAll ? "w-full h-max scroll-smooth no-scrollbar  gap-x-2 pt-1 pb-2  grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-2 gap-y-2" : "w-full h-max scroll-smooth no-scrollbar  gap-x-2 pt-1 pb-2 flex items-start justify-start overflow-x-auto"}   `}
+        >
+          {popularGames?.map((item, i) => {
+            return (
+              <div
+                onClick={() => handleNavigate(item)}
+                key={i}
+                className={`
+                
+                ${showSeeAll ? "   relative overflow-hidden w-full aspect-1 object-cover rounded-md cursor-pointer" : "relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer "}
+                
+             `}
+                style={{ display: "inline-block", position: "relative" }}
+              >
+                <img
+                  src={item?.url_thumb}
+                  alt={item?.game_name}
+                  sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
+                  className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
+                  title={`${item?.game_name}`}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

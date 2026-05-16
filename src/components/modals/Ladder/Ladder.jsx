@@ -57,7 +57,7 @@ const Ladder = ({ ladderData, setLadderData, marketName }) => {
   cursor-pointer
   "
           >
-            <span className=" text-primary font-semibold fonn-lato text-base">
+            <span className=" text-white font-semibold fonn-lato text-base">
               OK
             </span>
           </button>

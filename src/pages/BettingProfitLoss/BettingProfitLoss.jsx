@@ -59,12 +59,12 @@ const BettingProfitLoss = () => {
                 className="w-full px-1 my-1.5 font "
               >
                 <div className="w-full text-text_color_primary2 rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-primary1">
-                  <div className="text-xs text-primary  font-[600] leading-[140%]">
+                  <div className="text-xs text-white  font-[600] leading-[140%]">
                     {moment(category).format("Do-MMM-YYYY")}
                   </div>
                   <div className="text-xs text-text_color_primary2  font-[600] flex items-center justify-center leading-[140%]">
-                    <span className="text-primary">Total PL</span>
-                    <span className="-mt-0.5 ml-1 text-primary">:</span>
+                    <span className="text-white">Total PL</span>
+                    <span className="-mt-0.5 ml-1 text-white">:</span>
                     <span
                       className={`ml-1 ${
                         totalPnl > 0

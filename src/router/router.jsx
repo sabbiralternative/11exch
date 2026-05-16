@@ -4,7 +4,7 @@ import Home from "../pages/Home/Home";
 import APK from "../pages/APK/APK";
 import Login from "../pages/Login/Login";
 import EventDetails from "../pages/EventDetails/EventDetails";
-import Casino from "../pages/Casino/Casino";
+
 import BonusStatement from "../pages/BonusStatement/BonusStatement";
 import Promotions from "../pages/Promotions/Promotions";
 import LossbackBonus from "../pages/LossbackBonus/LossbackBonus";
@@ -27,6 +27,8 @@ import Sports from "../pages/Sports/Sports";
 import Settings from "../pages/Settings/Settings";
 import AccountStatement from "../pages/AccountStatement/AccountStatement";
 import Bonuses from "../pages/Bonuses/Bonuses";
+import LiveCasino from "../pages/LiveCasino/LiveCasino";
+import GameProviderDetails from "../pages/GameProviderDetails/GameProviderDetails";
 
 export const router = createBrowserRouter(
   [
@@ -49,10 +51,13 @@ export const router = createBrowserRouter(
           path: "/event-details/:eventTypeId/:eventId",
           element: <EventDetails />,
         },
-
         {
-          path: "/casino",
-          element: <Casino />,
+          path: "/game-provider/:game_name/:game_id",
+          element: <GameProviderDetails />,
+        },
+        {
+          path: "/live-casino",
+          element: <LiveCasino />,
         },
         {
           path: "/bonus-statement",

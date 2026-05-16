@@ -105,7 +105,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
                 type="checkbox"
                 defaultChecked
               />
-              <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-primary opacity-0 transition-opacity peer-checked:opacity-100">
+              <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-3.5 w-3.5"
@@ -133,7 +133,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
         <div className="w-full text-center">
           <div
             onClick={handleShowBank}
-            className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-primary h-10 text-base shadow-lg  rounded-md font-medium leading-4  flex gap-x-1 items-center justify-center  ${
+            className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-white h-10 text-base shadow-lg  rounded-md font-medium leading-4  flex gap-x-1 items-center justify-center  ${
               amount < withdrawBreakdown?.minimumWithdraw ||
               amount > withdrawBreakdown?.mainWallet
                 ? "cursor-not-allowed opacity-70"

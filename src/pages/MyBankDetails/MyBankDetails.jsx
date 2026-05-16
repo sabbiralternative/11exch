@@ -115,7 +115,7 @@ const MyBankDetails = () => {
                   >
                     <span
                       className={` px-[25px] py-2 text-[13px] md:text-sm lg:text-base rounded-full font-bold leading-4 active:scale-95 block z-10 ${
-                        tab === 1 ? "text-primary" : "bg-bg_Quaternary"
+                        tab === 1 ? "text-white" : "bg-bg_Quaternary"
                       }`}
                     >
                       Active
@@ -127,7 +127,7 @@ const MyBankDetails = () => {
                   >
                     <span
                       className={`text-text_Ternary text-sm  rounded-full  px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10  ${
-                        tab === 0 ? "text-primary" : "bg-bg_Quaternary"
+                        tab === 0 ? "text-white" : "bg-bg_Quaternary"
                       }`}
                     >
                       Deleted
@@ -144,7 +144,7 @@ const MyBankDetails = () => {
                 </div>
               </div>
               <div className="" style={{ margin: "10px 0px" }}>
-                <div className="flex items-center justify-between gap-x-4 text-primary">
+                <div className="flex items-center justify-between gap-x-4 text-white">
                   <button
                     onClick={() => setShowAddBank(true)}
                     className="btn"
@@ -325,7 +325,7 @@ const MyBankDetails = () => {
                           {bank?.isDefault === 0 && tab === 1 && (
                             <button
                               onClick={() => handleMakeDefault(bank?.bankId)}
-                              className="btn text-primary"
+                              className="btn text-white"
                               style={{
                                 background: "var(--color-bg_primary1)",
 

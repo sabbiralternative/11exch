@@ -49,7 +49,7 @@ const OldAccount = ({ amount, bankAccounts }) => {
                     account?.bankId === bankId ? "border-green-500" : ""
                   }`}
                 >
-                  <div className="w-[50px] bg-bg_Purple700 aspect-square rounded-full text-center flex items-center justify-center text-3xl text-primary">
+                  <div className="w-[50px] bg-bg_Purple700 aspect-square rounded-full text-center flex items-center justify-center text-3xl text-white">
                     S
                   </div>
                   <div className="flex justify-between items-center w-full gap-x-2">
@@ -115,7 +115,7 @@ const OldAccount = ({ amount, bankAccounts }) => {
                   type="checkbox"
                   defaultChecked
                 />
-                <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-primary opacity-0 transition-opacity peer-checked:opacity-100">
+                <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-3.5 w-3.5"
@@ -145,7 +145,7 @@ const OldAccount = ({ amount, bankAccounts }) => {
               type="submit"
               style={{ cursor: !bankId || disable ? "not-allowed" : "pointer" }}
               disabled={!bankId || disable}
-              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-primary h-10 text-base shadow-lg  rounded-md font-medium leading-4 disabled:opacity-70 flex gap-x-1 items-center justify-center cursor-pointer"
+              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-white h-10 text-base shadow-lg  rounded-md font-medium leading-4 disabled:opacity-70 flex gap-x-1 items-center justify-center cursor-pointer"
             >
               <span>{bankId ? "SUBMIT" : "Please select bank account"}</span>
             </button>

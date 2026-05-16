@@ -9,8 +9,11 @@ import LossBackCard from "../../components/modules/Home/LossBackCard";
 import TrendingGame from "../../components/modules/Home/TrendingGame";
 import WhatsApp from "../../components/modules/Home/WhatsApp";
 import Footer from "../../components/UI/Footer/Footer";
+import { useLotusHomeLobby } from "../../hooks/lotusHomeLobby";
 
 const Home = () => {
+  const { data: lotusLobby } = useLotusHomeLobby();
+
   return (
     <main className="w-full flex-1  pt-1 overflow-y-auto scroll-smooth bg-bg_appBackgroundColor">
       <WhatsApp />
@@ -75,10 +78,10 @@ const Home = () => {
             <TrendingGame />
             <EventNameList />
           </div>
-          <GameProvider />
+          <GameProvider casinoProviders={lotusLobby?.casinoProviders} />
           <InPlay />
           <IndianCardGame />
-          <GameShow />
+          <GameShow popularGames={lotusLobby?.popularGames} />
         </div>
         <HomeFooter />
       </div>

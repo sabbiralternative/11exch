@@ -444,7 +444,7 @@ const WithdrawReport = () => {
                                     onClick={() =>
                                       handleDeleteWithdraw(data?.withdraw_id)
                                     }
-                                    className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-medium text-primary rounded-tl rounded h-fit tracking-normal"
+                                    className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-medium text-white rounded-tl rounded h-fit tracking-normal"
                                   >
                                     Cancel Withdraw
                                   </button>
@@ -452,7 +452,7 @@ const WithdrawReport = () => {
 
                               {data.status === "PENDING" &&
                                 data?.reject_request === 1 && (
-                                  <p className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-medium text-primary rounded-tl rounded h-fit tracking-normal">
+                                  <p className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-medium text-white rounded-tl rounded h-fit tracking-normal">
                                     Withdraw delete request sent.
                                   </p>
                                 )}
@@ -464,7 +464,7 @@ const WithdrawReport = () => {
                                   onClick={() =>
                                     setComplaintId(data?.referenceNo)
                                   }
-                                  className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-medium text-primary rounded h-fit tracking-normal"
+                                  className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-medium text-white rounded h-fit tracking-normal"
                                 >
                                   Report Issue
                                 </button>

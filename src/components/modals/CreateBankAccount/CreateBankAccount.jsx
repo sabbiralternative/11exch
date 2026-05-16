@@ -305,7 +305,7 @@ const CreateBankAccount = ({ refetchBankAccounts, setShowAddBank }) => {
                       <div className="w-max">
                         {timer ? (
                           <button
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
+                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  h-fit bg-bg_Primary text-white transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
                             type="button"
                           >
                             <span className=" ">Retry in {timer}</span>
@@ -315,7 +315,7 @@ const CreateBankAccount = ({ refetchBankAccounts, setShowAddBank }) => {
                           <div className="flex items-center">
                             <button
                               onClick={getOtp}
-                              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out  h-fit bg-bg_Primary text-white transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
                               type="button"
                             >
                               <span className=" ">Get OTP Message</span>
@@ -358,7 +358,7 @@ const CreateBankAccount = ({ refetchBankAccounts, setShowAddBank }) => {
                 <button
                   disabled={!isFormValid}
                   type="submit"
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-primary shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2  font-medium text-base cursor-pointer"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-white bg-primary shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2  font-medium text-base cursor-pointer"
                 >
                   <span>Add Bank Account</span>
                 </button>

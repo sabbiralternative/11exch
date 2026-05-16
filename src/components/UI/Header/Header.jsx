@@ -67,7 +67,8 @@ const Header = () => {
       <div className=" flex flex-col w-full h-max">
         {Settings.apk_link && showAPKModal && <DownloadAPK />}
         <Notification />
-        <AppPopup />
+        {Settings.apk_link && showAppPopUp && <AppPopup />}
+
         <div className="flex h-max items-center justify-between py-2 px-3 w-full border-b border-solid border-border_secondary">
           <div
             onClick={() => navigate("/")}

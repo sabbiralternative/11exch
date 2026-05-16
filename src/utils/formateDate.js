@@ -1,6 +1,6 @@
 import moment from "moment";
-export const formatDate = (data, key) => {
-  const dateString = data?.[key]?.date;
+export const formatDate = (data) => {
+  const dateString = data?.date;
   const [, time] = dateString.split(" ");
   const date = moment(dateString, "DD/MM/YYYY");
   const today = moment().startOf("day");
@@ -10,6 +10,6 @@ export const formatDate = (data, key) => {
   } else if (date.isSame(tomorrow, "day")) {
     return `Tomorrow ${time}`;
   } else {
-    return data?.[key]?.date;
+    return data?.date;
   }
 };

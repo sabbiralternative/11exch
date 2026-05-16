@@ -2,7 +2,7 @@ import { MatchOdds } from "../../components/modules/EventDetails/MatchOdds";
 import { Bookmaker } from "../../components/modules/EventDetails/Bookmaker";
 import { Fancy } from "../../components/modules/EventDetails/Fancy";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   useGetEventDetailsQuery,
@@ -11,6 +11,11 @@ import {
 import { setPredictOdd } from "../../redux/features/events/eventSlice";
 import { HorseGreyhoundEventDetails } from "../../components/modules/EventDetails/HorseGreyhoundEventDetails";
 import { Settings } from "../../api";
+import Score from "../../components/modules/EventDetails/Score";
+import TennisScore from "../../components/modules/EventDetails/TennisScore";
+import FootballScore from "../../components/modules/EventDetails/FootballScore";
+import { useCurrentBets } from "../../hooks/currentBets";
+import OpenBets from "../../components/modules/EventDetails/OpenBets";
 
 const EventDetails = () => {
   const [tab, setTab] = useState("market");
@@ -25,6 +30,7 @@ const EventDetails = () => {
       pollingInterval: 1000,
     },
   );
+  const { data: currentBets, refetch } = useCurrentBets(eventId);
 
   useEffect(() => {
     if (
@@ -141,6 +147,8 @@ const EventDetails = () => {
       handleGetVideo();
     }
   }, [tab]);
+
+  console.log(data);
   return (
     <main className="w-full flex-1  pt-1  bg-bg_appBackgroundColor">
       <div className="w-full">
@@ -213,6 +221,26 @@ const EventDetails = () => {
         </div>
         <div className="w-full h-max">
           <div className="flex items-start justify-start flex-col w-full pb-20">
+            {tab === "match_info" && (
+              <Fragment>
+                {eventTypeId == 4 && data?.iscore && (
+                  <Score iscore={data?.iscore} />
+                )}
+                {eventTypeId == 2 && data?.score && (
+                  <TennisScore score={data?.score} />
+                )}
+                {eventTypeId == 1 && <FootballScore score={data?.score} />}
+              </Fragment>
+            )}
+
+            {tab === "open_bets" && (
+              <OpenBets
+                currentBets={currentBets}
+                sportsBook={data?.sportsbook?.Result}
+                refetch={refetch}
+              />
+            )}
+
             {data?.score && data?.score?.tracker !== null && (
               <div className="w-full overflow-hidden h-[125px]">
                 <iframe

@@ -1,4 +1,48 @@
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { AxiosSecure } from "../../../lib/AxiosSecure";
+import { API } from "../../../api";
+import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
+import toast from "react-hot-toast";
+import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
+
 const IndianCardGame = () => {
+  const [showSeeAll, setShowSeeAll] = useState(false);
+  const ref = useRef();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { token, bonusToken } = useSelector((state) => state.auth);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getGames = async () => {
+      const res = await AxiosSecure.post(API.mac88, {
+        gameList: "ALL",
+        product: "ALL",
+        isHome: false,
+      });
+
+      if (res?.status === 200) {
+        const result = res?.data;
+        setData(result);
+      }
+    };
+    getGames();
+  }, []);
+
+  const handleAuraCasino = (code, name) => {
+    if (token) {
+      if (bonusToken) {
+        return toast.error("Bonus wallet is available only on sports.");
+      } else {
+        navigate(`/casino/${name.replace(/ /g, "")}/${code}`);
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
+
   return (
     <div className="w-full py-2">
       <div
@@ -32,15 +76,17 @@ const IndianCardGame = () => {
           </div>
           <div className="flex items-center justify-center gap-1.5">
             <button
+              onClick={() => setShowSeeAll(!showSeeAll)}
               className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out text-text_secondary text-x not-italic mr-[8px] 
       cursor-pointer
       
       "
               type="button"
             >
-              View All
+              {showSeeAll ? "View Less" : "View All"}
             </button>
             <svg
+              onClick={() => scrollToLeft(ref)}
               xmlns="http://www.w3.org/2000/svg"
               width={20}
               height={20}
@@ -56,6 +102,7 @@ const IndianCardGame = () => {
               <path d="M15 6l-6 6l6 6" />
             </svg>
             <svg
+              onClick={() => scrollToRight(ref)}
               xmlns="http://www.w3.org/2000/svg"
               width={20}
               height={20}
@@ -72,295 +119,32 @@ const IndianCardGame = () => {
             </svg>
           </div>
         </div>
-        <div className=" w-full h-max scroll-smooth no-scrollbar  gap-x-2 pt-1 pb-2 flex items-start justify-start overflow-x-auto">
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indiangamesposters-04.webp"
-              alt="Live Teenpatti"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Live Teenpatti - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-26.webp"
-              alt="2 Cards Teenpatti"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="2 Cards Teenpatti - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-02.webp"
-              alt="TENNPATTI T20"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="TENNPATTI T20 - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-07.webp"
-              alt="Hi-Low"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Hi-Low - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-24.webp"
-              alt="Dragon Tiger"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Dragon Tiger - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-25.webp"
-              alt="Teenpatti Test"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Teenpatti Test - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-01.webp"
-              alt="7UP 7DOWN"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="7UP 7DOWN - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-20.webp"
-              alt="Queen Race"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Queen Race - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-18.webp"
-              alt="Roulette"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Roulette - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-16.webp"
-              alt="The Trio"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="The Trio - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-10.webp"
-              alt="Poker 20-20"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Poker 20-20 - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-15.webp"
-              alt="Muflis Teenpatti"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Muflis Teenpatti - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-13.webp"
-              alt="Baccarat"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Baccarat - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-12.webp"
-              alt="Bollywood Casino"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Bollywood Casino - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-03.webp"
-              alt="Matka"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className="  transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Matka - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-08.webp"
-              alt="Poker"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Poker - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-09.webp"
-              alt="32 Cards Casino"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="32 Cards Casino - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-19.webp"
-              alt="Sicbo"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Sicbo - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-05.webp"
-              alt="Andar Bahar"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Andar Bahar - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-11.webp"
-              alt="Amar Akbar Anthony"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Amar Akbar Anthony - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-31.webp"
-              alt="super over"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="super over - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-23.webp"
-              alt="Teenaptti open"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="Teenaptti open - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-27.webp"
-              alt="3 card judgement"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="3 card judgement - exch11"
-            />
-          </div>
-          <div
-            className="relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer  "
-            style={{ display: "inline-block", position: "relative" }}
-          >
-            <img
-              src="https://auraimgs.imgix.net/indian%20games%20posters-29.webp"
-              alt="29 card baccarat"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
-              className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
-              title="29 card baccarat - exch11"
-            />
-          </div>
+        <div
+          ref={ref}
+          className={`  ${showSeeAll ? "w-full h-max scroll-smooth no-scrollbar  gap-x-2 pt-1 pb-2  grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-2 gap-y-2" : "w-full h-max scroll-smooth no-scrollbar  gap-x-2 pt-1 pb-2 flex items-start justify-start overflow-x-auto"}   `}
+        >
+          {data?.data?.map((item, i) => {
+            return (
+              <div
+                onClick={() => handleAuraCasino(item?.game_id, item?.game_name)}
+                key={i}
+                className={`
+                
+                ${showSeeAll ? "   relative overflow-hidden w-full aspect-1 object-cover rounded-md cursor-pointer" : "relative overflow-hidden min-w-[150px] w-[150px] sm:min-w-[170px] sm:w-[170px] md:min-w-[190px] md:w-[190px] aspect-1 object-cover rounded-md cursor-pointer "}
+                
+             `}
+                style={{ display: "inline-block", position: "relative" }}
+              >
+                <img
+                  src={item?.img}
+                  alt={item?.game_name}
+                  sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
+                  className=" bg-bg_skeletonLoaderBg transition-all duration-500 ease-in-out active:scale-105 w-full h-full"
+                  title={`${item?.game_name}`}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
