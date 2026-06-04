@@ -71,7 +71,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                 <span>+1,000</span>
               </button>
               <button
-                onClick={() => setAmount(1000)}
+                onClick={() => setAmount(2000)}
                 className="inline-block leading-normal relative overflow-hidden  duration-150  bg-bg_Primary -all   active:scale-95 text-white min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
@@ -92,7 +92,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                 <span>+10,000</span>
               </button>
               <button
-                onClick={() => setAmount(50000)}
+                onClick={() => setAmount(1000000000)}
                 className="inline-block leading-normal relative overflow-hidden  duration-150  bg-bg_Primary -all   active:scale-95 text-white min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
