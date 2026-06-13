@@ -1,9 +1,26 @@
 import { useNavigate } from "react-router-dom";
+import { latestEvent } from "../../../static/latest-event";
 
 const EventNameList = () => {
   const navigate = useNavigate();
   return (
     <div className="grid grid-cols-5 grid-rows-2 gap-[5px] sm:gap-2 sm:grid-cols-8 md:flex md:overflow-x-auto no-scrollbar scroll-smooth w-full font-roboto">
+      {latestEvent?.map((item) => {
+        return (
+          <div
+            key={item?.eventName}
+            onClick={() => navigate(item?.pathname)}
+            className="flex items-center justify-between px-2 flex-col bg-bg_sportGameCard rounded border border-solid border-border_secondary w-full sm:w-[68px] gap-y-0.5 pt-2.5 pb-1 active:scale-95 transition-all duration-300 active:opacity-90 aspect-2"
+          >
+            <p className=" w-7 h-auto flex items-center justify-center">
+              <span>🏏</span>
+            </p>
+            <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
+              {item?.eventName}
+            </span>
+          </div>
+        );
+      })}
       <div
         onClick={() => navigate("/sports?eventTypeId=4")}
         className="flex items-center justify-between px-2 flex-col bg-bg_sportGameCard rounded border border-solid border-border_secondary w-full sm:w-[68px] gap-y-0.5 pt-2.5 pb-1 active:scale-95 transition-all duration-300 active:opacity-90 aspect-2"
