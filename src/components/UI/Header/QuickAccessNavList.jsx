@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { latestEvent } from "../../../static/latest-event";
 
 const menuItems = [
   { id: 3, label: "Live Casino", href: "/live-casino" },
@@ -35,6 +36,33 @@ const QuickAccessNavList = () => {
       title="Top Nav"
       className="flex h-max border-b border-solid border-border_secondary items-center scroll-smooth justify-start gap-2 overflow-x-auto min-w-full no-scrollbar pl-2 relative"
     >
+      {latestEvent.map((item) => (
+        <div
+          onClick={() => navigate(item.pathname)}
+          key={item.eventName}
+          className="flex cursor-pointer items-center justify-center h-full transition-all ease-in-out duration-200 whitespace-nowrap flex-col active:scale-95"
+        >
+          <span
+            className={`text-text_secondary font-roboto pb-1 pt-2 text-xs not-italic leading-120 font-[450] tracking-[0.3px]  ${
+              pathname === item?.pathname
+                ? "cursor-pointer opacity-100"
+                : "opacity-60"
+            }`}
+          >
+            {item.eventName}
+          </span>
+          <div
+            className={`h-[3px] rounded-xl bg-exchLoginGradient
+              
+              ${
+                pathname === item?.pathname
+                  ? "opacity-100 smoothIncreaseWidth"
+                  : "opacity-0"
+              }
+         `}
+          />
+        </div>
+      ))}
       {menuItems.map((item) => (
         <div
           onClick={() => handleNavigate(item)}
