@@ -4,8 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Settings } from "../api";
 import Header from "../components/UI/Header/Header";
+import { useLanguage } from "../context/LanguageProvider";
 
 const MainLayout = () => {
+  const { setLanguage } = useLanguage();
   const [, setShowBuildVersion] = useState(false);
   const stored_build_version = localStorage.getItem("build_version");
   const { group } = useSelector((state) => state.global);
@@ -34,6 +36,10 @@ const MainLayout = () => {
       }
     }
   }, [stored_build_version]);
+
+  useEffect(() => {
+    setLanguage(localStorage.getItem("language") || "english");
+  }, [setLanguage]);
 
   return (
     <div className="w-full">

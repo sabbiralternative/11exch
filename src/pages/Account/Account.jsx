@@ -3,8 +3,12 @@ import { logout } from "../../redux/features/auth/authSlice";
 import { Settings } from "../../api";
 import { Link, useNavigate } from "react-router-dom";
 import useBalance from "../../hooks/balance";
+import { useLanguage } from "../../context/LanguageProvider";
+import { languageValue } from "../../utils/language";
+import { LanguageKey } from "../../const";
 
 const Account = () => {
+  const { valueByLanguage } = useLanguage();
   const { data } = useBalance();
   const closePopupForForever = localStorage.getItem("closePopupForForever");
   const { user } = useSelector((state) => state.auth);
@@ -150,7 +154,7 @@ const Account = () => {
                 </g>
               </svg>
               <span className="font-roboto text-text_secondary text-sm font-semibold leading-120 not-italic">
-                Withdraw
+                {languageValue(valueByLanguage, LanguageKey.WITHDRAW)}
               </span>
             </div>
           )}
@@ -172,7 +176,7 @@ const Account = () => {
                 />
               </svg>
               <span className="font-roboto text-text_secondary text-sm font-semibold leading-120 not-italic">
-                Deposit
+                {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
               </span>
             </div>
           )}
@@ -1952,7 +1956,7 @@ const Account = () => {
                   />
                 </span>
                 <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                  My Bank Details
+                  {languageValue(valueByLanguage, LanguageKey.MY_BANK_DETAILS)}
                 </span>
               </div>
               <svg
@@ -2801,7 +2805,7 @@ const Account = () => {
           className="flex items-center justify-center w-full p-2 bg-exchLoginGradient active:scale-[98%] transition-all duration-300 rounded-md py-3"
         >
           <span className="font-roboto text-text_secondary font-bold text-base leading-120">
-            Log Out
+            {languageValue(valueByLanguage, LanguageKey.LOGOUT)}
           </span>
         </div>
       </div>

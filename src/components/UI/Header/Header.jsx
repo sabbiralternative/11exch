@@ -16,6 +16,7 @@ import Authorized from "./Authorized";
 import QuickAccessNavList from "./QuickAccessNavList";
 import Notification from "./Notification";
 import DownloadAPK from "../../modals/DownloadAPK/DownloadAPK";
+import Language from "../../modals/Language/Language";
 
 const Header = () => {
   const location = useLocation();
@@ -23,8 +24,13 @@ const Header = () => {
   const { logo } = useLogo();
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const { showAppPopUp, windowWidth, closePopupForForever, showAPKModal } =
-    useSelector((state) => state?.global);
+  const {
+    showAppPopUp,
+    windowWidth,
+    closePopupForForever,
+    showAPKModal,
+    showLanguageModal,
+  } = useSelector((state) => state?.global);
 
   useEffect(() => {
     const apk_modal_shown = sessionStorage.getItem("apk_modal_shown");
@@ -68,6 +74,7 @@ const Header = () => {
         {Settings.apk_link && showAPKModal && <DownloadAPK />}
         <Notification />
         {Settings.apk_link && showAppPopUp && <AppPopup />}
+        {showLanguageModal && <Language />}
 
         <div className="flex h-max items-center justify-between py-2 px-3 w-full border-b border-solid border-border_secondary">
           <div

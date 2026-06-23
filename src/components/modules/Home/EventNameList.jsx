@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const EventNameList = () => {
+  const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
   return (
     <div className="grid grid-cols-5 grid-rows-2 gap-[5px] sm:gap-2 sm:grid-cols-8 md:flex md:overflow-x-auto no-scrollbar scroll-smooth w-full font-roboto">
@@ -12,7 +16,7 @@ const EventNameList = () => {
           <span>🏏</span>
         </p>
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          Cricket
+          {languageValue(valueByLanguage, LanguageKey.CRICKET)}
         </span>
       </div>
       <div
@@ -23,7 +27,7 @@ const EventNameList = () => {
           <span>🎾</span>
         </p>
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          Tennis
+          {languageValue(valueByLanguage, LanguageKey.TENNIS)}
         </span>
       </div>
       <div
@@ -34,7 +38,7 @@ const EventNameList = () => {
           <span>⚽</span>
         </p>
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          Football
+          {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
         </span>
       </div>
       <div
@@ -710,7 +714,7 @@ const EventNameList = () => {
           </svg>
         </p>
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          Horse Racing
+          {languageValue(valueByLanguage, LanguageKey.HORSE)}
         </span>
       </div>
       <div
@@ -877,7 +881,7 @@ const EventNameList = () => {
           </svg>
         </p>
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          Greyhound Racing
+          {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
         </span>
       </div>
 
@@ -901,7 +905,7 @@ const EventNameList = () => {
         </div>
         <p />
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          Kabaddi
+          {languageValue(valueByLanguage, LanguageKey.KABADDI)}
         </span>
       </div>
       <div

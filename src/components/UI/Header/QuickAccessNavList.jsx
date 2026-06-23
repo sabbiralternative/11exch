@@ -1,23 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { latestEvent } from "../../../static/latest-event";
-
-const menuItems = [
-  { id: 3, label: "Live Casino", href: "/live-casino" },
-  { id: 4, label: "Sports", href: "/sports?eventTypeId=4" },
-  { id: 5, label: "Sportsbook", href: "/sportsbook" },
-  {
-    id: 11,
-    label: "Horse Racing",
-    href: "/sports?eventTypeId=7",
-  },
-  {
-    id: 11,
-    label: "Greyhound Racing",
-    href: "/sports?eventTypeId=4339",
-  },
-];
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const QuickAccessNavList = () => {
+  const { valueByLanguage } = useLanguage();
   const { search, pathname } = useLocation();
   const params = new URLSearchParams(search);
   const eventTypeId = params.get("eventTypeId");
@@ -31,6 +19,21 @@ const QuickAccessNavList = () => {
     }
   };
 
+  const menuItems = [
+    { id: 3, label: "Live Casino", href: "/live-casino" },
+    { id: 4, label: "Sports", href: "/sports?eventTypeId=4" },
+    { id: 5, label: "Sportsbook", href: "/sportsbook" },
+    {
+      id: 11,
+      label: languageValue(valueByLanguage, LanguageKey.HORSE),
+      href: "/sports?eventTypeId=7",
+    },
+    {
+      id: 11,
+      label: languageValue(valueByLanguage, LanguageKey.GREYHOUND),
+      href: "/sports?eventTypeId=4339",
+    },
+  ];
   return (
     <div
       title="Top Nav"
