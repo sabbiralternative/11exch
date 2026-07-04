@@ -15,7 +15,7 @@ const TrendingGame = () => {
             height={20}
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="var(--color-icon_secondary)"
+            stroke="var(--color-bg-primary)"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -30,7 +30,7 @@ const TrendingGame = () => {
             height={20}
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="var(--color-icon_secondary)"
+            stroke="var(--color-bg-primary)"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"

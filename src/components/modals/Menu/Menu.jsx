@@ -1867,7 +1867,7 @@ const Menu = ({ setShowMenuModal }) => {
                   </span>
                 </div>
                 <button
-                  className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out flex items-center justify-center py-0 px-3 gap-0.75 bg-bg_secondary rounded-md text-text_primary1 font-roboto text-xs font-semibold leading-120 h-[1.625rem] 
+                  className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out flex items-center justify-center py-0 px-3 gap-0.75 bg-bg_secondary rounded-md text-black font-roboto text-xs font-semibold leading-120 h-[1.625rem] 
       cursor-pointer
       
       "

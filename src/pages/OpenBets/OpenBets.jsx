@@ -21,7 +21,7 @@ const OpenBets = () => {
         >
           <path
             d="M13.1213 17.0759L6.25 10.2046L13.1213 3.33325L14.0833 4.31242L8.19115 10.2046L14.0833 16.0968L13.1213 17.0759Z"
-            fill="#D71082"
+            fill="var(--color-bg-primary)"
             className="ng-tns-c191-0"
           />
         </svg>

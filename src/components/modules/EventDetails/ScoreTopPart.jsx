@@ -165,7 +165,7 @@ const ScoreTopPart = ({ iscore }) => {
               >
                 <path
                   d="M10.4998 10L6.6665 6.16667L7.83317 5L12.8332 10L7.83317 15L6.6665 13.8333L10.4998 10Z"
-                  fill="var(--color-bg_primary1)"
+                  fill="var(--color-bg-primary)"
                 />
               </svg>
             </button>

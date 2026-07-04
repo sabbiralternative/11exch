@@ -64,7 +64,7 @@ const IndianCardGame = () => {
                 <g>
                   <path
                     d="M453.209 184.081C373.725 121.725 300.804 41.437 270.565 6.713c-7.795-8.951-21.691-8.951-29.486 0-30.24 34.723-103.16 115.011-182.644 177.368C22.372 212.373 1.267 254.915 1.267 299.99c0 80 66.652 144.853 148.871 144.853 27.807 0 53.101-10.455 71.97-27.539v28.247c0 34.386-24.644 38.65-43.766 54.707-4.599 3.862-1.775 11.384 4.23 11.384h145.994c5.984 0 8.811-7.47 4.262-11.358-18.926-16.176-43.294-19.786-43.294-54.478v-28.503c18.869 17.084 44.163 27.539 71.97 27.539 82.219 0 148.871-64.853 148.871-144.853.001-45.074-21.104-87.616-57.166-115.908z"
-                    fill="#d6035e"
+                    fill="var(--color-bg-primary)"
                     opacity={1}
                   />
                 </g>
@@ -92,7 +92,7 @@ const IndianCardGame = () => {
               height={20}
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke="var(--color-icon_secondary)"
+              stroke="var(--color-bg-primary)"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -108,7 +108,7 @@ const IndianCardGame = () => {
               height={20}
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke="var(--color-icon_secondary)"
+              stroke="var(--color-bg-primary)"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"

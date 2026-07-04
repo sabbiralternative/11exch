@@ -1,12 +1,9 @@
 :root {
   --bg-color-lossbackSeeAll: #16a34a;
-  --color-bg_appBackgroundColor: #0e191e;
-  --color-bg_primary: #cd4295;
-  --color-bg_primary1: #d71082;
-  --color-bg_primary2: #351e3e;
-  --color-bg_primary3: #111827;
-  --color-bg_primary4: #d9d9d9;
-  --color-bg_primary5: hsla(0, 0%, 100%, 0.1);
+
+  --color-bg-primary3: #111827;
+  --color-bg-primary4: #d9d9d9;
+  --color-bg-primary5: hsla(0, 0%, 100%, 0.1);
   --color-bg_secondary: #fff;
   --color-bg_secondary1: #000;
   --color-bg_secondary2: #7e8a98;
@@ -86,18 +83,8 @@
   --color-bg_overlay: rgba(28, 28, 28, 0.7);
   --color-bg_popupBgColor: #000000b3;
   --color-bg_popupBgColor1: #00000045;
-  --color-bg_primary: linear-gradient(96deg, #cd4295 5.01%, #8f05bd 92.79%);
   --color-bg_appBgGradient: linear-gradient(135deg, #0e294e, #07172d);
-  --color-bg_exchLoginGradient: linear-gradient(
-    96deg,
-    #cd4295 5.01%,
-    #8f05bd 92.79%
-  );
-  --color-bg_exchRegisterGradient: linear-gradient(
-    94deg,
-    #019744 2.96%,
-    #33c76d 96.02%
-  );
+
   --color-bg_progressBarGradient: linear-gradient(
     90deg,
     #019744 2.96%,
@@ -144,11 +131,7 @@
     #fff0d24d 5%,
     #fe98004d 101.97%
   );
-  --color-bg_cricketDividerGradient: linear-gradient(
-    180deg,
-    #d71082,
-    rgba(187, 2, 108, 0.48)
-  );
+
   --color-bg_footballDividerGradient: linear-gradient(
     180deg,
     #ebffd24d,
@@ -177,12 +160,7 @@
     #fe3383 38.47%,
     #7e1cc6 102.12%
   );
-  --color-bg_apkGradient: linear-gradient(
-    278deg,
-    #d442a6 -3.36%,
-    #eb00ff30 117.81%,
-    #081227 0
-  );
+
   --color-bg_accountBoxGradient: linear-gradient(
     91deg,
     #173b69 3.8%,
@@ -459,7 +437,7 @@
     #290d79 116.66%
   );
   --color-bg_bonusLine: linear-gradient(90deg, #ffb700, #ffd466, #ffb800);
-  --color-bg_betSlipBtnsBgColor: var(--color-bg_exchLoginGradient);
+  --color-bg_betSlipBtnsBgColor: var(--color-bg-primary);
   --color-bg_betSlipProfitColor: linear-gradient(
     90deg,
     rgba(45, 178, 97, 0.3) -0.34%,
@@ -495,7 +473,7 @@
     rgba(0, 126, 248, 0),
     rgba(3, 68, 131, 0.15)
   );
-  --color-bg_eventTopActiveTab: linear-gradient(90deg, #cd4295 32%, #8f05bd);
+
   --color-bg_bonusButtonBg2: #cd3c5b;
   --color-bg_bonusButtonBg1: #ffc700;
   --color-bg_bonusGradient1: #4c0ad8;

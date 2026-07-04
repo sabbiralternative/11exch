@@ -228,7 +228,7 @@ input:where([type="reset"]),
 input:where([type="submit"]) {
   -webkit-appearance: button;
   background-color: transparent;
-  background-image: none;
+  background: none;
 }
 :-moz-focusring {
   outline: auto;
@@ -3501,7 +3501,7 @@ video {
 .border-\[rgba\(255\2c 255\2c 255\2c 0\.1\)\] {
   border-color: hsla(0, 0%, 100%, 0.1);
 }
-.border-\[var\(--color-bg_exchLoginGradient\)\] {
+.border-\[var\(--color-bg-primary\)\] {
   border-color: var(--color-bg exchLoginGradient);
 }
 .border-amber-500\/30 {
@@ -3539,7 +3539,7 @@ video {
   border-color: var(--color-border_input_filled);
 }
 .border-border_primary {
-  border-color: var(--color-border_primary);
+  border-color: var(--color-bg-primary);
 }
 .border-border_primary1 {
   border-color: var(--color-border_primary1);
@@ -3993,7 +3993,7 @@ video {
   background-color: var(--color-bg_Warning);
 }
 .bg-bg_appBackgroundColor {
-  background-color: var(--color-bg_appBackgroundColor);
+  background-color: var(--color-bg-appBackgroundColor);
 }
 .bg-bg_depositInfoRules {
   background-color: var(--color-bg_depositInfoRules);
@@ -4038,22 +4038,22 @@ video {
   background-color: var(--color-bg_popupBgColor);
 }
 .bg-bg_primary {
-  background-color: var(--color-bg_primary);
+  background-color: var(--color-bg-primary);
 }
 .bg-bg_primary1 {
-  background-color: var(--color-bg_primary1);
+  background-color: var(--color-bg-primary);
 }
 .bg-bg_primary2 {
-  background-color: var(--color-bg_primary2);
+  background-color: var(--color-bg-footer);
 }
 .bg-bg_primary3 {
-  background-color: var(--color-bg_primary3);
+  background-color: var(--color-bg-primary3);
 }
 .bg-bg_primary4 {
-  background-color: var(--color-bg_primary4);
+  background-color: var(--color-bg-primary4);
 }
 .bg-bg_primary5 {
-  background-color: var(--color-bg_primary5);
+  background-color: var(--color-bg-primary5);
 }
 .bg-bg_provioderGameCardBg {
   background-color: var(--color-bg_provioderGameCardBg);
@@ -4303,317 +4303,317 @@ video {
   255\2c
   0\.1\)_0\%\2c
   transparent_46\%\)\] {
-  background-image: radial-gradient(
+  background: radial-gradient(
     circle at 20% 110%,
     hsla(0, 0%, 100%, 0.1) 0,
     transparent 46%
   );
 }
 .bg-\[url\(\'\/assets\/images\/ExchLogos\/DepositIcon\/zigzag\.svg\'\)\] {
-  background-image: url(/assets/images/ExchLogos/DepositIcon/zigzag.svg);
+  background: url(/assets/images/ExchLogos/DepositIcon/zigzag.svg);
 }
 .bg-accountBoxGradient {
-  background-image: var(--color-bg_accountBoxGradient);
+  background: var(--color-bg_accountBoxGradient);
 }
 .bg-apkBgGradient {
-  background-image: var(--color-bg_apkGradient);
+  background: var(--color-bg-primary);
 }
 .bg-appBackgroundGradient {
-  background-image: var(--color-bg_appBgGradient);
+  background: var(--color-bg_appBgGradient);
 }
 .bg-applyGradient {
-  background-image: var(--color-bg_applyGradient);
+  background: var(--color-bg_applyGradient);
 }
 .bg-applyTextGradient {
-  background-image: var(--color-bg_applyTextGradient);
+  background: var(--color-bg_applyTextGradient);
 }
 .bg-backBtnGradient {
-  background-image: var(--color-bg_backBtnGrd);
+  background: var(--color-bg_backBtnGrd);
 }
 .bg-backGroundCentralCardColor {
-  background-image: var(--color-bg_backGrondCentralCardColor);
+  background: var(--color-bg_backGrondCentralCardColor);
 }
 .bg-backTextColor {
-  background-image: var(--color-bg_backTextColor);
+  background: var(--color-bg_backTextColor);
 }
 .bg-backTextGradient {
-  background-image: var(--color-bg_backTextGradient);
+  background: var(--color-bg_backTextGradient);
 }
 .bg-betBackBgColor {
-  background-image: var(--color-bg_betBackBgColor);
+  background: var(--color-bg_betBackBgColor);
 }
 .bg-betHeaderBgColor {
-  background-image: var(--color-bg_betHeaderBgColor);
+  background: var(--color-bg_betHeaderBgColor);
 }
 .bg-betLayBgColor {
-  background-image: var(--color-bg_betLayBgColor);
+  background: var(--color-bg_betLayBgColor);
 }
 .bg-bg_OpenbetCardColor2 {
-  background-image: var(--color-bg_OpenbetCardColor2);
+  background: var(--color-bg_OpenbetCardColor2);
 }
 .bg-bg_Primary {
-  background-image: var(--color-bg_primary);
+  background: var(--color-bg-primary);
 }
 .bg-bg_UpcomingliveBgColor {
-  background-image: var(--color-bg_UpcomingliveBgColor);
+  background: var(--color-bg_UpcomingliveBgColor);
 }
 .bg-bg_apksGradient {
-  background-image: var(--color-bg_apksGradient);
+  background: var(--color-bg_apksGradient);
 }
 .bg-bg_backBtnBgColor {
-  background-image: var(--color-bg_backBtnBgColor);
+  background: var(--color-bg_backBtnBgColor);
 }
 .bg-bg_ballRunningBg {
-  background-image: var(--color-bg_ballRunningBg);
+  background: var(--color-bg_ballRunningBg);
 }
 .bg-bg_betCount {
-  background-image: var(--color-bg_betCount);
+  background: var(--color-bg_betCount);
 }
 .bg-bg_betSlipBtnsBgColor {
-  background-image: var(--color-bg_betSlipBtnsBgColor);
+  background: var(--color-bg-primary);
 }
 .bg-bg_betSlipCancelBtnBg {
-  background-image: var(--color-bg_betSlipCancelBtnBg);
+  background: var(--color-bg_betSlipCancelBtnBg);
 }
 .bg-bg_betSlipLiabilityColor {
-  background-image: var(--color-bg_betSlipLiabilityColor);
+  background: var(--color-bg_betSlipLiabilityColor);
 }
 .bg-bg_betSlipPlaceBetBtnBg {
-  background-image: var(--color-bg_betSlipPlaceBetBtnBg);
+  background: var(--color-bg_betSlipPlaceBetBtnBg);
 }
 .bg-bg_betSlipProfitColor {
-  background-image: var(--color-bg_betSlipProfitColor);
+  background: var(--color-bg_betSlipProfitColor);
 }
 .bg-bg_btProfit {
-  background-image: var(--color-bg_btProfit);
+  background: var(--color-bg_btProfit);
 }
 .bg-bg_cashoutBtnGrad {
-  background-image: var(--color-bg_cashoutBtnGrad);
+  background: var(--color-bg_cashoutBtnGrad);
 }
 .bg-bg_eventTopActiveTab {
-  background-image: var(--color-bg_eventTopActiveTab);
+  background: var(--color-bg-primary);
 }
 .bg-bg_exchPopUpBg {
-  background-image: var(--color-bg_exchPopUpBg);
+  background: var(--color-bg_exchPopUpBg);
 }
 .bg-bg_layBtnBgColor {
-  background-image: var(--color-bg_layBtnBgColor);
+  background: var(--color-bg_layBtnBgColor);
 }
 .bg-bg_leaguesBtnBg {
-  background-image: var(--color-bg_leaguesBtnBg);
+  background: var(--color-bg_leaguesBtnBg);
 }
 .bg-bg_rect1 {
-  background-image: var(--color-bg_rect1);
+  background: var(--color-bg_rect1);
 }
 .bg-bg_topBarEventDetailsBg {
-  background-image: var(--color-bg_topBarEventDetailsBg);
+  background: var(--color-bg_topBarEventDetailsBg);
 }
 .bg-bonusLineGradient {
-  background-image: var(--color-bg_bonusLine);
+  background: var(--color-bg_bonusLine);
 }
 .bg-cancelledGradient {
-  background-image: var(--color-bg_cancelledGradient);
+  background: var(--color-bg_cancelledGradient);
 }
 .bg-cardGradient {
-  background-image: var(--color-bg_cardGradient);
+  background: var(--color-bg_cardGradient);
 }
 .bg-clearBtnGrd {
-  background-image: var(--color-bg_clearBtn);
+  background: var(--color-bg_clearBtn);
 }
 .bg-commentaryGradient {
-  background-image: var(--color-bg_commentaryGradient);
+  background: var(--color-bg_commentaryGradient);
 }
 .bg-completeGradient {
-  background-image: var(--color-bg_completeGradient);
+  background: var(--color-bg_completeGradient);
 }
 .bg-cricketDividerLineGradient {
-  background-image: var(--color-bg_cricketDividerGradient);
+  background: var(--color-bg-primary);
 }
 .bg-cricketHeaderGradient {
-  background-image: var(--color-bg_cricketGradient1);
+  background: var(--color-bg_cricketGradient1);
 }
 .bg-cricketSportBoxGradient {
-  background-image: var(--color-bg_cricketSportBoxGradient);
+  background: var(--color-bg_cricketSportBoxGradient);
 }
 .bg-depositBackTextGradient {
-  background-image: var(--color-bg_depositBackTextGradient);
+  background: var(--color-bg_depositBackTextGradient);
 }
 .bg-eleBankDetailsGrad {
-  background-image: var(--color-bg_bankDetailsGradient);
+  background: var(--color-bg_bankDetailsGradient);
 }
 .bg-exchBalanceGradient {
-  background-image: var(--color-bg_balanceGradient);
+  background: var(--color-bg_balanceGradient);
 }
 .bg-exchLoginGradient {
-  background-image: var(--color-bg_exchLoginGradient);
+  background: var(--color-bg-primary);
 }
 .bg-exchLoginTextGradient {
-  background-image: var(--color-bg_loginTextGradient);
+  background: var(--color-bg_loginTextGradient);
 }
 .bg-exchProgressBarGradient {
-  background-image: var(--color-bg_progressBarGradient);
+  background: var(--color-bg_progressBarGradient);
 }
 .bg-exchRegisterGradient {
-  background-image: var(--color-bg_exchRegisterGradient);
+  background: var(--color-bg-primary);
 }
 .bg-exchSlideBtnGradient {
-  background-image: var(--color-bg_exchSlideBtnGradient);
+  background: var(--color-bg_exchSlideBtnGradient);
 }
 .bg-footballDividerLineGradient {
-  background-image: var(--color-bg_footballDividerGradient);
+  background: var(--color-bg_footballDividerGradient);
 }
 .bg-footballHeaderGradient {
-  background-image: var(--color-bg_footballGradient1);
+  background: var(--color-bg_footballGradient1);
 }
 .bg-footballSportBoxGradient {
-  background-image: var(--color-bg_footballSportBoxGradient);
+  background: var(--color-bg_footballSportBoxGradient);
 }
 .bg-giftBonusBgColor {
-  background-image: var(--color-bg_giftBonusBgColor);
+  background: var(--color-bg_giftBonusBgColor);
 }
 .bg-giftBonusGradient {
-  background-image: var(--color-bg_giftBonusGradient);
+  background: var(--color-bg_giftBonusGradient);
 }
 .bg-giftBoxGradient {
-  background-image: var(--color-bg_giftBoxGradient);
+  background: var(--color-bg_giftBoxGradient);
 }
 .bg-giftCardGradient {
-  background-image: var(--color-bg_giftBonusBgColor);
+  background: var(--color-bg_giftBonusBgColor);
 }
 .bg-gradient-to-bl {
-  background-image: linear-gradient(to bottom left, var(--tw-gradient-stops));
+  background: linear-gradient(to bottom left, var(--tw-gradient-stops));
 }
 .bg-gradient-to-br {
-  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  background: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
 .bg-gradient-to-l {
-  background-image: linear-gradient(to left, var(--tw-gradient-stops));
+  background: linear-gradient(to left, var(--tw-gradient-stops));
 }
 .bg-gradient-to-r {
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  background: linear-gradient(to right, var(--tw-gradient-stops));
 }
 .bg-gradient-to-t {
-  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+  background: linear-gradient(to top, var(--tw-gradient-stops));
 }
 .bg-grayhoundSportBoxGradient {
-  background-image: var(--color-bg_grayhoundSportBoxGradient);
+  background: var(--color-bg_grayhoundSportBoxGradient);
 }
 .bg-horseRacingSportBoxGradient {
-  background-image: var(--color-bg_horseRacingSportBoxGradient);
+  background: var(--color-bg_horseRacingSportBoxGradient);
 }
 .bg-impsGradient {
-  background-image: var(--color-bg_impsGradient);
+  background: var(--color-bg_impsGradient);
 }
 .bg-initiatedGradient {
-  background-image: var(--color-bg_initiatedGradient);
+  background: var(--color-bg_initiatedGradient);
 }
 .bg-instagramGradient {
-  background-image: var(--color-bg_instagramGradient);
+  background: var(--color-bg_instagramGradient);
 }
 .bg-iosDotGradient {
-  background-image: var(--color-bg_iosDotGradient);
+  background: var(--color-bg_iosDotGradient);
 }
 .bg-layBtnGradient {
-  background-image: var(--color-bg_layBtnGrd);
+  background: var(--color-bg_layBtnGrd);
 }
 .bg-leagueGradient {
-  background-image: var(--color-bg_leagueGradient);
+  background: var(--color-bg_leagueGradient);
 }
 .bg-leftBetBackBoxBgColor {
-  background-image: var(--color-bg_leftBetBackBoxBgColor);
+  background: var(--color-bg_leftBetBackBoxBgColor);
 }
 .bg-leftBetLayBoxBgColor {
-  background-image: var(--color-bg_leftBetLayBoxBgColor);
+  background: var(--color-bg_leftBetLayBoxBgColor);
 }
 .bg-logRegGiftGradient {
-  background-image: var(--color-bg_logRegGiftGradient);
+  background: var(--color-bg_logRegGiftGradient);
 }
 .bg-maxBtnGrd {
-  background-image: var(--color-bg_maxBtn);
+  background: var(--color-bg_maxBtn);
 }
 .bg-minBtnGrd {
-  background-image: var(--color-bg_minBtn);
+  background: var(--color-bg_minBtn);
 }
 .bg-none {
-  background-image: none;
+  background: none;
 }
 .bg-paymentGradient {
-  background-image: var(--color-bg_paymentGradient);
+  background: var(--color-bg_paymentGradient);
 }
 .bg-paymentSecondGradient {
-  background-image: var(--color-bg_paymentSecondGradient);
+  background: var(--color-bg_paymentSecondGradient);
 }
 .bg-pendingGradient {
-  background-image: var(--color-bg_pendingGradient);
+  background: var(--color-bg_pendingGradient);
 }
 .bg-pnlCardGradient {
-  background-image: var(--color-bg_pnlCardGradient);
+  background: var(--color-bg_pnlCardGradient);
 }
 .bg-pnlRightGradient {
-  background-image: var(--color-bg_pnlRightGradient);
+  background: var(--color-bg_pnlRightGradient);
 }
 .bg-profileLeftGradient {
-  background-image: var(--color-bg_profileLeftGradient);
+  background: var(--color-bg_profileLeftGradient);
 }
 .bg-redeemBtnGradient {
-  background-image: var(--color-bg_redeemBtnBgColor);
+  background: var(--color-bg_redeemBtnBgColor);
 }
 .bg-refGradient {
-  background-image: var(--color-bg_refGradient);
+  background: var(--color-bg_refGradient);
 }
 .bg-reportBoxGradient {
-  background-image: var(--color-bg_reportBoxGradient);
+  background: var(--color-bg_reportBoxGradient);
 }
 .bg-reportCardGradient {
-  background-image: var(--color-bg_reportCardGradient);
+  background: var(--color-bg_reportCardGradient);
 }
 .bg-reportLeftGradient {
-  background-image: var(--color-bg_reportLeftGradient);
+  background: var(--color-bg_reportLeftGradient);
 }
 .bg-rightBetBackBoxBgColor {
-  background-image: var(--color-bg_rightBetBackBoxBgColor);
+  background: var(--color-bg_rightBetBackBoxBgColor);
 }
 .bg-rightBetLayBoxBgColor {
-  background-image: var(--color-bg_rightBetLayBoxBgColor);
+  background: var(--color-bg_rightBetLayBoxBgColor);
 }
 .bg-rtgsGradient {
-  background-image: var(--color-bg_rtgsGradient);
+  background: var(--color-bg_rtgsGradient);
 }
 .bg-scoreBoxGradient {
-  background-image: var(--color-bg_scoreBoxGradient);
+  background: var(--color-bg_scoreBoxGradient);
 }
 .bg-smsBoxGradient {
-  background-image: var(--color-bg_smsBoxGradient);
+  background: var(--color-bg_smsBoxGradient);
 }
 .bg-stepperGradient {
-  background-image: var(--color-bg_stepperGradient);
+  background: var(--color-bg_stepperGradient);
 }
 .bg-submitLoginBtnGradient {
-  background-image: var(--color-bg_submitLoginBtnGradient);
+  background: var(--color-bg_submitLoginBtnGradient);
 }
 .bg-tennisDividerLineGradient {
-  background-image: var(--color-bg_tennisDividerGradient);
+  background: var(--color-bg_tennisDividerGradient);
 }
 .bg-tennisHeaderGradient {
-  background-image: var(--color-bg_tennisGradient1);
+  background: var(--color-bg_tennisGradient1);
 }
 .bg-tennisSportBoxGradient {
-  background-image: var(--color-bg_tennisSportBoxGradient);
+  background: var(--color-bg_tennisSportBoxGradient);
 }
 .bg-topMenuopenBtnBg {
-  background-image: var(--color-bg_topMenuopenBtnBg);
+  background: var(--color-bg_topMenuopenBtnBg);
 }
 .bg-upiGradient {
-  background-image: var(--color-bg_upiGradient);
+  background: var(--color-bg_upiGradient);
 }
 .bg-uploadBtnGradient {
-  background-image: var(--color-bg_uploadBtnGradient);
+  background: var(--color-bg_uploadBtnGradient);
 }
 .bg-withdrawAmtGradient {
-  background-image: var(--color-bg_withdrawAmtGradient);
+  background: var(--color-bg_withdrawAmtGradient);
 }
 .bg-withdrawBalGradient {
-  background-image: var(--color-bg_withdrawBalGradient);
+  background: var(--color-bg_withdrawBalGradient);
 }
 .from-\[\#019744\] {
   --tw-gradient-from: #019744 var(--tw-gradient-from-position);
@@ -4771,7 +4771,7 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 .from-normal_color_appBackgroundColor {
-  --tw-gradient-from: var(--color-bg_appBackgroundColor)
+  --tw-gradient-from: var(--color-bg-appBackgroundColor)
     var(--tw-gradient-from-position);
   --tw-gradient-to: hsla(0, 0%, 100%, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
@@ -4820,7 +4820,7 @@ video {
   --tw-gradient-to: hsla(0, 0%, 100%, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops:
     var(--tw-gradient-from),
-    var(--color-bg_appBackgroundColor) var(--tw-gradient-via-position),
+    var(--color-bg-appBackgroundColor) var(--tw-gradient-via-position),
     var(--tw-gradient-to);
 }
 .via-sky-400 {
@@ -6397,7 +6397,7 @@ video {
     var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
     var(--tw-shadow, 0 0 #0000);
 }
-.ring-\[var\(--color-bg_exchLoginGradient\)\] {
+.ring-\[var\(--color-bg-primary\)\] {
   --tw-ring-color: var(--color-bg exchLoginGradient);
 }
 .ring-pink-500 {
@@ -7418,7 +7418,7 @@ textarea:-webkit-autofill:hover {
   content: var(--tw-content);
 }
 .checked\:after\:bg-bg_Primary:checked:after {
-  background-image: var(--color-bg_primary);
+  background: var(--color-bg-primary);
   content: var(--tw-content);
 }
 .checked\:after\:content-\[\'\'\]:checked:after {
@@ -7454,7 +7454,7 @@ textarea:-webkit-autofill:hover {
   border-color: var(--color-border_tertiary17);
 }
 .focus-within\:bg-exchLoginGradient:focus-within {
-  background-image: var(--color-bg_exchLoginGradient);
+  background: var(--color-bg-primary);
 }
 .focus-within\:text-text_primary3:focus-within {
   color: var(--color-text_primary3);
@@ -7557,7 +7557,7 @@ textarea:-webkit-autofill:hover {
   background-color: var(--color-bg_bg_Light);
 }
 .hover\:bg-bg_primary5:hover {
-  background-color: var(--color-bg_primary5);
+  background-color: var(--color-bg-primary5);
 }
 .hover\:bg-blue-100:hover {
   --tw-bg-opacity: 1;
@@ -7597,10 +7597,10 @@ textarea:-webkit-autofill:hover {
   --tw-bg-opacity: 0.2;
 }
 .hover\:bg-bg_leaguesBtnBg_hover:hover {
-  background-image: var(--color-bg_leaguesBtnBg-hover);
+  background: var(--color-bg_leaguesBtnBg-hover);
 }
 .hover\:bg-gradient-to-br:hover {
-  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  background: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
 .hover\:from-\[\#017a3a\]:hover {
   --tw-gradient-from: #017a3a var(--tw-gradient-from-position);
@@ -7845,10 +7845,7 @@ textarea:-webkit-autofill:hover {
   content: var(--tw-content);
   opacity: 0.12;
 }
-.focus\:before\:shadow-\[0px_0px_0px_13px_rgba\(0\2c
-  0\2c
-  0\2c
-  0\.6\)\]:focus:before {
+.focus\:before\:shadow-\[0px_0px_0px_13px_rgba\(0\2c0\2c0\2c0\.6\)\]:focus:before {
   content: var(--tw-content);
   --tw-shadow: 0px 0px 0px 13px rgba(0, 0, 0, 0.6);
   --tw-shadow-colored: 0px 0px 0px 13px var(--tw-shadow-color);
@@ -7996,13 +7993,13 @@ textarea:-webkit-autofill:hover {
   --tw-scale-y: 99.5%;
 }
 .active\:bg-bg_primary1:active {
-  background-color: var(--color-bg_primary1);
+  background-color: var(--color-bg-primary);
 }
 .active\:bg-bg_Primary:active {
-  background-image: var(--color-bg_primary);
+  background: var(--color-bg-primary);
 }
 .active\:bg-bg_leaguesBtnBg_active:active {
-  background-image: var(--color-bg_leaguesBtnBg-active);
+  background: var(--color-bg_leaguesBtnBg-active);
 }
 .active\:text-text_Quaternary:active {
   color: var(--color-text_Quaternary);
@@ -9009,13 +9006,10 @@ textarea:-webkit-autofill:hover {
     border-color: rgb(82 82 82 / var(--tw-border-opacity, 1));
   }
   .dark\:checked\:after\:bg-bg_Primary:checked:after {
-    background-image: var(--color-bg_primary);
+    background: var(--color-bg-primary);
     content: var(--tw-content);
   }
-  .dark\:focus\:before\:shadow-\[0px_0px_0px_13px_rgba\(255\2c
-    255\2c
-    255\2c
-    0\.4\)\]:focus:before {
+  .dark\:focus\:before\:shadow-\[0px_0px_0px_13px_rgba\(255\2c255\2c255\2c0\.4\)\]:focus:before {
     content: var(--tw-content);
     --tw-shadow: 0px 0px 0px 13px hsla(0, 0%, 100%, 0.4);
     --tw-shadow-colored: 0px 0px 0px 13px var(--tw-shadow-color);
@@ -9076,7 +9070,7 @@ textarea:-webkit-autofill:hover {
   content: var(--tw-content);
 }
 .\[\&\>span\]\:before\:bg-bg_Primary > span:before {
-  background-image: var(--color-bg_primary);
+  background: var(--color-bg-primary);
   content: var(--tw-content);
 }
 @supports (-webkit-touch-callout: none) {

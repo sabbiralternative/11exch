@@ -19,7 +19,7 @@ const TennisScore = ({ score }) => {
                 cx="4"
                 cy="4"
                 r="4"
-                fill={score?.service == 1 ? "var(--color-bg_primary1)" : ""}
+                fill={score?.service == 1 ? "var(--color-bg-primary)" : ""}
               ></circle>
             </svg>
             <span className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-white font-semibold flex items-center justify-center">
@@ -54,7 +54,7 @@ const TennisScore = ({ score }) => {
                 cx="4"
                 cy="4"
                 r="4"
-                fill={score?.service == 2 ? "var(--color-bg_primary1)" : ""}
+                fill={score?.service == 2 ? "var(--color-bg-primary)" : ""}
               ></circle>
             </svg>
             <span className="min-w-6 min-h-6 shadow-md text-xs bg-bg_color_quaternary mr-2 text-center rounded-[4px] text-white font-semibold flex items-center justify-center">

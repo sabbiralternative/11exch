@@ -36,7 +36,7 @@ const GameProvider = ({ casinoProviders }) => {
               height={18}
               viewBox="0 0 24 24"
               strokeWidth={2}
-              stroke="var(--color-icon_secondary)"
+              stroke="var(--color-bg-primary)"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -55,7 +55,7 @@ const GameProvider = ({ casinoProviders }) => {
               height={18}
               viewBox="0 0 24 24"
               strokeWidth={2}
-              stroke="var(--color-icon_secondary)"
+              stroke="var(--color-bg-primary)"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"

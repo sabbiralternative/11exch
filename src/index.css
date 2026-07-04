@@ -188,7 +188,7 @@ html * {
   }
   .sc_cw-overs-info-mobile {
     display: flex !important;
-    border-top: 0.5px solid var(--color-bg_primary1) !important;
+    border-top: 0.5px solid var(--color-bg-primary) !important;
     padding-top: 2px !important;
     padding-bottom: 2px !important;
     color: #fff !important;
@@ -476,7 +476,7 @@ html * {
 /*!  Footer Games*/
 
 .bg-bg_ballRunning {
-  background-image: linear-gradient(90deg, #a7d8fd, #f9c9d4);
+  background: linear-gradient(90deg, #a7d8fd, #f9c9d4);
 }
 
 .animate-spin {
@@ -538,7 +538,7 @@ html * {
   display: flex;
   align-items: center;
   padding: 5px 20px;
-  background: var(--color-bg_primary1);
+  background: var(--color-bg-primary);
 }
 
 .header-content img {
@@ -587,7 +587,7 @@ html * {
   content: "✓";
   position: absolute;
   left: 0;
-  background: var(--color-bg_primary1);
+  background: var(--color-bg-primary);
   color: #000;
   width: 18px;
   height: 18px;
@@ -609,7 +609,7 @@ html * {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-bg_primary1);
+  background: var(--color-bg-primary);
   text-decoration: none;
   padding: 10px;
   font-size: 12px;
@@ -650,11 +650,11 @@ html * {
 /*! Download apk css end  */
 
 .bg-bg_color_bonusInfo {
-  background-image: linear-gradient(91deg, #535252 -1.96%, #312626 110.45%);
+  background: linear-gradient(91deg, #535252 -1.96%, #312626 110.45%);
 }
 
 .bg-bg_color_lossback_card_bg {
-  background-image: linear-gradient(90deg, #15803d, #000, #000);
+  background: linear-gradient(90deg, #15803d, #000, #000);
 }
 
 .text-text_color_lossback_amt {
@@ -670,7 +670,7 @@ html * {
 }
 
 .bg-bg_color_GiftCardBg {
-  background-image: linear-gradient(90deg, #743899, #9b1d39);
+  background: linear-gradient(90deg, #743899, #9b1d39);
 }
 
 .bg-bg_color_giftCardInputBg {
@@ -690,19 +690,19 @@ html * {
 }
 
 .bg-bg_Primary {
-  background: var(--color-bg_primary1);
+  background: var(--color-bg-primary);
 }
 .bg-primary {
-  background: var(--color-bg_primary1);
+  background: var(--color-bg-primary);
 }
 .bg-primary1 {
-  background: var(--color-bg_primary);
+  background: var(--color-bg-primary);
 }
 .border-primary {
-  border-color: var(--color-bg_primary1);
+  border-color: var(--color-bg-primary);
 }
 .text-primary {
-  color: var(--color-bg_primary1);
+  color: var(--color-bg-primary);
 }
 .text-textColor {
   color: white;
@@ -714,7 +714,7 @@ html * {
   background-color: #16a34a;
 }
 .bg-bg_LoginButtonColor {
-  background: var(--color-bg_primary);
+  background: var(--color-bg-primary);
 }
 
 .popUpOpenAnimation {
@@ -733,12 +733,12 @@ html * {
   }
 }
 .bg-bg_transactionSuccessBg {
-  background-image: linear-gradient(89deg, #40af52, #2e924b 89.28%);
+  background: linear-gradient(89deg, #40af52, #2e924b 89.28%);
 }
 .bg-bg_transactionPendingBg {
-  background-image: linear-gradient(89deg, #fbc439, #fd9b07 89.28%);
+  background: linear-gradient(89deg, #fbc439, #fd9b07 89.28%);
 }
 
 .bg-bg_transactionFailedBg {
-  background-image: linear-gradient(89deg, #eb244f, #a90f31 89.28%);
+  background: linear-gradient(89deg, #eb244f, #a90f31 89.28%);
 }
