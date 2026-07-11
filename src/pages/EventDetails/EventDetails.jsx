@@ -16,6 +16,7 @@ import TennisScore from "../../components/modules/EventDetails/TennisScore";
 import FootballScore from "../../components/modules/EventDetails/FootballScore";
 import { useCurrentBets } from "../../hooks/currentBets";
 import OpenBets from "../../components/modules/EventDetails/OpenBets";
+import Premium from "../../components/modules/EventDetails/Premium";
 
 const EventDetails = () => {
   const [tab, setTab] = useState("market");
@@ -241,17 +242,19 @@ const EventDetails = () => {
               />
             )}
 
-            {data?.score && data?.score?.tracker !== null && (
-              <div className="w-full overflow-hidden h-[125px]">
-                <iframe
-                  id="videoComponent"
-                  className="w-full h-auto relative overflow-hidden   bg-transparent"
-                  src={data?.score?.tracker}
-                  width="100%"
-                  allowfullscreen=""
-                ></iframe>
-              </div>
-            )}
+            {data?.score &&
+              data?.score?.tracker &&
+              data?.score?.tracker !== null && (
+                <div className="w-full overflow-hidden h-[125px]">
+                  <iframe
+                    id="videoComponent"
+                    className="w-full h-auto relative overflow-hidden   bg-transparent"
+                    src={data?.score?.tracker}
+                    width="100%"
+                    allowfullscreen=""
+                  ></iframe>
+                </div>
+              )}
             {iframe?.result?.url && data?.score?.hasVideo && (
               <iframe
                 id="videoComponent"
@@ -262,6 +265,9 @@ const EventDetails = () => {
               ></iframe>
             )}
             {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
+            {data?.premium && data?.premium?.eventId && (
+              <Premium premium={data?.premium} />
+            )}
             {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
             {data?.result?.length > 0 && <Fancy data={data?.result} />}
             {eventTypeId == 7 || eventTypeId == 4339 ? (
