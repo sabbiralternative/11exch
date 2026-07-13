@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Settings } from "../../../api";
 import { useNavigate } from "react-router-dom";
+import { eventNameList } from "../../../static/event-name-list";
 
 const Menu = ({ setShowMenuModal }) => {
   const navigate = useNavigate();
@@ -3855,6 +3856,28 @@ const Menu = ({ setShowMenuModal }) => {
                   Greyhound Racing
                 </span>
               </div>
+
+              {eventNameList.map((item) => {
+                return (
+                  <div
+                    key={item?.id}
+                    onClick={() =>
+                      handleNavigate(`/sports?eventTypeId=${item?.id}`)
+                    }
+                    className="flex items-center justify-between px-2 flex-col bg-bg_sportGameCard rounded border border-solid border-border_secondary w-full sm:w-[68px] gap-y-0.5 pt-2.5 pb-1 active:scale-95 transition-all duration-300 active:opacity-90 aspect-2"
+                  >
+                    <p className=" w-7 h-auto flex items-center justify-center">
+                      <span>
+                        <img className="size-5" src={item.image} alt="" />
+                      </span>
+                    </p>
+                    <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
+                      {item.name}
+                    </span>
+                  </div>
+                );
+              })}
+
               <div className="flex items-center justify-between px-2 flex-col bg-bg_sportGameCard rounded border border-solid border-border_secondary w-full sm:w-[68px] gap-y-0.5 pt-2.5 pb-1 active:scale-95 transition-all duration-300 active:opacity-90 aspect-2">
                 <p className=" w-7 h-auto flex items-center justify-center">
                   <span className="w-full h-full">🏀</span>

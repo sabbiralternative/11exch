@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../../../hooks/use-search";
+import { eventNameList } from "../../../static/event-name-list";
 
 const NavSLider = () => {
   const search = useSearch();
@@ -2021,6 +2022,22 @@ const NavSLider = () => {
               Politics
             </span>
           </div>
+          {eventNameList.map((item) => {
+            return (
+              <div
+                key={item?.id}
+                onClick={() => handleNavigate(item?.id)}
+                className={`flex items-center justify-between h-[65px] aspect-square flex-col border  border-border_secondary3 pt-2 pb-1 rounded   cursor-pointer active:scale-95 transition-all ease-in-out duration-200 ${eventTypeId == item?.id ? "bg-horseRacingSportBoxGradient border-none" : "border-solid"}`}
+              >
+                <p className=" w-7 h-auto flex items-center justify-center">
+                  <img src={item?.image} alt="Kabaddi" className="w-7 h-7" />
+                </p>
+                <span className="text-text_secondary text-center font-roboto text-x1 font-normal not-italic leading-120">
+                  {item?.name}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

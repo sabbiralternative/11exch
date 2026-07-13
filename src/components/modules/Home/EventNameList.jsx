@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../../context/LanguageProvider";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import { eventNameList } from "../../../static/event-name-list";
 
 const EventNameList = () => {
   const { valueByLanguage } = useLanguage();
@@ -931,6 +932,34 @@ const EventNameList = () => {
           Politics
         </span>
       </div>
+      {eventNameList.map((item) => {
+        return (
+          <div
+            key={item?.id}
+            onClick={() => navigate(`/sports?eventTypeId=${item?.id}`)}
+            className="flex items-center justify-between px-2 flex-col bg-bg_sportGameCard rounded border border-solid border-border_secondary w-full sm:w-[68px] gap-y-0.5 pt-2.5 pb-1 active:scale-95 transition-all duration-300 active:opacity-90 aspect-2"
+          >
+            <p className=" w-7 h-auto flex items-center justify-center" />
+            <div
+              className="relative overflow-hidden w-7 h-7"
+              style={{ display: "inline-block", position: "relative" }}
+            >
+              <img
+                src={item.image}
+                alt="Kabaddi"
+                sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 625px"
+                className="  w-full h-full"
+                title="Kabaddi"
+                loading="eager"
+              />
+            </div>
+            <p />
+            <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
+              {item?.name}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 };
