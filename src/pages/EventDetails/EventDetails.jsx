@@ -265,15 +265,16 @@ const EventDetails = () => {
               ></iframe>
             )}
             {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
-            {data?.premium && data?.premium?.eventId && (
-              <Premium premium={data?.premium} />
-            )}
+
             {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
             {data?.result?.length > 0 && <Fancy data={data?.result} />}
             {eventTypeId == 7 || eventTypeId == 4339 ? (
               <HorseGreyhoundEventDetails data={data?.result} />
             ) : null}
             {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
+            {data?.premium && data?.premium?.eventId && (
+              <Premium premium={data?.premium} />
+            )}
           </div>
         </div>
       </div>
