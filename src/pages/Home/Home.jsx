@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Banner from "../../components/modules/Home/Banner";
 import EventNameList from "../../components/modules/Home/EventNameList";
 import GameProvider from "../../components/modules/Home/GameProvider";
@@ -10,10 +11,11 @@ import LossBackCard from "../../components/modules/Home/LossBackCard";
 import WhatsApp from "../../components/modules/Home/WhatsApp";
 import Footer from "../../components/UI/Footer/Footer";
 import { useLotusHomeLobby } from "../../hooks/lotusHomeLobby";
+import MiniGames from "../../components/modals/MiniGames/MiniGames";
 
 const Home = () => {
   const { data: lotusLobby } = useLotusHomeLobby();
-
+  const [showMiniGamesModal, setShowMiniGamesModal] = useState(false);
   return (
     <main className="w-full flex-1  pt-1 overflow-y-auto scroll-smooth bg-bg_appBackgroundColor">
       <WhatsApp />
@@ -87,6 +89,28 @@ const Home = () => {
       </div>
 
       <Footer />
+      <div
+        className="fixed cursor-pointer bottom-[60px] left-3 z-50 flex w-max h-max items-center justify-center rounded-full lg:left-[auto] lg:right-auto  transition-all duration-500"
+        onClick={() => setShowMiniGamesModal(true)}
+        // style={{
+        //   position: "fixed",
+        //   top: "calc(100dvh - 130px)",
+        //   left: "0",
+        //   height: "fit-content",
+        //   cursor: "pointer",
+        //   // zIndex: 999999,
+        // }}
+      >
+        <img
+          style={{
+            height: "70px",
+          }}
+          src="/icon/uv_games-CkYT1PYz.gif"
+        />
+      </div>
+      {showMiniGamesModal && (
+        <MiniGames setShowMiniGamesModal={setShowMiniGamesModal} />
+      )}
     </main>
   );
 };

@@ -19,9 +19,9 @@ const WhatsApp = () => {
         <div
           onClick={() => window.open(Settings?.instagramLink, "_blank")}
           title="WhatsAppContact"
-          className="fixed cursor-pointer bottom-[175px] left-3 z-50 flex w-max h-max items-center justify-center rounded-full lg:left-[auto] lg:right-auto  transition-all duration-500"
+          className="fixed cursor-pointer bottom-[235px] left-3 z-50 flex w-max h-max items-center justify-center rounded-full lg:left-[auto] lg:right-auto  transition-all duration-500"
         >
-          <div className="h-full bg-transparent mt-[-3px] ml-[-3px]">
+          <div className="h-full bg-transparent ml-4">
             <img className="h-11 w-11" src={images.instagram} alt="" />
           </div>
         </div>
@@ -30,9 +30,9 @@ const WhatsApp = () => {
         <div
           onClick={() => window.open(Settings?.telegramLink, "_blank")}
           title="WhatsAppContact"
-          className="fixed cursor-pointer bottom-[125px] left-3 z-50 flex w-max h-max items-center justify-center rounded-full lg:left-[auto] lg:right-auto  transition-all duration-500"
+          className="fixed cursor-pointer bottom-[185px] left-3 z-50 flex w-max h-max items-center justify-center rounded-full lg:left-[auto] lg:right-auto  transition-all duration-500"
         >
-          <div className="h-full bg-transparent mt-[-3px] ml-[-3px]">
+          <div className="h-full bg-transparent  ml-4">
             <img className="h-11 w-11" src={images.telegram} alt="" />
           </div>
         </div>
@@ -41,9 +41,9 @@ const WhatsApp = () => {
         <div
           onClick={navigateWhatsApp}
           title="WhatsAppContact"
-          className="fixed cursor-pointer bottom-[70px] left-3 z-50 flex w-max h-max items-center justify-center rounded-full lg:left-[auto] lg:right-auto  transition-all duration-500"
+          className="fixed cursor-pointer bottom-[130px] left-3 z-50 flex w-max h-max items-center justify-center rounded-full lg:left-[auto] lg:right-auto  transition-all duration-500"
         >
-          <div className="h-full bg-transparent mt-[-3px] ml-[-3px]">
+          <div className="h-full bg-transparent ml-3">
             <svg
               width="49"
               height="49"

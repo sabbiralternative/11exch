@@ -9,7 +9,7 @@ import { LanguageKey } from "../../../const";
 
 const Authorized = () => {
   const dispatch = useDispatch();
-  const { language, valueByLanguage } = useLanguage();
+  const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
   const { data } = useBalance();
   return (
@@ -75,7 +75,7 @@ const Authorized = () => {
             <path d="M11.5 3a17 17 0 0 0 0 18" />
             <path d="M12.5 3a17 17 0 0 1 0 18" />
           </svg>
-          {language.charAt(0).toUpperCase() + language.slice(1).toLowerCase()}
+          {/* {language.charAt(0).toUpperCase() + language.slice(1).toLowerCase()} */}
           <svg
             fill="currentColor"
             width={16}
