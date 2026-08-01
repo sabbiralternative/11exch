@@ -17,8 +17,10 @@ import FootballScore from "../../components/modules/EventDetails/FootballScore";
 import { useCurrentBets } from "../../hooks/currentBets";
 import OpenBets from "../../components/modules/EventDetails/OpenBets";
 import Premium from "../../components/modules/EventDetails/Premium";
+import ToggleButtons from "../../components/modules/EventDetails/ToggleButtons";
 
 const EventDetails = () => {
+  const [fancyPremiumTab, setFancyPremiumTab] = useState("");
   const [tab, setTab] = useState("market");
   const { eventTypeId, eventId } = useParams();
   const [profit, setProfit] = useState(0);
@@ -133,7 +135,12 @@ const EventDetails = () => {
       game?.visible == true &&
       game?.name === "tied match",
   );
-
+  const fancy = data?.result?.filter(
+    (normal) =>
+      normal.btype === "FANCY" &&
+      normal.tabGroupName === "Normal" &&
+      normal?.visible == true,
+  );
   useEffect(() => {
     if (tab === "match_info") {
       const handleGetVideo = async () => {
@@ -149,7 +156,6 @@ const EventDetails = () => {
     }
   }, [tab]);
 
-  console.log(data);
   return (
     <main className="w-full flex-1  pt-1  bg-bg_appBackgroundColor">
       <div className="w-full">
@@ -267,14 +273,27 @@ const EventDetails = () => {
             {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
 
             {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
-            {data?.result?.length > 0 && <Fancy data={data?.result} />}
+            {data && (
+              <ToggleButtons
+                data={data}
+                fancy={fancy}
+                setFancyPremiumTab={setFancyPremiumTab}
+                fancyPremiumTab={fancyPremiumTab}
+              />
+            )}
+
+            {data?.result?.length > 0 && fancyPremiumTab === "fancy" && (
+              <Fancy data={data?.result} />
+            )}
+            {data?.premium &&
+              data?.premium?.eventId &&
+              fancyPremiumTab === "premium" && (
+                <Premium premium={data?.premium} />
+              )}
             {eventTypeId == 7 || eventTypeId == 4339 ? (
               <HorseGreyhoundEventDetails data={data?.result} />
             ) : null}
             {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
-            {data?.premium && data?.premium?.eventId && (
-              <Premium premium={data?.premium} />
-            )}
           </div>
         </div>
       </div>
