@@ -6,8 +6,12 @@ import Upcoming from "../../components/modules/Sports/Upcoming";
 import Footer from "../../components/UI/Footer/Footer";
 import InPlay from "../../components/modules/Sports/InPlay";
 import HorseGreyhound from "../../components/modules/Sports/HorseGreyhound";
+import { FilterLiveVirtual } from "../../static/filter-live-virtual";
+import LiveVirtual from "../../components/modules/Home/LiveVirtual";
 
 const Sports = () => {
+  const [liveVirtualInPlay, setLiveVirtualInPlay] = useState([]);
+  const [liveVirtualUpcoming, setLiveVirtualUpcoming] = useState([]);
   const [uniqueDates, setUniqueDates] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
@@ -50,7 +54,18 @@ const Sports = () => {
       setUniqueDates(categories);
     }
   }, [groupedData.upcoming]);
-
+  const groupedUpcoming = FilterLiveVirtual(
+    liveVirtualUpcoming,
+    Number(eventTypeId) || 4,
+    data,
+    0,
+  );
+  const groupedInPlay = FilterLiveVirtual(
+    liveVirtualInPlay,
+    Number(eventTypeId) || 4,
+    data,
+    1,
+  );
   return (
     <main className="w-full flex-1  pt-1 overflow-y-auto scroll-smooth bg-bg_appBackgroundColor">
       <div className=" w-full h-full flex flex-col">
@@ -63,16 +78,22 @@ const Sports = () => {
             <div className="w-full px-2 h-full">
               <div className="w-full h-max">
                 <InPlay
-                  groupedData={groupedData}
+                  groupedData={groupedInPlay}
                   navigateGameList={navigateGameList}
+                  setLiveVirtual={setLiveVirtualInPlay}
+                  eventTypeId={eventTypeId}
                 />
                 {Object.keys(groupedData?.upcoming).length > 0 && (
                   <div className=" w-max py-2">
                     <div className=" flex flex-row font-manrope-regular items-center justify-start gap-2.5 relative">
-                      <div className="cursor-pointer w-full flex flex-row items-center justify-center">
+                      <div className="cursor-pointer w-full flex flex-row items-center justify-center gap-x-4">
                         <span className=" text-text_secondary  px-[25px] py-2  text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 ">
                           Upcoming
                         </span>
+                        <LiveVirtual
+                          category={Number(eventTypeId) || 4}
+                          setLiveVirtual={setLiveVirtualUpcoming}
+                        />
                       </div>
 
                       <div
@@ -88,10 +109,11 @@ const Sports = () => {
                   </div>
                 )}
               </div>
-              {Object.keys(groupedData?.upcoming).length > 0 && (
+              {groupedUpcoming.length > 0 && (
                 <Upcoming
-                  upcoming={groupedData?.upcoming}
+                  upcoming={groupedUpcoming}
                   uniqueDates={uniqueDates}
+                  setLiveVirtual={setLiveVirtualUpcoming}
                   navigateGameList={navigateGameList}
                 />
               )}

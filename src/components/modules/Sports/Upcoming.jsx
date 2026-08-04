@@ -4,7 +4,7 @@ const Upcoming = ({ uniqueDates, upcoming, navigateGameList }) => {
   return (
     <div className="w-full pt-1 pb-[7rem]">
       {uniqueDates?.map((date) => {
-        const filteredData = Object.entries(upcoming).filter(
+        const filteredData = upcoming?.filter(
           ([, value]) => value.date?.split(" ")[0] === date,
         );
 

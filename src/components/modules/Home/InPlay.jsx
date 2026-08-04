@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useGroupQuery } from "../../../redux/features/events/events";
 import { useNavigate } from "react-router-dom";
 import ScoreHome from "./ScoreHome";
+import LiveVirtual from "./LiveVirtual";
+import { FilterLiveVirtual } from "../../../static/filter-live-virtual";
 
 const InPlay = () => {
+  const [liveVirtual, setLiveVirtual] = useState([]);
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const { data } = useGroupQuery({ sportsType: 0 }, { pollingInterval: 1000 });
@@ -87,25 +90,7 @@ const InPlay = () => {
         <div className="flex items-center justify-center gap-1.5" />
       </div>
       {categories?.map((category) => {
-        const groupedData = Object.entries(data)
-          .filter(
-            ([, value]) =>
-              value.eventTypeId === category && value.visible === true,
-          )
-          .reduce(
-            (acc, [key, value]) => {
-              if (!value.visible) return acc;
-
-              if (value.inPlay === 1) {
-                acc.inPlay[key] = value;
-              } else {
-                acc.upcoming[key] = value;
-              }
-
-              return acc;
-            },
-            { inPlay: {}, upcoming: {} },
-          );
+        const groupedData = FilterLiveVirtual(liveVirtual, category, data, 1);
 
         return (
           <div key={category} className="w-full py-[7px] font-roboto">
@@ -120,11 +105,15 @@ const InPlay = () => {
                   {eventName[category]}
                 </div>
                 <div className="flex items-center justify-center w-5 h-5 bg-bg_secondary text-text_secondary2  font-roboto font-bold leading-120 not-italic text-x1 rounded-full ">
-                  {Object.keys(groupedData.inPlay).length}
+                  {groupedData?.length}
                 </div>
+                <LiveVirtual
+                  setLiveVirtual={setLiveVirtual}
+                  category={category}
+                />
               </div>
             </div>
-            {Object.entries(groupedData.inPlay).map(([key, value]) => {
+            {groupedData?.map(([key, value]) => {
               return (
                 <div
                   onClick={() => navigateGameList(value?.eventTypeId, key)}

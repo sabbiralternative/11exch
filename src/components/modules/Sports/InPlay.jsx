@@ -1,3 +1,4 @@
+import LiveVirtual from "../Home/LiveVirtual";
 import ScoreHome from "../Home/ScoreHome";
 
 const OddBox = (value, index) => {
@@ -41,7 +42,12 @@ const OddBox = (value, index) => {
   );
 };
 
-const InPlay = ({ groupedData, navigateGameList }) => {
+const InPlay = ({
+  groupedData,
+  navigateGameList,
+  setLiveVirtual,
+  eventTypeId,
+}) => {
   return (
     <div className="w-full font-roboto">
       <div className="py-1.5 px-3 overflow-hidden relative rounded-tl-xl rounded-tr-xl w-full bg-cricketHeaderGradient border-l-border_cricketLeft border-r-border_cricketRight flex items-start justify-start text-text_secondary border-l border-solid border-r border-l-border_cricketLeft border-r-border_cricketRight">
@@ -51,11 +57,15 @@ const InPlay = ({ groupedData, navigateGameList }) => {
           <span>🏏</span>
           <div className=" capitalize max-w-full truncate">InPlay</div>
           <div className="flex items-center justify-center w-5 h-5 bg-bg_secondary text-text_secondary2  font-roboto font-bold leading-120 not-italic text-x1 rounded-full ">
-            {Object.keys(groupedData.inPlay).length}
+            {groupedData?.length}
           </div>
+          <LiveVirtual
+            category={Number(eventTypeId) || 4}
+            setLiveVirtual={setLiveVirtual}
+          />
         </div>
       </div>
-      {Object.entries(groupedData.inPlay).map(([key, value]) => {
+      {groupedData?.map(([key, value]) => {
         return (
           <div
             onClick={() => navigateGameList(value?.eventTypeId, key)}
