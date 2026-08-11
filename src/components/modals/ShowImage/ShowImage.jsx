@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const ShowImage = ({ setShowImage, image }) => {
+  const { getLanguage } = useLanguage();
   const showImageRef = useRef();
   useCloseModalClickOutside(showImageRef, () => {
     setShowImage(false);
@@ -48,7 +51,7 @@ const ShowImage = ({ setShowImage, image }) => {
 
         <div className="w-full gap-y-4 flex flex-col h-[90%]">
           <div className=" uppercase text-[10px] md:text-xs lg:text-sm ml-1">
-            Image
+            {getLanguage(LanguageKey.IMAGE)}
           </div>
           <div className="flex w-full h-full  items-center justify-center border rounded-md overflow-hidden">
             <img
@@ -64,7 +67,7 @@ const ShowImage = ({ setShowImage, image }) => {
               type="submit"
               className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-white bg-primary shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2  font-medium text-base cursor-pointer"
             >
-              <span>Close</span>
+              <span> {getLanguage(LanguageKey.CLOSE)}</span>
             </button>
           </div>
         </div>

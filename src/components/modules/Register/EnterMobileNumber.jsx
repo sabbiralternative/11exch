@@ -2,6 +2,8 @@ import toast from "react-hot-toast";
 import { useGetOtpMutation } from "../../../redux/features/auth/authApi";
 import { Settings } from "../../../api";
 import { Link } from "react-router-dom";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const EnterMobileNumber = ({
   mobile,
@@ -10,6 +12,7 @@ const EnterMobileNumber = ({
   setMobile,
   setTab,
 }) => {
+  const { getLanguage } = useLanguage();
   const [getOTP] = useGetOtpMutation();
   const handleOTP = async () => {
     const res = await getOTP({ mobile }).unwrap();
@@ -68,7 +71,7 @@ const EnterMobileNumber = ({
               </span>
               <div className="flex items-center gap-1.5 z-2">
                 <span className="text-text_secondary  text-lg not-italic font-semibold leading-150 tracking-widest">
-                  Register Now,
+                  {getLanguage(LanguageKey.REGISTER)},
                 </span>
                 <span className="text-lg">👋</span>
               </div>
@@ -82,7 +85,7 @@ const EnterMobileNumber = ({
                   htmlFor="phoneNo"
                   className="text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary3 mb-1 px-1"
                 >
-                  Mobile Number *
+                  {getLanguage(LanguageKey.MOBILE_NUMBER)} *
                 </label>
                 <div className="flex items-center w-full w-full text-sm transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg   not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
                   <div className="flex-shrink-0 w-max">
@@ -188,7 +191,10 @@ const EnterMobileNumber = ({
                       />
                     </g>
                   </svg>
-                  <span className="   ">Get OTP On Message</span>
+                  <span className="   ">
+                    {" "}
+                    {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                  </span>
                 </button>
 
                 {/* <button
@@ -242,7 +248,7 @@ const EnterMobileNumber = ({
             <p className="w-full text-center text-xs text-text_primary2  font-normal leading-150 tracking-widest cursor-pointer">
               Already have an account?{" "}
               <Link to="/login" className="underline">
-                Login
+                {getLanguage(LanguageKey.LOGIN)}
               </Link>
             </p>
             <div className="flex items-center justify-center gap-x-2 self-stretch">
@@ -258,7 +264,7 @@ const EnterMobileNumber = ({
                     className="relative overflow-hidden flex relative overflow-hidden items-center justify-center h-[2.5rem] bg-bg_inputBgColor gap-x-[4px] border border-solid border-border_tertiary24 py-[0.69rem] rounded-lg shadow-md text-text_secondary font-roboto text-sm not-italic font-semibold leading-150 tracking-widest w-full active:scale-95 transition-all ease-in-out duration-300"
                     type="button"
                   >
-                    Download APK
+                    {getLanguage(LanguageKey.DOWNLOAD_APK)}
                   </button>
                 </div>
               )}

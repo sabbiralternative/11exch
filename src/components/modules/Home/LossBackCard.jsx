@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const LossBackCard = () => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
 
@@ -22,7 +25,7 @@ const LossBackCard = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_110%,rgba(255,255,255,0.1)_0%,transparent_46%)]" />
       <div className="py-4 w-full relative">
         <div className="relative text-center z-20 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-white font-black leading-normal text-xl tracking-wider uppercase">
-          Lossback Bonus
+          {getLanguage(LanguageKey.LOSSBACK_BONUS)}
         </div>
         <div className="h-[120%] aspect-square absolute bottom-0 translate-y-1/3 md:translate-y-1/2 left-0 z-10 opacity-60">
           <div
@@ -48,7 +51,7 @@ const LossBackCard = () => {
             <div className="text-base flex items-center gap-2 mt-1">
               <div className="mt-1">
                 <span className="px-2 py-1 text-xs font-bold rounded-full bg-white/20 text-white">
-                  Login to view available claims
+                  {getLanguage(LanguageKey.LOGIN_TO_VIEW_CLAIM)}
                 </span>
               </div>
             </div>
@@ -71,7 +74,7 @@ const LossBackCard = () => {
           className="relative overflow-hidden bg-gradient-to-r from-amber-400 to-yellow-300 hover:from-amber-500 hover:to-yellow-400 ml-auto active:scale-[98%] transition-all duration-150 text-black px-5 py-2 text-sm font-bold rounded-lg shadow-md"
           type="button"
         >
-          SEE ALL
+          {getLanguage(LanguageKey.SEE_ALL)}
         </button>
       </div>
       <div className="w-full h-1 bg-gradient-to-r from-amber-400 to-yellow-200" />

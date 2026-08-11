@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useCurrentBets } from "../../hooks/currentBets";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const OpenBets = () => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const { data: myBets } = useCurrentBets();
 
@@ -25,7 +28,10 @@ const OpenBets = () => {
             className="ng-tns-c191-0"
           />
         </svg>
-        <span className="text-text_secondary">Open Bets</span>
+        <span className="text-text_secondary">
+          {" "}
+          {getLanguage(LanguageKey.OPEN_BETS)}
+        </span>
       </nav>
       <div className=" w-full h-max mb-[60px] overflow-y-auto">
         {myBets?.length > 0 ? (
@@ -75,7 +81,7 @@ const OpenBets = () => {
         ) : (
           <div className="w-full origin-top scaleVerticalOpen">
             <div className="w-full font-medium text-sm bg-bg_color_primary rounded px-4  py-3 shadow text-white ">
-              You have no matched Bets.
+              {getLanguage(LanguageKey.YOU_HAVE_NO_MATCHED_BETS)}
             </div>
           </div>
         )}

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Settings } from "../api";
 import Header from "../components/UI/Header/Header";
-import { useLanguage } from "../context/LanguageProvider";
+import useLanguage from "../hooks/use-language";
 
 const MainLayout = () => {
   const { setLanguage } = useLanguage();

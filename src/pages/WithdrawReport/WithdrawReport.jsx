@@ -9,8 +9,11 @@ import Complaint from "../../components/modals/Complaint/Complaint";
 import ShowImage from "../../components/modals/ShowImage/ShowImage";
 import Footer from "../../components/UI/Footer/Footer";
 import { Settings } from "../../api";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const WithdrawReport = () => {
+  const { getLanguage } = useLanguage();
   const [deleteWithdraw] = useBankAccountMutation();
   const [complaintId, setComplaintId] = useState(null);
   const [image, setImage] = useState("");
@@ -373,7 +376,7 @@ const WithdrawReport = () => {
                             <div className="col-span-9 flex gap-1 items-center w-full flex-wrap">
                               <div className="flex items-center gap-1 whitespace-nowrap">
                                 <span className="font-roboto text-text_secondary text-xs font-normal leading-120">
-                                  Withdraw
+                                  {getLanguage(LanguageKey.WITHDRAW)}
                                 </span>
                               </div>
                               <span className="flex items-center justify-center gap-[0.1875rem] font-roboto text-xxs font-medium leading-120 text-center py-[0.1875rem] px-[0.3125rem] rounded-[0.3125rem] text-text_tertiary1 bg-initiatedGradient">
@@ -446,7 +449,7 @@ const WithdrawReport = () => {
                                     }
                                     className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-medium text-white rounded-tl rounded h-fit tracking-normal"
                                   >
-                                    Cancel Withdraw
+                                    {getLanguage(LanguageKey.CANCEL_WITHDRAWAL)}
                                   </button>
                                 )}
 
@@ -466,7 +469,7 @@ const WithdrawReport = () => {
                                   }
                                   className="px-2 py-1 text-xs xs:text-xs sm:text-sm font-medium text-white rounded h-fit tracking-normal"
                                 >
-                                  Report Issue
+                                  {getLanguage(LanguageKey.REPORT_ISSUE)}
                                 </button>
                               )}
                             </span>

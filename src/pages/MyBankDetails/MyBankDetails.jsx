@@ -9,8 +9,11 @@ import CreateUSDTAccount from "../../components/modals/CreateUSDTAccount/CreateU
 import CreateBankAccount from "../../components/modals/CreateBankAccount/CreateBankAccount";
 import { MdDelete } from "react-icons/md";
 import { IoMdArrowDropdown, IoMdArrowDropright } from "react-icons/io";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const MyBankDetails = () => {
+  const { getLanguage } = useLanguage();
   const [showAddBank, setShowAddBank] = useState(false);
   const [showUSDTModal, setShowUSDTModal] = useState(false);
   const [showDetails, setShowDetails] = useState(null);
@@ -23,8 +26,6 @@ const MyBankDetails = () => {
     type: "getBankAccounts",
     status: tab,
   });
-
-  console.log(bankData);
 
   const handleShowDetails = (index) => {
     if (index === showDetails) {
@@ -118,7 +119,7 @@ const MyBankDetails = () => {
                         tab === 1 ? "text-white" : "bg-bg_Quaternary"
                       }`}
                     >
-                      Active
+                      {getLanguage(LanguageKey.ACTIVE)}
                     </span>
                   </div>
                   <div
@@ -130,7 +131,7 @@ const MyBankDetails = () => {
                         tab === 0 ? "text-white" : "bg-bg_Quaternary"
                       }`}
                     >
-                      Deleted
+                      {getLanguage(LanguageKey.DELETED)}
                     </span>
                   </div>
                   <div
@@ -156,7 +157,7 @@ const MyBankDetails = () => {
                       fontWeight: "600",
                     }}
                   >
-                    Add New Bank
+                    {getLanguage(LanguageKey.ADD_NEW_BANK)}
                   </button>
                   <button
                     onClick={() => setShowUSDTModal(true)}
@@ -169,7 +170,7 @@ const MyBankDetails = () => {
                       fontWeight: "600",
                     }}
                   >
-                    Add USDT Account
+                    {getLanguage(LanguageKey.ADD_USDT_ACCOUNT)}
                   </button>
                 </div>
                 <h2
@@ -179,7 +180,7 @@ const MyBankDetails = () => {
                     color: "white",
                   }}
                 >
-                  Bank Details
+                  {getLanguage(LanguageKey.BANK_DETAILS)}
                 </h2>
 
                 {bankData?.length > 0 &&
@@ -226,7 +227,7 @@ const MyBankDetails = () => {
                               <p> {bank?.bankName}</p>
                               {bank?.isDefault === 1 && (
                                 <span style={{ color: "#488feb" }}>
-                                  Default
+                                  {getLanguage(LanguageKey.DEFAULT)}
                                 </span>
                               )}
                             </div>
@@ -332,7 +333,7 @@ const MyBankDetails = () => {
                                 marginTop: "15px",
                               }}
                             >
-                              Default
+                              {getLanguage(LanguageKey.DEFAULT)}
                             </button>
                           )}
                         </div>

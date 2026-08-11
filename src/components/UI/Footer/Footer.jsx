@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Menu from "../../modals/Menu/Menu";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const Footer = () => {
+  const { getLanguage } = useLanguage();
   const [showMenuModal, setShowMenuModal] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -52,7 +55,7 @@ const Footer = () => {
               <span
                 className={`text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px]  ${pathname === "/casino" ? "opacity-100" : "opacity-30"}`}
               >
-                Casino
+                {getLanguage(LanguageKey.CASINO)}
               </span>
             </nav>
             <nav
@@ -94,7 +97,7 @@ const Footer = () => {
               <span
                 className={`text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px]  ${pathname === "/sports" ? "opacity-100" : "opacity-30"}`}
               >
-                Sports
+                {getLanguage(LanguageKey.SPORTS)}
               </span>
             </nav>
           </div>
@@ -171,7 +174,7 @@ const Footer = () => {
               <span
                 className={`text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px]  ${pathname === "/open-bets" ? "opacity-100" : "opacity-30"}`}
               >
-                Open Bets
+                {getLanguage(LanguageKey.OPEN_BETS)}
               </span>
             </nav>
             <nav
@@ -220,7 +223,7 @@ const Footer = () => {
               <span
                 className={`text-text_secondary w-full text-center truncate font-roboto text-[11px] font-normal leading-150 tracking-[0.3px]  ${showMenuModal ? "opacity-100" : "opacity-30"}`}
               >
-                Menu
+                {getLanguage(LanguageKey.MENU)}
               </span>
             </nav>
           </div>

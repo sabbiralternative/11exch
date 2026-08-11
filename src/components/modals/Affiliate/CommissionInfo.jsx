@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const CommissionInfo = ({ setOpenCommissionModal }) => {
+  const { getLanguage } = useLanguage();
   const ref = useRef();
   useCloseModalClickOutside(ref, () => {
     setOpenCommissionModal(false);
@@ -17,7 +20,7 @@ const CommissionInfo = ({ setOpenCommissionModal }) => {
         className="z-2 popUpBoxShadow popUpOpenAnimation fixed w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-bg_Quaternary p-2 xs:p-5 rounded-md"
       >
         <h2 className="mb-5 text-base md:text-xl font-medium">
-          How to get commission ?
+          {getLanguage(LanguageKey.HOW_TO_GET_COMMISSION)}?
         </h2>
         <div
           onClick={() => setOpenCommissionModal(false)}

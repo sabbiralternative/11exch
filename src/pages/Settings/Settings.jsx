@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom";
 import ChangePassword from "../../components/modules/Settings/ChangePassword";
 import EditStake from "../../components/modules/Settings/EditStake";
 import OtherSettings from "../../components/modules/Settings/OtherSettings";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const Settings = () => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   return (
     <main className="w-full flex-1  pt-1 overflow-y-auto scroll-smooth bg-bg_appBackgroundColor">
@@ -25,7 +28,10 @@ const Settings = () => {
             className="ng-tns-c191-0"
           />
         </svg>
-        <span className="text-text_secondary">Settings</span>
+        <span className="text-text_secondary">
+          {" "}
+          {getLanguage(LanguageKey.SETTINGS)}
+        </span>
       </nav>
       <div className="flex items-center justify-center flex-col w-full px-3 pb-5 pt-3 gap-y-3">
         <EditStake />

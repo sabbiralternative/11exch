@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../../../hooks/use-search";
 import { eventNameList } from "../../../static/event-name-list";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const NavSLider = () => {
+  const { getLanguage } = useLanguage();
   const search = useSearch();
   const eventTypeId = search.get("eventTypeId");
   const navigate = useNavigate();
@@ -146,7 +149,7 @@ const NavSLider = () => {
               </svg>
             </p>
             <span className="text-text_secondary text-center font-roboto text-x1 font-normal not-italic leading-120">
-              Cricket
+              {getLanguage(LanguageKey.CRICKET)}
             </span>
           </div>
           <div
@@ -1132,7 +1135,7 @@ const NavSLider = () => {
               </svg>
             </p>
             <span className="text-text_secondary text-center font-roboto text-x1 font-normal not-italic leading-120">
-              Tennis
+              {getLanguage(LanguageKey.TENNIS)}
             </span>
           </div>
           <div
@@ -1143,7 +1146,7 @@ const NavSLider = () => {
               <span>⚽</span>
             </p>
             <span className="text-text_secondary text-center font-roboto text-x1 font-normal not-italic leading-120">
-              Football
+              {getLanguage(LanguageKey.FOOTBALL)}
             </span>
           </div>
           <div
@@ -1819,7 +1822,7 @@ const NavSLider = () => {
               </svg>
             </p>
             <span className="text-text_secondary text-center font-roboto text-x1 font-normal not-italic leading-120">
-              Horse Racing
+              {getLanguage(LanguageKey.HORSE)}
             </span>
           </div>
           <div
@@ -1987,7 +1990,7 @@ const NavSLider = () => {
               </svg>
             </p>
             <span className="text-text_secondary text-center font-roboto text-x1 font-normal not-italic leading-120">
-              Greyhound Racing
+              {getLanguage(LanguageKey.GREYHOUND)}
             </span>
           </div>
 
@@ -2003,7 +2006,7 @@ const NavSLider = () => {
               />
             </p>
             <span className="text-text_secondary text-center font-roboto text-x1 font-normal not-italic leading-120">
-              Kabaddi
+              {getLanguage(LanguageKey.KABADDI)}
             </span>
           </div>
 
@@ -2019,7 +2022,7 @@ const NavSLider = () => {
               />
             </p>
             <span className="text-text_secondary text-center font-roboto text-x1 font-normal not-italic leading-120">
-              Politics
+              {getLanguage(LanguageKey.POLITICS)}
             </span>
           </div>
           {eventNameList.map((item) => {
@@ -2033,7 +2036,7 @@ const NavSLider = () => {
                   <img src={item?.image} alt="Kabaddi" className="w-7 h-7" />
                 </p>
                 <span className="text-text_secondary text-center font-roboto text-x1 font-normal not-italic leading-120">
-                  {item?.name}
+                  {getLanguage(item?.name)}
                 </span>
               </div>
             );

@@ -2,13 +2,12 @@ import { Link } from "react-router-dom";
 import { Settings } from "../../../api";
 import { setShowLanguageModal } from "../../../redux/features/global/globalSlice";
 import { useDispatch } from "react-redux";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const Unauthorized = () => {
   const dispatch = useDispatch();
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   return (
     <div className="flex items-center justify-center gap-x-1.5">
       <Link
@@ -16,7 +15,7 @@ const Unauthorized = () => {
         title="Login to exch11 & Enjoy the best online gaming experience "
         to="/login"
       >
-        {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+        {getLanguage(LanguageKey.LOGIN)}
       </Link>
       {Settings.registration && (
         <Link
@@ -24,7 +23,7 @@ const Unauthorized = () => {
           title="Register to exch11 & Get the exciting bonuses and more!!!"
           to="/register"
         >
-          {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+          {getLanguage(LanguageKey.REGISTER)}
         </Link>
       )}
 

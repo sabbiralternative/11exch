@@ -8,8 +8,11 @@ import InPlay from "../../components/modules/Sports/InPlay";
 import HorseGreyhound from "../../components/modules/Sports/HorseGreyhound";
 import { FilterLiveVirtual } from "../../static/filter-live-virtual";
 import LiveVirtual from "../../components/modules/Home/LiveVirtual";
+import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
 
 const Sports = () => {
+  const { getLanguage } = useLanguage();
   const [liveVirtualInPlay, setLiveVirtualInPlay] = useState([]);
   const [liveVirtualUpcoming, setLiveVirtualUpcoming] = useState([]);
   const [uniqueDates, setUniqueDates] = useState([]);
@@ -88,7 +91,7 @@ const Sports = () => {
                     <div className=" flex flex-row font-manrope-regular items-center justify-start gap-2.5 relative">
                       <div className="cursor-pointer w-full flex flex-row items-center justify-center gap-x-4">
                         <span className=" text-text_secondary  px-[25px] py-2  text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 ">
-                          Upcoming
+                          {getLanguage(LanguageKey.UP_COMING)}
                         </span>
                         <LiveVirtual
                           category={Number(eventTypeId) || 4}

@@ -3,12 +3,11 @@ import { logout } from "../../redux/features/auth/authSlice";
 import { Settings } from "../../api";
 import { Link, useNavigate } from "react-router-dom";
 import useBalance from "../../hooks/balance";
-import { useLanguage } from "../../context/LanguageProvider";
-import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
 
 const Account = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const { data } = useBalance();
   const closePopupForForever = localStorage.getItem("closePopupForForever");
   const { user } = useSelector((state) => state.auth);
@@ -73,7 +72,7 @@ const Account = () => {
               </span>
               <div className="flex items-center gap-1">
                 <span className="text-text_secondary text-xs font-bold leading-normal tracking-[0.015rem]">
-                  Main Wallet
+                  {getLanguage(LanguageKey.MAIN_WALLET)}
                 </span>
               </div>
             </div>
@@ -93,7 +92,7 @@ const Account = () => {
           <div className="flex items-stretch justify-between gap-[0.38rem] w-full mt-3">
             <div className="flex flex-col justify-between flex-1 rounded-lg border-[1.5px] border-solid border-border_tertiary py-1.5 px-2 min-w-0">
               <span className="text-text_primary2 font-roboto text-xs font-medium leading-150 tracking-widest overflow-hidden text-ellipsis whitespace-nowrap">
-                Exposure
+                {getLanguage(LanguageKey.EXPOSURE)}
               </span>
               <span className="text-text_secondary font-roboto text-xs font-bold leading-150 tracking-widest overflow-hidden text-ellipsis">
                 ₹ {data?.deductedExposure}
@@ -154,7 +153,7 @@ const Account = () => {
                 </g>
               </svg>
               <span className="font-roboto text-text_secondary text-sm font-semibold leading-120 not-italic">
-                {languageValue(valueByLanguage, LanguageKey.WITHDRAW)}
+                {getLanguage(LanguageKey.WITHDRAW)}
               </span>
             </div>
           )}
@@ -176,7 +175,7 @@ const Account = () => {
                 />
               </svg>
               <span className="font-roboto text-text_secondary text-sm font-semibold leading-120 not-italic">
-                {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
+                {getLanguage(LanguageKey.DEPOSIT)}
               </span>
             </div>
           )}
@@ -525,7 +524,7 @@ const Account = () => {
                   </svg>
                 </span>
                 <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                  Deposit Report
+                  {getLanguage(LanguageKey.DEPOSIT_STATEMENT)}
                 </span>
               </div>
               <svg
@@ -886,7 +885,7 @@ const Account = () => {
                   </svg>
                 </span>
                 <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                  Withdraw Report
+                  {getLanguage(LanguageKey.WITHDRAW_STATMENT)}
                 </span>
               </div>
               <svg
@@ -1541,7 +1540,7 @@ const Account = () => {
                   </svg>
                 </span>
                 <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                  Open Bets
+                  {getLanguage(LanguageKey.OPEN_BETS)}
                 </span>
               </div>
               <svg
@@ -1921,7 +1920,7 @@ const Account = () => {
                   </svg>
                 </span>
                 <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                  Betting Profit Loss
+                  {getLanguage(LanguageKey.BETTING_PROFIT_AND_LOSS)}
                 </span>
               </div>
               <svg
@@ -1956,7 +1955,7 @@ const Account = () => {
                   />
                 </span>
                 <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                  {languageValue(valueByLanguage, LanguageKey.MY_BANK_DETAILS)}
+                  {getLanguage(LanguageKey.MY_BANK_DETAILS)}
                 </span>
               </div>
               <svg
@@ -1992,7 +1991,7 @@ const Account = () => {
                     />
                   </span>
                   <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                    Refer and Earn
+                    {getLanguage(LanguageKey.REFER_AND_EARN)}
                   </span>
                 </div>
                 <svg
@@ -2156,7 +2155,7 @@ const Account = () => {
                   </svg>
                 </span>
                 <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                  Bonus Statement
+                  {getLanguage(LanguageKey.BONUS_STATEMENT)}
                 </span>
               </div>
               <svg
@@ -2318,7 +2317,7 @@ const Account = () => {
                   </svg>
                 </span>
                 <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                  Promos & Bonus
+                  {getLanguage(LanguageKey.PROMOTION_AND_BONUSES)}
                 </span>
               </div>
               <svg
@@ -2480,7 +2479,7 @@ const Account = () => {
                   </svg>
                 </span>
                 <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                  Lossback Bonus
+                  {getLanguage(LanguageKey.LOSSBACK_BONUS)}
                 </span>
               </div>
               <svg
@@ -2643,7 +2642,7 @@ const Account = () => {
                     </svg>
                   </span>
                   <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                    App Only Bonus
+                    {getLanguage(LanguageKey.APP_ONLY_BONUS)}
                   </span>
                 </div>
                 <svg
@@ -2680,7 +2679,7 @@ const Account = () => {
                   />
                 </span>
                 <span className=" col-span-6 text-text_secondary font-roboto text-sm font-medium leading-120">
-                  Settings
+                  {getLanguage(LanguageKey.SETTINGS)}
                 </span>
               </div>
               <svg
@@ -2772,11 +2771,11 @@ const Account = () => {
                   </defs>
                 </svg>
                 <div className="flex items-start flex-col gap-1">
-                  <span className="text-text_secondary7 font-roboto text-[11px] font-normal leading-120 self-stretch">
+                  {/* <span className="text-text_secondary7 font-roboto text-[11px] font-normal leading-120 self-stretch">
                     Application
-                  </span>
+                  </span> */}
                   <span className="text-text_secondary font-roboto text-sm font-medium leading-120">
-                    for Android
+                    {getLanguage(LanguageKey.DOWNLOAD_APK)}
                   </span>
                 </div>
               </div>
@@ -2805,7 +2804,7 @@ const Account = () => {
           className="flex items-center justify-center w-full p-2 bg-exchLoginGradient active:scale-[98%] transition-all duration-300 rounded-md py-3"
         >
           <span className="font-roboto text-text_secondary font-bold text-base leading-120">
-            {languageValue(valueByLanguage, LanguageKey.LOGOUT)}
+            {getLanguage(LanguageKey.LOGOUT)}
           </span>
         </div>
       </div>

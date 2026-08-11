@@ -5,8 +5,11 @@ import { from_date, to_date } from "../../utils/default-date";
 import { useSelector } from "react-redux";
 import { userToken } from "../../redux/features/auth/authSlice";
 import moment from "moment";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const BettingProfitLoss = () => {
+  const { getLanguage } = useLanguage();
   const { data: passbook } = useAccountStatement({
     from: from_date,
     to: to_date,
@@ -41,7 +44,10 @@ const BettingProfitLoss = () => {
             className="ng-tns-c191-0"
           />
         </svg>
-        <span className="text-text_secondary">Betting Profit &amp; Loss</span>
+        <span className="text-text_secondary">
+          {" "}
+          {getLanguage(LanguageKey.BETTING_PROFIT_AND_LOSS)}
+        </span>
       </nav>
       <div className="flex items-center justify-center flex-col gap-y-3 w-full px-3 ">
         {token && getUniqueDate?.length > 0 ? (
@@ -119,7 +125,7 @@ const BettingProfitLoss = () => {
         ) : (
           <div className="flex items-center justify-center w-full pt-20">
             <h2 className="text-base text-white">
-              No betting profit and loss yet!
+              {getLanguage(LanguageKey.NO_BETTING_PROFIT_LOSS_YET)}
             </h2>
           </div>
         )}

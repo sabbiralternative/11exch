@@ -1,8 +1,11 @@
 import { useDispatch } from "react-redux";
 import { setShowAppPopUp } from "../../../redux/features/global/globalSlice";
 import { Settings } from "../../../api";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const AppPopup = () => {
+  const { getLanguage } = useLanguage();
   const dispatch = useDispatch();
   const closeAppModal = () => {
     const expiryTime = new Date().getTime() + 24 * 60 * 60 * 1000;
@@ -67,10 +70,10 @@ const AppPopup = () => {
           </div>
           <div className="flex items-start justify-start flex-col gap-y-0.5">
             <h2 className="text-text_secondary font-roboto text-xs font-bold leading-120 mb-0">
-              Install Android APK
+              {getLanguage(LanguageKey.DOWNLOAD_ANDROID_APPLICATION)}
             </h2>
             <h6 className=" text-text_secondary1 font-roboto font-normal leading-120 mb-0 text-x">
-              Instant Download on your device
+              {getLanguage(LanguageKey.INSTANT_DOWNLOAD)}
             </h6>
             <div className="flex items-center gap-x-1">
               <svg
@@ -180,7 +183,7 @@ const AppPopup = () => {
           onClick={handleDownload}
           className=" bg-bg_primary1 text-text_secondary font-roboto font-semibold leading-150 z-10 text-xs px-3 py-1 h-7 flex items-center justify-center rounded-md"
         >
-          Download
+          {getLanguage(LanguageKey.DOWNLOAD)}
         </button>
       </div>
     </div>

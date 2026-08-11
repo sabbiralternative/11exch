@@ -10,8 +10,11 @@ import { Settings } from "../../../api";
 import { setUser } from "../../../redux/features/auth/authSlice";
 import { setShowBanner } from "../../../redux/features/global/globalSlice";
 import { Link, useNavigate } from "react-router-dom";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const affnook_token = localStorage.getItem("affnook_token");
   const referralCode = localStorage.getItem("referralCode");
@@ -114,7 +117,7 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
               </span>
               <div className="flex items-center gap-1.5 z-2">
                 <span className="text-text_secondary  text-lg not-italic font-semibold leading-150 tracking-widest">
-                  Register Now,
+                  {getLanguage(LanguageKey.REGISTER)},
                 </span>
                 <span className="text-lg">👋</span>
               </div>
@@ -130,7 +133,7 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
                   htmlFor="phoneNo"
                   className="text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary3 mb-1 px-1"
                 >
-                  Mobile Number *
+                  {getLanguage(LanguageKey.MOBILE_NUMBER)} *
                 </label>
                 <div className="flex items-center w-full w-full text-sm transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg   not-italic font-medium leading-150 tracking-widest text-text_primary3 border-border_secondary2">
                   <div className="flex-shrink-0 w-max">
@@ -232,7 +235,7 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
               </div>
               <div className="mt-1 w-full flex flex-col gap-y-0.5 relative">
                 <h1 className="text-xs font-medium text-text_primary3 ml-1">
-                  Enter OTP *
+                  {getLanguage(LanguageKey.ENTER_OTP)} *
                 </h1>
                 <div className="grid grid-cols-4 gap-4">
                   {[...Array(4)].map((_, index) => (
@@ -261,7 +264,7 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
                   >
                     {timer > 0
                       ? `Resend OTP in ${timer} seconds`
-                      : "Resend OTP"}
+                      : getLanguage(LanguageKey.RESEND)}
                   </button>
                 </div>
               </div>
@@ -271,7 +274,7 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
                     htmlFor="password"
                     className="font-roboto text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary2 mb-1 px-1"
                   >
-                    Password *
+                    {getLanguage(LanguageKey.PASSWORD)} *
                   </label>
                   <div className="flex items-center w-full w-full text-[13px] transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg  font-roboto not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
                     <input
@@ -351,7 +354,7 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
                     htmlFor="password"
                     className="font-roboto text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary2 mb-1 px-1"
                   >
-                    Confirm Password *
+                    {getLanguage(LanguageKey.CONFIRM_PASSWORD)}*
                   </label>
                   <div className="flex items-center w-full w-full text-[13px] transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg  font-roboto not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
                     <input
@@ -431,7 +434,7 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
                     htmlFor="password"
                     className="font-roboto text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary2 mb-1 px-1"
                   >
-                    Referral(Optional)
+                    {getLanguage(LanguageKey.REFERRAL_CODE)}(Optional)
                   </label>
                   <div className="flex items-center w-full w-full text-[13px] transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg  font-roboto not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
                     <input
@@ -453,12 +456,12 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
                 className="mt-5 w-full h-fit bg-exchRegisterGradient text-text_primary3 transition-all ease-in-out text-sm whitespace-nowrap p-2 rounded-lg active:scale-[0.98] active:opacity-95 disabled:opacity-70 font-medium relative flex items-center justify-center font-bold"
                 disabled
               >
-                Register
+                {getLanguage(LanguageKey.REGISTER)}
               </button>
               <p className="w-full text-center text-xs text-text_primary2  font-normal leading-150 tracking-widest cursor-pointer">
                 Already have an account?{" "}
                 <Link to="/login" className="underline">
-                  Login
+                  {getLanguage(LanguageKey.LOGIN)}
                 </Link>
               </p>
             </form>

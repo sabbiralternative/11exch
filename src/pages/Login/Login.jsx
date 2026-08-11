@@ -7,8 +7,11 @@ import { setUser } from "../../redux/features/auth/authSlice";
 import { setShowBanner } from "../../redux/features/global/globalSlice";
 import toast from "react-hot-toast";
 import { useEffect, useRef, useState } from "react";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const Login = () => {
+  const { getLanguage } = useLanguage();
   const ref = useRef();
   const [tab, setTab] = useState("phone");
   const [tabWidth, setTabWidth] = useState(0);
@@ -141,7 +144,7 @@ const Login = () => {
           <div className="flex items-center font-roboto justify-center flex-col bg-appBackgroundGradient bg-cover bg-top rounded-2xl gap-y-4 pb-6 h-max p-4 shadow-lg">
             <div className="flex flex-col items-start gap-[0.3125rem] w-full font-roboto">
               <span className="text-transparent text-start bg-clip-text bg-exchLoginTextGradient leading-150 tracking-widest font-bold text-lg">
-                Log in
+                {getLanguage(LanguageKey.LOGIN)}
               </span>
               <div className="flex items-center gap-[0.375rem] z-2">
                 <span className="text-text_secondary  text-lg not-italic font-semibold leading-150 tracking-widest capitalize">
@@ -159,7 +162,7 @@ const Login = () => {
                     className="cursor-pointer w-full flex flex-row items-center justify-center"
                   >
                     <span className="text-text_secondary  px-5 py-2 min-w-[50%] text-xs whitespace-nowrap truncate xs:text-sm md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 ">
-                      Phone Number
+                      {getLanguage(LanguageKey.MOBILE_NUMBER)}
                     </span>
                   </div>
                   <div
@@ -167,7 +170,7 @@ const Login = () => {
                     className="cursor-pointer w-full flex flex-row items-center justify-center"
                   >
                     <span className="text-text_secondary  text-xs xs:text-sm rounded-lg px-5 py-2 min-w-[50%] text-xs whitespace-nowrap truncate xs:text-sm md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10 ">
-                      User ID
+                      {getLanguage(LanguageKey.USER_ID)}
                     </span>
                   </div>
                   <div
@@ -196,7 +199,9 @@ const Login = () => {
                   htmlFor="phoneNo"
                   className="text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary2 mb-1 px-1"
                 >
-                  {tab === "phone" ? "Mobile Number*" : "User ID*"}
+                  {tab === "phone"
+                    ? getLanguage(LanguageKey.MOBILE_NUMBER) + "*"
+                    : getLanguage(LanguageKey.USER_ID) + "*"}
                 </label>
                 <div className="flex items-center w-full w-full text-[13px] transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg  not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
                   {tab === "phone" ? (
@@ -323,7 +328,7 @@ const Login = () => {
                     htmlFor="password"
                     className="font-roboto text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary2 mb-1 px-1"
                   >
-                    Password *
+                    {getLanguage(LanguageKey.PASSWORD)} *
                   </label>
                   <div className="flex items-center w-full w-full text-[13px] transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg  font-roboto not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
                     <input
@@ -399,12 +404,14 @@ const Login = () => {
                     <div className=" w-max  h-max" />
                   </div>
                 </div>
-                <Link
-                  to="/forgot-password"
-                  className="w-full text-end text-xs text-text_primary2  font-normal leading-150 tracking-widest cursor-pointer"
-                >
-                  Forgot Password?
-                </Link>
+                {Settings.registration && (
+                  <Link
+                    to="/forgot-password"
+                    className="w-full text-end text-xs text-text_primary2  font-normal leading-150 tracking-widest cursor-pointer"
+                  >
+                    {getLanguage(LanguageKey.FORGOT_PASSWORD)}?
+                  </Link>
+                )}
               </div>
               <button
                 title="Login"
@@ -415,7 +422,7 @@ const Login = () => {
             
           "
               >
-                LOG IN
+                {getLanguage(LanguageKey.LOGIN)}
               </button>
               <button
                 onClick={loginWithDemo}
@@ -427,7 +434,7 @@ const Login = () => {
             
           "
               >
-                Demo
+                {getLanguage(LanguageKey.DEMO_LOGIN)}
               </button>
             </form>
             {/* <div className="flex items-center justify-center gap-3 z-1 w-full">
@@ -440,7 +447,7 @@ const Login = () => {
             <p className="w-full text-center text-xs text-text_primary2  font-normal leading-150 tracking-widest cursor-pointer">
               Don&apos;t have an account?{" "}
               <Link to="/register" className="underline">
-                Register
+                {getLanguage(LanguageKey.REGISTER)}
               </Link>
             </p>
             <div className="flex items-center justify-center gap-x-2 self-stretch">
@@ -456,7 +463,7 @@ const Login = () => {
                     className="relative overflow-hidden flex relative overflow-hidden items-center justify-center h-[2.5rem] bg-bg_inputBgColor gap-x-[4px] border border-solid border-border_tertiary24 py-[0.69rem] rounded-lg shadow-md text-text_secondary font-roboto text-sm not-italic font-semibold leading-150 tracking-widest w-full active:scale-95 transition-all ease-in-out duration-300"
                     type="button"
                   >
-                    Download APK
+                    {getLanguage(LanguageKey.DOWNLOAD_APK)}
                   </button>
                 </div>
               )}

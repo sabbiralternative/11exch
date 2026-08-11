@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import { eventNameList } from "../../../static/event-name-list";
+import useLanguage from "../../../hooks/use-language";
 
 const EventNameList = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   return (
     <div className="grid grid-cols-5 grid-rows-2 gap-[5px] sm:gap-2 sm:grid-cols-8 md:flex md:overflow-x-auto no-scrollbar scroll-smooth w-full font-roboto">
@@ -17,7 +16,7 @@ const EventNameList = () => {
           <span>🏏</span>
         </p>
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+          {getLanguage(LanguageKey.CRICKET)}
         </span>
       </div>
       <div
@@ -28,7 +27,7 @@ const EventNameList = () => {
           <span>🎾</span>
         </p>
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+          {getLanguage(LanguageKey.TENNIS)}
         </span>
       </div>
       <div
@@ -39,7 +38,7 @@ const EventNameList = () => {
           <span>⚽</span>
         </p>
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+          {getLanguage(LanguageKey.FOOTBALL)}
         </span>
       </div>
       <div
@@ -715,7 +714,7 @@ const EventNameList = () => {
           </svg>
         </p>
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          {languageValue(valueByLanguage, LanguageKey.HORSE)}
+          {getLanguage(LanguageKey.HORSE)}
         </span>
       </div>
       <div
@@ -882,7 +881,7 @@ const EventNameList = () => {
           </svg>
         </p>
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+          {getLanguage(LanguageKey.GREYHOUND)}
         </span>
       </div>
 
@@ -906,7 +905,7 @@ const EventNameList = () => {
         </div>
         <p />
         <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-          {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+          {getLanguage(LanguageKey.KABADDI)}
         </span>
       </div>
       <div
@@ -955,7 +954,7 @@ const EventNameList = () => {
             </div>
             <p />
             <span className="text-text_secondary  text-x1 font-normal not-italic leading-120 text-center flex items-end justify-end w-auto">
-              {item?.name}
+              {getLanguage(item?.name)}
             </span>
           </div>
         );

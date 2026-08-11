@@ -1,8 +1,11 @@
 import { useEditButtonValuesMutation } from "../../../redux/features/events/events";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const EditStake = () => {
+  const { getLanguage } = useLanguage();
   const [editButtonValue] = useEditButtonValuesMutation();
   const stakes = JSON.parse(localStorage.getItem("buttonValue"));
   const { handleSubmit, register, watch } = useForm({
@@ -34,7 +37,7 @@ const EditStake = () => {
       <div className="absolute top-0 left-0 transperent-bg-one z-0 blur-97 w-[8.3125rem] h-[5.625rem]" />
       <div className="absolute top-0 right-0 transperent-bg-one z-0 blur-97 w-[7rem] h-[4.6875rem]" />
       <span className="font-roboto text-sm font-medium leading-120 text-text_secondary z-[1] w-full">
-        Edit Stakes
+        {getLanguage(LanguageKey.EDIT_STAKE)}
       </span>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -63,7 +66,7 @@ const EditStake = () => {
       
       "
         >
-          Update
+          {getLanguage(LanguageKey.UPDATE)}
         </button>
       </form>
     </div>

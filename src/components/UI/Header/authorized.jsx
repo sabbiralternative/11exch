@@ -1,15 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import useBalance from "../../../hooks/balance";
-import { useLanguage } from "../../../context/LanguageProvider";
 import { useDispatch } from "react-redux";
 import { Settings } from "../../../api";
 import { setShowLanguageModal } from "../../../redux/features/global/globalSlice";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const Authorized = () => {
   const dispatch = useDispatch();
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const { data } = useBalance();
   return (
@@ -46,7 +45,7 @@ const Authorized = () => {
             />
           </svg>
           <span className="text-text_secondary font-roboto not-italic font-semibold leading-150 tracking-widest text-xs">
-            {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}
+            {getLanguage(LanguageKey.DEPOSIT)}
           </span>
         </button>
       </Link>

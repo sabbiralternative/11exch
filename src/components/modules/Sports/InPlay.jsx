@@ -1,3 +1,5 @@
+import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 import LiveVirtual from "../Home/LiveVirtual";
 import ScoreHome from "../Home/ScoreHome";
 
@@ -48,6 +50,7 @@ const InPlay = ({
   setLiveVirtual,
   eventTypeId,
 }) => {
+  const { getLanguage } = useLanguage();
   return (
     <div className="w-full font-roboto">
       <div className="py-1.5 px-3 overflow-hidden relative rounded-tl-xl rounded-tr-xl w-full bg-cricketHeaderGradient border-l-border_cricketLeft border-r-border_cricketRight flex items-start justify-start text-text_secondary border-l border-solid border-r border-l-border_cricketLeft border-r-border_cricketRight">
@@ -55,7 +58,10 @@ const InPlay = ({
         <div className="absolute top-0 right-[7%] h-full w-[29%] vector2 circket-2-bg" />
         <div className="w-full flex items-center gap-1 flex-1 bg-transparent z-[1] font-roboto text-text_secondary text-sm font-medium leading-150 tracking-widest">
           <span>🏏</span>
-          <div className=" capitalize max-w-full truncate">InPlay</div>
+          <div className=" capitalize max-w-full truncate">
+            {" "}
+            {getLanguage(LanguageKey.IN_PLAY)}
+          </div>
           <div className="flex items-center justify-center w-5 h-5 bg-bg_secondary text-text_secondary2  font-roboto font-bold leading-120 not-italic text-x1 rounded-full ">
             {groupedData?.length}
           </div>

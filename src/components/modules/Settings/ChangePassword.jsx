@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { useChangePasswordMutation } from "../../../redux/features/auth/authApi";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const EyeOff = () => {
   return (
@@ -51,6 +53,7 @@ const EyeOn = () => {
 };
 
 const ChangePassword = () => {
+  const { getLanguage } = useLanguage();
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -140,7 +143,7 @@ const ChangePassword = () => {
             </defs>
           </svg>
           <span className="font-roboto text-sm text-text_secondary font-medium leading-120 z-[5] relative">
-            Change Password
+            {getLanguage(LanguageKey.CHANGE_PASSWORD)}
           </span>
         </div>
         <span className="flex items-center justify-center w-5 h-5 py-[0.41644rem] px-[0.2635rem] z-[5] relative rotate-180">
@@ -181,7 +184,7 @@ const ChangePassword = () => {
               {showPassword ? <EyeOff /> : <EyeOn />}
             </button>
           </div>
-          <button
+          {/* <button
             className="inline-block  leading-normal relative overflow-hidden  transition duration-150 ease-in-out flex items-end justify-end font-roboto text-x1 font-medium text-text_secondary cursor-pointer w-full 
       cursor-pointer
       
@@ -189,7 +192,7 @@ const ChangePassword = () => {
             type="button"
           >
             Forgot Current Password?
-          </button>
+          </button> */}
           <div className="flex items-center justify-center w-full h-full border border-solid border-border_secondary4 rounded-md py-[0.4375rem] px-3.5 bg-bg_inputBgColor z-[5] focus-within:border-border_primary relative shadow-inputBoxShadow mt-2">
             <input
               placeholder="Enter New Password"
@@ -238,7 +241,7 @@ const ChangePassword = () => {
       
       "
           >
-            Save
+            {getLanguage(LanguageKey.SAVE)}
           </button>
         </form>
       </div>

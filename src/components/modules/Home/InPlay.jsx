@@ -4,13 +4,20 @@ import { useNavigate } from "react-router-dom";
 import ScoreHome from "./ScoreHome";
 import LiveVirtual from "./LiveVirtual";
 import { FilterLiveVirtual } from "../../../static/filter-live-virtual";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const InPlay = () => {
+  const { getLanguage } = useLanguage();
   const [liveVirtual, setLiveVirtual] = useState([]);
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const { data } = useGroupQuery({ sportsType: 0 }, { pollingInterval: 1000 });
-  const eventName = { 4: "Cricket", 2: "Tennis", 1: "Football" };
+  const eventName = {
+    4: getLanguage(LanguageKey.CRICKET),
+    2: getLanguage(LanguageKey.TENNIS),
+    1: getLanguage(LanguageKey.FOOTBALL),
+  };
   useEffect(() => {
     if (data) {
       const categories = Array.from(
@@ -84,7 +91,7 @@ const InPlay = () => {
             </div>
           </span>
           <span className="text-text_secondary text-sm not-italic font-bold uppercase">
-            IN PLAY
+            {getLanguage(LanguageKey.IN_PLAY)}
           </span>
         </div>
         <div className="flex items-center justify-center gap-1.5" />
