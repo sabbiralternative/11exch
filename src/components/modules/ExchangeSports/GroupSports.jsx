@@ -1,10 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Status } from "../../../const";
+import { LanguageKey, Status } from "../../../const";
 import Notification from "../../UI/Header/Notification";
 import { useGroupQuery } from "../../../hooks/group";
+import useLanguage from "../../../hooks/use-language";
 
 export const GroupSports = () => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const [isInPlay, setIsInPlay] = useState(true);
   const [categories, setCategories] = useState([]);
@@ -88,14 +90,14 @@ export const GroupSports = () => {
                     className={`cursor-pointer flex-1 py-[6px] font-[600] font-sans text-center text-[13px] rounded-md capitalize
              ${isInPlay ? "bg-white text-black" : "bg-blue4 text-white"}`}
                   >
-                    In-play
+                    {getLanguage(LanguageKey.IN_PLAY)}
                   </div>
                   <div
                     onClick={() => setIsInPlay(false)}
                     className={`cursor-pointer flex-1 py-[6px] font-[600] font-sans text-center text-[13px] rounded-md capitalize
              ${!isInPlay ? "bg-white text-black" : "bg-blue4 text-white"}`}
                   >
-                    upcoming{" "}
+                    {getLanguage(LanguageKey.UP_COMING)}{" "}
                   </div>
                 </div>
                 {/* <div className="ml-4">
@@ -120,14 +122,14 @@ export const GroupSports = () => {
                   className={`cursor-pointer flex-1 py-[2px] font-[600] font-sans text-center text-[13px] rounded-sm
            ${isInPlay ? "bg-gray-700 text-white" : "bg-white text-black"}`}
                 >
-                  In-play
+                  {getLanguage(LanguageKey.IN_PLAY)}
                 </div>
                 <div
                   onClick={() => setIsInPlay(false)}
                   className={`cursor-pointer flex-1 py-[2px] font-[600] font-sans text-center text-[13px] rounded-sm
            ${!isInPlay ? "bg-gray-700 text-white" : "bg-white text-black"}`}
                 >
-                  UPCOMING{" "}
+                  {getLanguage(LanguageKey.UP_COMING)}{" "}
                 </div>
               </div>
 

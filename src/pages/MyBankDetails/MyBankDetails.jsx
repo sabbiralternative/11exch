@@ -275,7 +275,11 @@ const MyBankDetails = () => {
                               justifyContent: "space-between",
                             }}
                           >
-                            <p>Account Holder Name: </p>{" "}
+                            <p>
+                              {" "}
+                              {getLanguage(LanguageKey.ACCOUNT_HOLDER_NAME)}
+                              :{" "}
+                            </p>{" "}
                             <p>{bank?.bankAccountName}</p>
                           </div>
                           <div
@@ -287,7 +291,10 @@ const MyBankDetails = () => {
                             }}
                           >
                             {" "}
-                            <p> Account number: </p>{" "}
+                            <p>
+                              {" "}
+                              {getLanguage(LanguageKey.ACCOUNT_NUMBER)}:{" "}
+                            </p>{" "}
                             <p>{bank?.accountNumber}</p>
                           </div>
                           <div
@@ -299,7 +306,8 @@ const MyBankDetails = () => {
                             }}
                           >
                             {" "}
-                            <p> IFSC Code: </p> <p>{bank?.ifsc}</p>
+                            <p> {getLanguage(LanguageKey.IFSC_CODE)}: </p>{" "}
+                            <p>{bank?.ifsc}</p>
                           </div>
                           <div
                             style={{
@@ -310,7 +318,11 @@ const MyBankDetails = () => {
                             }}
                           >
                             {" "}
-                            <p> Bank Branch: </p> <p>{bank?.bankBranch}</p>
+                            <p>
+                              {" "}
+                              {getLanguage(LanguageKey.BANK_BRANCH)}:{" "}
+                            </p>{" "}
+                            <p>{bank?.bankBranch}</p>
                           </div>
                           <div
                             style={{
@@ -321,7 +333,11 @@ const MyBankDetails = () => {
                             }}
                           >
                             {" "}
-                            <p> Account added on: </p> <p>{bank?.dateAdded}</p>
+                            <p>
+                              {" "}
+                              {getLanguage(LanguageKey.ACCOUNT_ADDED_ON)}:{" "}
+                            </p>{" "}
+                            <p>{bank?.dateAdded}</p>
                           </div>
                           {bank?.isDefault === 0 && tab === 1 && (
                             <button

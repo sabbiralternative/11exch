@@ -469,11 +469,11 @@ const DepositReport = () => {
                     <path d="M15 17l-6 -6" />
                   </svg>
                   <h2 className="text-xl font-semibold text-text_secondary">
-                    No data found
+                    {getLanguage(LanguageKey.NO_RECORD_FOUND)}
                   </h2>
-                  <p className="text-text_secondary1 text-sm text-justify">
+                  {/* <p className="text-text_secondary1 text-sm text-justify">
                     No Deposit reports are available...
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>

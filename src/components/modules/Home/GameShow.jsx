@@ -6,8 +6,11 @@ import toast from "react-hot-toast";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const GameShow = ({ popularGames }) => {
+  const { getLanguage } = useLanguage();
   const [showSeeAll, setShowSeeAll] = useState(false);
   const ref = useRef();
   const navigate = useNavigate();
@@ -60,7 +63,7 @@ const GameShow = ({ popularGames }) => {
               </svg>
             </p>
             <span className="text-text_secondary text-sm not-italic font-bold uppercase">
-              GAME SHOWS
+              {getLanguage(LanguageKey.GAME_SHOWS)}
             </span>
           </div>
           <div className="flex items-center justify-center gap-1.5">
@@ -72,7 +75,9 @@ const GameShow = ({ popularGames }) => {
       "
               type="button"
             >
-              {showSeeAll ? "View Less" : "View All"}
+              {showSeeAll
+                ? getLanguage(LanguageKey.VIEW_LESS)
+                : getLanguage(LanguageKey.VIEW_ALL)}
             </button>
             <svg
               onClick={() => scrollToLeft(ref)}

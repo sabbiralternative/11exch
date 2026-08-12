@@ -1,8 +1,11 @@
 import { Fragment } from "react";
 import toast from "react-hot-toast";
 import useSBCashOut from "../../../hooks/sb_cashout";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const OpenBets = ({ currentBets, sportsBook, refetch }) => {
+  const { getLanguage } = useLanguage();
   const { mutate: cashOut } = useSBCashOut();
   const sports =
     sportsBook &&
@@ -120,7 +123,7 @@ const OpenBets = ({ currentBets, sportsBook, refetch }) => {
                       }}
                     >
                       <span style={{ fontSize: "10px", color: "black" }}>
-                        Cashout
+                        {getLanguage(LanguageKey.CASHOUT)}
                       </span>
                       {price && (
                         <span style={{ color: "black", fontSize: "10px" }}>
@@ -158,7 +161,7 @@ const OpenBets = ({ currentBets, sportsBook, refetch }) => {
       )}
       {currentBets?.length === 0 || !currentBets ? (
         <div className="mt-1 text-white flex items-center justify-center w-full my-2">
-          No bet available
+          {getLanguage(LanguageKey.NO_BET_AVAILABLE)}
         </div>
       ) : null}
     </Fragment>

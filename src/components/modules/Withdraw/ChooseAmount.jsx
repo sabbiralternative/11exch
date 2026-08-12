@@ -1,6 +1,9 @@
+import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 import useWithdrawBreakdown from "../../../hooks/withdrawBreakdown";
 
 const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
+  const { getLanguage } = useLanguage();
   const { data: withdrawBreakdown } = useWithdrawBreakdown();
 
   const handleShowBank = () => {
@@ -16,7 +19,10 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
   return (
     <div className="px-2 pb-2 flex flex-col items-start justify-start gap-y-2 mt-1 md:mt-[0px] w-full">
       <div className="w-full flex flex-col gap-2 pt-2 pb-1 px-4 rounded-lg bg-bg_Quaternary">
-        <div className=" font-medium text-base leading-5">Withdraw Funds</div>
+        <div className=" font-medium text-base leading-5">
+          {" "}
+          {getLanguage(LanguageKey.WITHDRAW_FUNDS)}
+        </div>
         <div className="w-full flex flex-col text-xs text-text_Ternary transition-all ease-in-out duration-100">
           <div className="text-xs md:text-sm  pt-1 font-medium leading-4">
             1. This form is for withdrawing the amount from the main wallet
@@ -140,7 +146,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
                 : "cursor-pointer"
             }`}
           >
-            <span>Continue to select account</span>
+            <span>{getLanguage(LanguageKey.CONTINUE_TO_SELECT_ACCOUNT)}</span>
           </div>
         </div>
       </div>

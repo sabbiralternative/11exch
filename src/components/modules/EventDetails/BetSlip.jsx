@@ -20,8 +20,11 @@ import {
   handleIncreasePrice,
 } from "../../../utils/editBetSlipPrice";
 import BetLoading from "./BetLoading";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const BetSlip = ({ currentPlaceBetEvent }) => {
+  const { getLanguage } = useLanguage();
   const { closePopupForForever } = useSelector((state) => state.global);
   const [isCashOut, setIsCashOut] = useState(false);
   const [profit, setProfit] = useState(0);
@@ -224,14 +227,15 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
           <div className=" grid grid-cols-12 gap-x-2 w-full items-center">
             <div className="bg-bg_betSlipProfitColor border-border_betSlipProfitColor col-span-6 rounded-md py-[5px] px-2 border-l-[2px]  flex items-center justify-between shadow-md">
               <span className="text-text_tertiary9 text-xs font-medium">
-                Profit :{" "}
+                {getLanguage(LanguageKey.PROFIT)} :{" "}
               </span>
               <span className="text-text_tertiary10 text-xs font-semibold w-[60%] truncate text-end">
                 ₹{profit}
               </span>
             </div>
             <div className="col-span-6 text-end w-full truncate text-[0.6875rem] text-text_tertiary13 font-semibold">
-              Max Market: ₹ ${placeBetValues?.maxLiabilityPerBet}
+              {getLanguage(LanguageKey.MAX_MARKET)} : ₹ $
+              {placeBetValues?.maxLiabilityPerBet}
             </div>
           </div>
           <div
@@ -244,7 +248,7 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
             >
               <div className=" col-span-5 flex flex-col gap-y-[0.25rem]">
                 <span className=" text-text_tertiary14 text-[0.6875rem] font-medium">
-                  ODDS
+                  {getLanguage(LanguageKey.ODDS)}
                 </span>
                 <div className="flex items-center justify-between w-full disabled:cursor-not-allowed w-full text-text_tertiary15 h-[2.5rem] flex items-center justify-start rounded-lg shadow-sm">
                   {!placeBetValues?.isWeak && (
@@ -333,7 +337,7 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
               className=" col-span-6 flex flex-col gap-y-[0.25rem]"
             >
               <span className=" text-text_tertiary14 text-[0.6875rem] font-medium uppercase">
-                Stakes
+                {getLanguage(LanguageKey.STAKE)}
               </span>
               <span>
                 <input
@@ -374,7 +378,7 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
       "
               type="button"
             >
-              MIN
+              {getLanguage(LanguageKey.MIN)}
             </button>
             <button
               onClick={() =>
@@ -390,7 +394,7 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
       "
               type="button"
             >
-              MAX
+              {getLanguage(LanguageKey.MAX)}
             </button>
 
             <button
@@ -404,7 +408,7 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
               id="clearBtn"
               type="button"
             >
-              CLEAR
+              {getLanguage(LanguageKey.CLEAR)}
             </button>
           </div>
           <div title="BetBtns" className=" grid grid-cols-2 gap-x-2 w-full">
@@ -416,7 +420,7 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
       "
               type="button"
             >
-              Cancel Bet
+              {getLanguage(LanguageKey.CANCEL_BET)}
             </button>
             <div className="w-full">
               <button
@@ -427,7 +431,7 @@ const BetSlip = ({ currentPlaceBetEvent }) => {
       "
                 type="button"
               >
-                Place Bet
+                {getLanguage(LanguageKey.PLACE_BET)}
               </button>
             </div>
           </div>

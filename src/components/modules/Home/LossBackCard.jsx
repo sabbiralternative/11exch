@@ -62,7 +62,7 @@ const LossBackCard = () => {
             <div className="text-base flex items-center gap-2 mt-1">
               <div className="mt-1">
                 <span className="px-2 py-1 text-xs font-bold rounded-full bg-white/20 text-white">
-                  View available claims
+                  {getLanguage(LanguageKey.VIEW_AVAILABLE_CLAIMS)}
                 </span>
               </div>
             </div>

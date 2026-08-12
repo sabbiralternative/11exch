@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const GameProvider = ({ casinoProviders }) => {
+  const { getLanguage } = useLanguage();
   const [showMore, setShowMore] = useState(false);
   const navigate = useNavigate();
   const sortedData =
@@ -14,7 +17,7 @@ const GameProvider = ({ casinoProviders }) => {
         <div className="max-w-[85%] text-text_color_primary1 font-semibold capitalize">
           <div className="flex items-center gap-1.5 ">
             <span className=" text-base text-text_secondary font-extrabold font-medium font-extrabold">
-              Casino Providers
+              {getLanguage(LanguageKey.CASINO_PROVIDERS)}
             </span>
           </div>
         </div>
@@ -24,7 +27,9 @@ const GameProvider = ({ casinoProviders }) => {
             className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
             type="button"
           >
-            {showMore ? "View Less" : "View All"}
+            {showMore
+              ? getLanguage(LanguageKey.VIEW_LESS)
+              : getLanguage(LanguageKey.VIEW_ALL)}
           </button>
           <button
             className="relative overflow-hidden flex w-[20px] h-[20px] justify-center bg-bg_secondary4 items-center rounded"

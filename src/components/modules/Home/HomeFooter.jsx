@@ -1,4 +1,8 @@
+import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
+
 const HomeFooter = () => {
+  const { getLanguage } = useLanguage();
   return (
     <footer className="flex items-center justify-center flex-col gap-3 pb-[8rem] px-2">
       {/* <div className="font-roboto text-center text-x1 text-text_secondary7 font-medium leading-120 w-full">
@@ -136,10 +140,10 @@ const HomeFooter = () => {
               </svg>
               <div className="flex rounded flex-col items-start justify-center text-xs">
                 <span className="w-full flex flex-row xxs:text-x sm:text-xs md:text-sm justify-between text-text_secondary font-normal">
-                  <span>Download</span>
+                  <span>{getLanguage(LanguageKey.DOWNLOAD)}</span>
                 </span>
                 <span className="text-text_secondary xxs:text-x sm:text-xs md:text-sm font-semibold whitespace-nowrap flex-nowrap uppercase">
-                  Android App
+                  {getLanguage(LanguageKey.ANDROID_APP)}
                 </span>
               </div>
             </div>

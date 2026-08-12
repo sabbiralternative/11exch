@@ -3,8 +3,11 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 
 import { useIndexQuery } from "../../hooks";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const AffiliateUserProfitLoss = () => {
+  const { getLanguage } = useLanguage();
   const fromDate = new Date(new Date().setDate(new Date().getDate() - 7))
     .toISOString()
     .split("T")[0];
@@ -55,7 +58,7 @@ const AffiliateUserProfitLoss = () => {
                     </button>
                   </div>
                   <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary  font-bold  leading-5">
-                    <span>Back</span>
+                    <span> {getLanguage(LanguageKey.BACK)}</span>
                   </span>
                 </div>
               </div>
@@ -143,7 +146,7 @@ const AffiliateUserProfitLoss = () => {
               ) : (
                 <div className="flex items-center justify-center w-full pt-20">
                   <h2 className="text-base ">
-                    No betting profit and loss yet!
+                    {getLanguage(LanguageKey.NO_BETTING_PROFIT_LOSS_YET)}
                   </h2>
                 </div>
               )}

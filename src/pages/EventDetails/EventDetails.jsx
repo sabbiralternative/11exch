@@ -18,8 +18,11 @@ import { useCurrentBets } from "../../hooks/currentBets";
 import OpenBets from "../../components/modules/EventDetails/OpenBets";
 import Premium from "../../components/modules/EventDetails/Premium";
 import ToggleButtons from "../../components/modules/EventDetails/ToggleButtons";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const EventDetails = () => {
+  const { getLanguage } = useLanguage();
   const [fancyPremiumTab, setFancyPremiumTab] = useState("");
   const [tab, setTab] = useState("market");
   const { eventTypeId, eventId } = useParams();
@@ -185,7 +188,7 @@ const EventDetails = () => {
                 <span
                   className={`   py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ${tab === "market" ? "text-text_secondary" : "text-text_tertiary8"}`}
                 >
-                  Market
+                  {getLanguage(LanguageKey.MARKET)}
                 </span>
               </div>
               <div
@@ -195,7 +198,7 @@ const EventDetails = () => {
                 <span
                   className={`   py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ${tab === "match_info" ? "text-text_secondary" : "text-text_tertiary8"}`}
                 >
-                  Match Info
+                  {getLanguage(LanguageKey.MATCH_INFO)}
                 </span>
               </div>
               <div
@@ -205,7 +208,7 @@ const EventDetails = () => {
                 <span
                   className={`   py-2.5 px-1.5 text-[12px] md:text-[13px] lg:text-base font-bold leading-4 active:scale-95 flex items-center justify-center gap-x-1 block z-10 ${tab === "open_bets" ? "text-text_secondary" : "text-text_tertiary8"}`}
                 >
-                  Open Bets
+                  {getLanguage(LanguageKey.OPEN_BETS)}
                 </span>
               </div>
               <div

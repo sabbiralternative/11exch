@@ -1,8 +1,11 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { scrollToLeft, scrollToRight } from "../../utils/scroll";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const GameProvider = ({ casinoProviders }) => {
+  const { getLanguage } = useLanguage();
   const ref = useRef();
   const [showMore, setShowMore] = useState(false);
   const navigate = useNavigate();
@@ -16,7 +19,7 @@ const GameProvider = ({ casinoProviders }) => {
         <div className="max-w-[85%] text-text_color_primary1 font-semibold capitalize">
           <div className="flex items-center gap-1.5 py-1">
             <span className=" text-text_secondary px-1.5 uppercase text-sm font-medium font-extrabold">
-              Game Providers
+              {getLanguage(LanguageKey.GAME_PROVIDERS)}
             </span>
           </div>
         </div>
@@ -26,7 +29,9 @@ const GameProvider = ({ casinoProviders }) => {
             className="relative overflow-hidden  text-text_secondary min-w-max rounded-md px-1 py-0.5 font-semibold text-[12px] leading-[18px] transition-all ease-in-out duration-200"
             type="button"
           >
-            {showMore ? "View Less" : "View All"}
+            {showMore
+              ? getLanguage(LanguageKey.VIEW_LESS)
+              : getLanguage(LanguageKey.VIEW_ALL)}
           </button>
           <button
             onClick={() => scrollToLeft(ref)}

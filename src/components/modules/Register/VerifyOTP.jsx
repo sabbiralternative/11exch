@@ -113,7 +113,7 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
           <div className="flex items-center font-roboto justify-center flex-col bg-appBackgroundGradient bg-cover bg-top rounded-2xl gap-y-4 pb-6 h-max p-4 shadow-lg">
             <div className="flex flex-col items-start gap-[0.3125rem] w-full">
               <span className="text-transparent text-start bg-clip-text leading-150 tracking-widest  font-semibold bg-exchLoginTextGradient text-lg">
-                New Member?
+                {getLanguage(LanguageKey.NEW_MEMBER)}?
               </span>
               <div className="flex items-center gap-1.5 z-2">
                 <span className="text-text_secondary  text-lg not-italic font-semibold leading-150 tracking-widest">

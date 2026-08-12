@@ -6,8 +6,11 @@ import { Settings } from "../../api";
 import WarningCondition from "../../components/shared/WarningCondition/WarningCondition";
 import { setShowLoginModal } from "../../redux/features/global/globalSlice";
 import toast from "react-hot-toast";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const GameProviderDetails = () => {
+  const { getLanguage } = useLanguage();
   const { game_name } = useParams();
   const { data: lotusLobby, isSuccess } = useLotusHomeLobby({
     provider: game_name,
@@ -75,7 +78,7 @@ const GameProviderDetails = () => {
                     <div className="flex-1 h-full capitalize ml-[4px] flex items-center text-white font-medium text-[16px] leading-5">
                       <div className="flex items-center  rounded-full px-2 py-1 w-/4">
                         <div className="truncate font-medium">
-                          <span>Casino</span>
+                          <span> {getLanguage(LanguageKey.CASINO)}</span>
                           <span>/{game_name}</span>
                         </div>
                       </div>
@@ -106,7 +109,7 @@ const GameProviderDetails = () => {
                   </div>
                   {lotusLobby?.length === 0 && isSuccess && (
                     <div className="w-full flex items-center justify-center mt-20 text-white">
-                      No game found!
+                      {getLanguage(LanguageKey.NO_GAME_FOUND)}!
                     </div>
                   )}
                 </div>

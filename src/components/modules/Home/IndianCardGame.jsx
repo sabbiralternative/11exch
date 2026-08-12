@@ -6,8 +6,11 @@ import { API } from "../../../api";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 import toast from "react-hot-toast";
 import { scrollToLeft, scrollToRight } from "../../../utils/scroll";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const IndianCardGame = () => {
+  const { getLanguage } = useLanguage();
   const [showSeeAll, setShowSeeAll] = useState(false);
   const ref = useRef();
   const navigate = useNavigate();
@@ -71,7 +74,7 @@ const IndianCardGame = () => {
               </svg>
             </p>
             <span className="text-text_secondary text-sm not-italic font-bold uppercase">
-              Indian Card Games
+              {getLanguage(LanguageKey.INDIAN_CARD_GAMES)}
             </span>
           </div>
           <div className="flex items-center justify-center gap-1.5">
@@ -83,7 +86,9 @@ const IndianCardGame = () => {
       "
               type="button"
             >
-              {showSeeAll ? "View Less" : "View All"}
+              {showSeeAll
+                ? getLanguage(LanguageKey.VIEW_LESS)
+                : getLanguage(LanguageKey.VIEW_ALL)}
             </button>
             <svg
               onClick={() => scrollToLeft(ref)}

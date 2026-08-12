@@ -228,7 +228,7 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
                   >
                     {timer > 0
                       ? `Resend OTP in ${timer} seconds`
-                      : "Resend OTP"}
+                      : getLanguage(LanguageKey.RESEND_OTP)}
                   </button>
                 </div>
               </div>

@@ -12,8 +12,11 @@ import { isGameSuspended } from "../../../utils/isOddSuspended";
 import { Settings } from "../../../api";
 import { handleCashOutPlaceBet } from "../../../utils/handleCashoutPlaceBet";
 import SpeedCashOut from "../../modals/SpeedCashOut/SpeedCashOut";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 export const Bookmaker = ({ data }) => {
+  const { getLanguage } = useLanguage();
   const [speedCashOut, setSpeedCashOut] = useState(null);
   const { eventId } = useParams();
   const [teamProfit, setTeamProfit] = useState([]);
@@ -278,7 +281,7 @@ export const Bookmaker = ({ data }) => {
       "
                           >
                             <div className="text-[10px] md:text-[12px] text-text_secondary2  whitespace-nowrap">
-                              Cashout{" "}
+                              {getLanguage(LanguageKey.CASHOUT)}{" "}
                               {teamProfitForGame?.profit &&
                                 `(${teamProfitForGame.profit.toFixed(0)})`}
                             </div>
@@ -305,7 +308,7 @@ export const Bookmaker = ({ data }) => {
       "
                           >
                             <div className="text-[10px] md:text-[12px] text-text_secondary2  whitespace-nowrap">
-                              Speed Cashout
+                              {getLanguage(LanguageKey.SPEED_CASHOUT)}
                             </div>
                           </button>
                         )}

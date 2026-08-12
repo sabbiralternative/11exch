@@ -1,4 +1,8 @@
+import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
+
 const BetLoading = ({ absolute }) => {
+  const { getLanguage } = useLanguage();
   return (
     <div
       id="popup-modal"
@@ -18,9 +22,11 @@ const BetLoading = ({ absolute }) => {
             </span> */}
           </span>
           <span className="font-semibold mt-[4px]">
-            Your bet is being processed...
+            {getLanguage(LanguageKey.YOUR_BET_IS_BEING_PROCESSED)}...
           </span>
-          <span className="font-semibold">Please Wait...</span>
+          <span className="font-semibold">
+            {getLanguage(LanguageKey.PLEASE_WAIT)}...
+          </span>
         </div>
       </div>
     </div>
