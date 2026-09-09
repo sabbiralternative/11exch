@@ -4,6 +4,7 @@ import { Settings } from "../../../api";
 import { Link } from "react-router-dom";
 import useLanguage from "../../../hooks/use-language";
 import { LanguageKey } from "../../../const";
+import { FaMobileAlt, FaRegUser } from "react-icons/fa";
 
 const EnterMobileNumber = ({
   mobile,
@@ -11,6 +12,10 @@ const EnterMobileNumber = ({
   setTimer,
   setMobile,
   setTab,
+  setMobileUsername,
+  mobileUsername,
+  setUser,
+  user,
 }) => {
   const { getLanguage } = useLanguage();
   const [getOTP] = useGetOtpMutation();
@@ -80,122 +85,200 @@ const EnterMobileNumber = ({
               autoComplete="off"
               className="w-full h-max flex flex-col gap-y-4"
             >
-              <div title="Mobile Number *" className="flex flex-col w-full">
-                <label
-                  htmlFor="phoneNo"
-                  className="text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary3 mb-1 px-1"
-                >
-                  {getLanguage(LanguageKey.MOBILE_NUMBER)} *
-                </label>
-                <div className="flex items-center w-full w-full text-sm transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg   not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
-                  <div className="flex-shrink-0 w-max">
-                    <div className="flex items-center gap-x-2 h-full ">
-                      <div className="flex items-center gap-x-1">
-                        {" "}
-                        <span className="leading-150 tracking-widest font-normal">
-                          +91
+              {Settings.registration_mobile &&
+                Settings.registration_username && (
+                  <div className=" w-full bg-[color-mix(in_srgb,var(--color-bg-primary)_30%,transparent)] mb-3">
+                    <div className="flex flex-row items-center justify-start gap-6 relative w-full">
+                      <div
+                        onClick={() => setMobileUsername("mobile")}
+                        className={`cursor-pointer flex flex-row items-center justify-center px-[25px] py-2 text-[13px] md:text-sm lg:text-base  font-bold leading-4 active:scale-95 z-10 w-full gap-x-1.5 text-white ${
+                          mobileUsername === "mobile"
+                            ? " bg-exchRegisterGradient"
+                            : ""
+                        }`}
+                      >
+                        <FaMobileAlt />
+                        <span className={`   `}>
+                          {getLanguage(LanguageKey.BY_PHONE)}
                         </span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlnsXlink="http://www.w3.org/1999/xlink"
-                          width={18}
-                          height={18}
-                          viewBox="-45 -30 90 60"
-                          fill="#07038D"
-                        >
-                          <title>Flag of India</title>
-                          <path fill="#FFF" d="m-45-30h90v60h-90z" />
-                          <path fill="#FF6820" d="m-45-30h90v20h-90z" />
-                          <path fill="#046A38" d="m-45 10h90v20h-90z" />
-                          <circle r="9.25" />
-                          <circle fill="#FFF" r={8} />
-                          <circle r="1.6" />
-                          <g id="d">
-                            <g id="c">
-                              <g id="b">
-                                <g id="a">
-                                  <path d="m0-8 .3 4.81409L0-.80235-.3-3.18591z" />
-                                  <circle
-                                    transform="rotate(7.5)"
-                                    r="0.35"
-                                    cy={-8}
-                                  />
+                      </div>
+                      <div
+                        onClick={() => setMobileUsername("username")}
+                        className={`w-full cursor-pointer flex flex-row items-center justify-center px-[25px] py-2 text-[13px] md:text-sm lg:text-base  font-bold leading-4 active:scale-95 z-10 gap-x-1.5 text-white  ${
+                          mobileUsername === "username"
+                            ? " bg-exchRegisterGradient"
+                            : ""
+                        }`}
+                      >
+                        <FaRegUser />
+                        <span className={`   `}>
+                          {getLanguage(LanguageKey.BY_USERNAME)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              {mobileUsername === "mobile" && Settings.registration_mobile && (
+                <div title="Mobile Number *" className="flex flex-col w-full">
+                  <label
+                    htmlFor="phoneNo"
+                    className="text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary3 mb-1 px-1"
+                  >
+                    {getLanguage(LanguageKey.MOBILE_NUMBER)} *
+                  </label>
+                  <div className="flex items-center w-full w-full text-sm transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg   not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
+                    <div className="flex-shrink-0 w-max">
+                      <div className="flex items-center gap-x-2 h-full ">
+                        <div className="flex items-center gap-x-1">
+                          {" "}
+                          <span className="leading-150 tracking-widest font-normal">
+                            +91
+                          </span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlnsXlink="http://www.w3.org/1999/xlink"
+                            width={18}
+                            height={18}
+                            viewBox="-45 -30 90 60"
+                            fill="#07038D"
+                          >
+                            <title>Flag of India</title>
+                            <path fill="#FFF" d="m-45-30h90v60h-90z" />
+                            <path fill="#FF6820" d="m-45-30h90v20h-90z" />
+                            <path fill="#046A38" d="m-45 10h90v20h-90z" />
+                            <circle r="9.25" />
+                            <circle fill="#FFF" r={8} />
+                            <circle r="1.6" />
+                            <g id="d">
+                              <g id="c">
+                                <g id="b">
+                                  <g id="a">
+                                    <path d="m0-8 .3 4.81409L0-.80235-.3-3.18591z" />
+                                    <circle
+                                      transform="rotate(7.5)"
+                                      r="0.35"
+                                      cy={-8}
+                                    />
+                                  </g>
+                                  <use xlinkHref="#a" transform="scale(-1)" />
                                 </g>
-                                <use xlinkHref="#a" transform="scale(-1)" />
+                                <use xlinkHref="#b" transform="rotate(15)" />
                               </g>
-                              <use xlinkHref="#b" transform="rotate(15)" />
+                              <use xlinkHref="#c" transform="rotate(30)" />
                             </g>
-                            <use xlinkHref="#c" transform="rotate(30)" />
-                          </g>
-                          <use xlinkHref="#d" transform="rotate(60)" />
-                          <use xlinkHref="#d" transform="rotate(120)" />
+                            <use xlinkHref="#d" transform="rotate(60)" />
+                            <use xlinkHref="#d" transform="rotate(120)" />
+                          </svg>
+                        </div>
+                        <svg
+                          width={1}
+                          height={24}
+                          viewBox="0 0 2 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect width={1} height={24} fill="currentColor" />
                         </svg>
                       </div>
-                      <svg
-                        width={1}
-                        height={24}
-                        viewBox="0 0 2 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <rect width={1} height={24} fill="currentColor" />
-                      </svg>
+                    </div>
+                    <input
+                      onChange={handleMobileNo}
+                      value={mobile}
+                      className="bg-transparent focus:outline-none focus:border-none focus:ring-0 px-2 py-1 flex-grow min-w-0 border-none focus:outline-none bg-transparent"
+                      placeholder="Enter your Mobile Number"
+                      autoComplete="tel"
+                      inputMode="numeric"
+                      type="tel"
+                    />
+                    <div className="flex-shrink-0 w-max">
+                      <div className="w-5 h-5 rounded-md bg-bg_color_danger flex items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="var(--color-icon_error)"
+                          height={16}
+                          width={16}
+                          viewBox="0 0 384 512"
+                        >
+                          <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
-                  <input
-                    onChange={handleMobileNo}
-                    value={mobile}
-                    className="bg-transparent focus:outline-none focus:border-none focus:ring-0 px-2 py-1 flex-grow min-w-0 border-none focus:outline-none bg-transparent"
-                    placeholder="Enter your Mobile Number"
-                    autoComplete="tel"
-                    inputMode="numeric"
-                    type="tel"
-                  />
-                  <div className="flex-shrink-0 w-max">
-                    <div className="w-5 h-5 rounded-md bg-bg_color_danger flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="var(--color-icon_error)"
-                        height={16}
-                        width={16}
-                        viewBox="0 0 384 512"
-                      >
-                        <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                      </svg>
-                    </div>
+                  <div className="flex items-start w-full justify-between leading-normal px-1">
+                    <div className=" w-max  h-max" />
                   </div>
                 </div>
-                <div className="flex items-start w-full justify-between leading-normal px-1">
-                  <div className=" w-max  h-max" />
-                </div>
-              </div>
+              )}
+
+              {mobileUsername === "username" &&
+                Settings.registration_username && (
+                  <div className="flex flex-col gap-y-0.5 w-full">
+                    <div title="Password *" className="flex flex-col w-full">
+                      <label
+                        htmlFor="password"
+                        className="font-roboto text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary2 mb-1 px-1"
+                      >
+                        {getLanguage(LanguageKey.USERNAME)} *
+                      </label>
+                      <div className="flex items-center w-full w-full text-[13px] transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg  font-roboto not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
+                        <input
+                          onChange={(e) => setUser(e.target.value)}
+                          className="focus:border-none focus:ring-0 px-2 py-1 flex-grow min-w-0 border-none focus:outline-none bg-transparent"
+                          placeholder="Enter Username"
+                          autoComplete="current-password"
+                          inputMode="text"
+                          type="text"
+                          data-gtm-form-interact-field-id={1}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
               <div className="w-full flex items-center justify-center gap-x-2">
-                <button
-                  onClick={handleOTP}
-                  disabled={mobile?.length < 10}
-                  type="button"
-                  className="relative overflow-hidden w-full mt-2 h-fit bg-exchRegisterGradient text-text_primary3 transition-all ease-in-out text-sm whitespace-nowrap p-2 rounded-lg active:scale-[0.98] active:opacity-95 disabled:opacity-70 font-medium relative flex items-center justify-center gap-x-2 font-bold"
-                >
-                  <svg
-                    width={20}
-                    height={20}
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g id="fi_7182118">
-                      <path
-                        id="Vector"
-                        d="M15.8332 2.5H4.1665C2.74984 2.5 1.6665 3.58333 1.6665 5V17.5C1.6665 17.8333 1.83317 18.0833 2.08317 18.25C2.24984 18.3333 2.33317 18.3333 2.49984 18.3333C2.6665 18.3333 2.83317 18.3333 2.9165 18.25L6.6665 15.9167C6.83317 15.8333 6.99984 15.8333 7.1665 15.8333H15.8332C17.2498 15.8333 18.3332 14.75 18.3332 13.3333V5C18.3332 3.58333 17.2498 2.5 15.8332 2.5ZM6.6665 10C6.1665 10 5.83317 9.66667 5.83317 9.16667C5.83317 8.66667 6.1665 8.33333 6.6665 8.33333C7.1665 8.33333 7.49984 8.66667 7.49984 9.16667C7.49984 9.66667 7.1665 10 6.6665 10ZM9.99984 10C9.49984 10 9.1665 9.66667 9.1665 9.16667C9.1665 8.66667 9.49984 8.33333 9.99984 8.33333C10.4998 8.33333 10.8332 8.66667 10.8332 9.16667C10.8332 9.66667 10.4998 10 9.99984 10ZM13.3332 10C12.8332 10 12.4998 9.66667 12.4998 9.16667C12.4998 8.66667 12.8332 8.33333 13.3332 8.33333C13.8332 8.33333 14.1665 8.66667 14.1665 9.16667C14.1665 9.66667 13.8332 10 13.3332 10Z"
+                {Settings.registration_mobile &&
+                  mobileUsername === "mobile" && (
+                    <button
+                      onClick={handleOTP}
+                      disabled={mobile?.length < 10}
+                      type="button"
+                      className="relative overflow-hidden w-full mt-2 h-fit bg-exchRegisterGradient text-text_primary3 transition-all ease-in-out text-sm whitespace-nowrap p-2 rounded-lg active:scale-[0.98] active:opacity-95 disabled:opacity-70 font-medium relative flex items-center justify-center gap-x-2 font-bold"
+                    >
+                      <svg
+                        width={20}
+                        height={20}
+                        viewBox="0 0 20 20"
                         fill="currentColor"
-                      />
-                    </g>
-                  </svg>
-                  <span className="   ">
-                    {" "}
-                    {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
-                  </span>
-                </button>
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g id="fi_7182118">
+                          <path
+                            id="Vector"
+                            d="M15.8332 2.5H4.1665C2.74984 2.5 1.6665 3.58333 1.6665 5V17.5C1.6665 17.8333 1.83317 18.0833 2.08317 18.25C2.24984 18.3333 2.33317 18.3333 2.49984 18.3333C2.6665 18.3333 2.83317 18.3333 2.9165 18.25L6.6665 15.9167C6.83317 15.8333 6.99984 15.8333 7.1665 15.8333H15.8332C17.2498 15.8333 18.3332 14.75 18.3332 13.3333V5C18.3332 3.58333 17.2498 2.5 15.8332 2.5ZM6.6665 10C6.1665 10 5.83317 9.66667 5.83317 9.16667C5.83317 8.66667 6.1665 8.33333 6.6665 8.33333C7.1665 8.33333 7.49984 8.66667 7.49984 9.16667C7.49984 9.66667 7.1665 10 6.6665 10ZM9.99984 10C9.49984 10 9.1665 9.66667 9.1665 9.16667C9.1665 8.66667 9.49984 8.33333 9.99984 8.33333C10.4998 8.33333 10.8332 8.66667 10.8332 9.16667C10.8332 9.66667 10.4998 10 9.99984 10ZM13.3332 10C12.8332 10 12.4998 9.66667 12.4998 9.16667C12.4998 8.66667 12.8332 8.33333 13.3332 8.33333C13.8332 8.33333 14.1665 8.66667 14.1665 9.16667C14.1665 9.66667 13.8332 10 13.3332 10Z"
+                            fill="currentColor"
+                          />
+                        </g>
+                      </svg>
+                      <span className="   ">
+                        {" "}
+                        {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                      </span>
+                    </button>
+                  )}
+                {Settings.registration_username &&
+                  mobileUsername === "username" && (
+                    <button
+                      disabled={!user}
+                      onClick={() => setTab(2)}
+                      type="button"
+                      className="relative overflow-hidden w-full mt-2 h-fit bg-exchRegisterGradient text-text_primary3 transition-all ease-in-out text-sm whitespace-nowrap p-2 rounded-lg active:scale-[0.98] active:opacity-95 disabled:opacity-70 font-medium relative flex items-center justify-center gap-x-2 font-bold"
+                    >
+                      <span className="   ">
+                        {" "}
+                        {getLanguage(LanguageKey.NEXT)}
+                      </span>
+                    </button>
+                  )}
 
                 {/* <button
                   disabled={mobile?.length < 10}

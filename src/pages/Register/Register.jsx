@@ -1,8 +1,14 @@
 import { Fragment, useEffect, useState } from "react";
 import EnterMobileNumber from "../../components/modules/Register/EnterMobileNumber";
 import VerifyOTP from "../../components/modules/Register/VerifyOTP";
+import { Settings } from "../../api";
 
 const Register = () => {
+  const [user, setUser] = useState("");
+  const [mobileUsername, setMobileUsername] = useState(
+    Settings.registration_mobile ? "mobile" : "username",
+  );
+
   const [tab, setTab] = useState(1);
   const [timer, setTimer] = useState(null);
   const [order, setOrder] = useState({
@@ -33,6 +39,10 @@ const Register = () => {
           setOrder={setOrder}
           setTimer={setTimer}
           setTab={setTab}
+          setMobileUsername={setMobileUsername}
+          mobileUsername={mobileUsername}
+          setUser={setUser}
+          user={user}
         />
       )}
       {tab === 2 && (
@@ -43,6 +53,8 @@ const Register = () => {
           setOrder={setOrder}
           setTimer={setTimer}
           order={order}
+          user={user}
+          mobileUsername={mobileUsername}
         />
       )}
     </Fragment>

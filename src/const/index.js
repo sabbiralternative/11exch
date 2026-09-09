@@ -159,7 +159,6 @@ export const LanguageKey = {
   REFERRAL_CODE: "REFERRAL_CODE",
   PENDING: "PENDING",
   PROMOTIONS: "PROMOTIONS",
-  /*  */
   MENU: "MENU",
   MAIN_WALLET: "MAIN_WALLET",
   SETTINGS: "SETTINGS",
@@ -206,7 +205,7 @@ export const LanguageKey = {
   CLOSE: "CLOSE",
   SPEED_CASHOUT: "SPEED_CASHOUT",
   SPEED_CASH: "SPEED_CASH",
-  /*  */
+
   BONUS_INFORMATION: "BONUS_INFORMATION",
   COMMISSION_INFO: "COMMISSION_INFO",
   INVITE_YOUR_FRIENDS: "INVITE_YOUR_FRIENDS",
@@ -312,5 +311,8 @@ export const LanguageKey = {
   NO_GAME_FOUND: "NO_GAME_FOUND",
   GAME_PROVIDERS: "GAME_PROVIDERS",
   MAXIMUM_BONUS_AMOUNT: "MAXIMUM_BONUS_AMOUNT",
+  BY_USERNAME: "BY_USERNAME",
+  BY_PHONE: "BY_PHONE",
+  NEXT: "NEXT",
 };
 export const settingsAPI = "https://api7.live/api/exchange/diamond/settings";

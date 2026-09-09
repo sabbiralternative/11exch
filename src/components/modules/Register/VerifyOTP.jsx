@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import {
   useGetOtpMutation,
   useRegisterMutation,
@@ -13,7 +13,16 @@ import { Link, useNavigate } from "react-router-dom";
 import useLanguage from "../../../hooks/use-language";
 import { LanguageKey } from "../../../const";
 
-const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
+const VerifyOTP = ({
+  mobile,
+  setTab,
+  timer,
+  setTimer,
+  setOrder,
+  order,
+  user,
+  mobileUsername,
+}) => {
   const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const affnook_token = localStorage.getItem("affnook_token");
@@ -52,7 +61,7 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
   };
   const onSubmit = async (data) => {
     const registerData = {
-      username: "",
+      username: data?.username,
       password: data?.password,
       confirmPassword: data?.confirmPassword,
       mobile: mobile,
@@ -62,6 +71,8 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
       orderId: order.orderId,
       otpMethod: order.otpMethod,
       affnook_token: affnook_token || null,
+      registration_mobile: Settings.registration_mobile,
+      registration_username: Settings.registration_username,
     };
 
     const result = await handleRegister(registerData).unwrap();
@@ -128,146 +139,176 @@ const VerifyOTP = ({ mobile, setTab, timer, setTimer, setOrder, order }) => {
               className="w-full h-max flex flex-col gap-y-4"
               data-gtm-form-interact-id={1}
             >
-              <div title="Mobile Number *" className="flex flex-col w-full">
-                <label
-                  htmlFor="phoneNo"
-                  className="text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary3 mb-1 px-1"
-                >
-                  {getLanguage(LanguageKey.MOBILE_NUMBER)} *
-                </label>
-                <div className="flex items-center w-full w-full text-sm transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg   not-italic font-medium leading-150 tracking-widest text-text_primary3 border-border_secondary2">
-                  <div className="flex-shrink-0 w-max">
-                    <div className="flex items-center gap-x-2 h-full ">
-                      <div className="flex items-center gap-x-1">
-                        {" "}
-                        <span className="leading-150 tracking-widest font-normal">
-                          +91
-                        </span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlnsXlink="http://www.w3.org/1999/xlink"
-                          width={18}
-                          height={18}
-                          viewBox="-45 -30 90 60"
-                          fill="#07038D"
-                        >
-                          <title>Flag of India</title>
-                          <path fill="#FFF" d="m-45-30h90v60h-90z" />
-                          <path fill="#FF6820" d="m-45-30h90v20h-90z" />
-                          <path fill="#046A38" d="m-45 10h90v20h-90z" />
-                          <circle r="9.25" />
-                          <circle fill="#FFF" r={8} />
-                          <circle r="1.6" />
-                          <g id="d">
-                            <g id="c">
-                              <g id="b">
-                                <g id="a">
-                                  <path d="m0-8 .3 4.81409L0-.80235-.3-3.18591z" />
-                                  <circle
-                                    transform="rotate(7.5)"
-                                    r="0.35"
-                                    cy={-8}
-                                  />
+              {mobileUsername === "mobile" && Settings.registration_mobile && (
+                <Fragment>
+                  <div title="Mobile Number *" className="flex flex-col w-full">
+                    <label
+                      htmlFor="phoneNo"
+                      className="text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary3 mb-1 px-1"
+                    >
+                      {getLanguage(LanguageKey.MOBILE_NUMBER)} *
+                    </label>
+                    <div className="flex items-center w-full w-full text-sm transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg   not-italic font-medium leading-150 tracking-widest text-text_primary3 border-border_secondary2">
+                      <div className="flex-shrink-0 w-max">
+                        <div className="flex items-center gap-x-2 h-full ">
+                          <div className="flex items-center gap-x-1">
+                            {" "}
+                            <span className="leading-150 tracking-widest font-normal">
+                              +91
+                            </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlnsXlink="http://www.w3.org/1999/xlink"
+                              width={18}
+                              height={18}
+                              viewBox="-45 -30 90 60"
+                              fill="#07038D"
+                            >
+                              <title>Flag of India</title>
+                              <path fill="#FFF" d="m-45-30h90v60h-90z" />
+                              <path fill="#FF6820" d="m-45-30h90v20h-90z" />
+                              <path fill="#046A38" d="m-45 10h90v20h-90z" />
+                              <circle r="9.25" />
+                              <circle fill="#FFF" r={8} />
+                              <circle r="1.6" />
+                              <g id="d">
+                                <g id="c">
+                                  <g id="b">
+                                    <g id="a">
+                                      <path d="m0-8 .3 4.81409L0-.80235-.3-3.18591z" />
+                                      <circle
+                                        transform="rotate(7.5)"
+                                        r="0.35"
+                                        cy={-8}
+                                      />
+                                    </g>
+                                    <use xlinkHref="#a" transform="scale(-1)" />
+                                  </g>
+                                  <use xlinkHref="#b" transform="rotate(15)" />
                                 </g>
-                                <use xlinkHref="#a" transform="scale(-1)" />
+                                <use xlinkHref="#c" transform="rotate(30)" />
                               </g>
-                              <use xlinkHref="#b" transform="rotate(15)" />
-                            </g>
-                            <use xlinkHref="#c" transform="rotate(30)" />
+                              <use xlinkHref="#d" transform="rotate(60)" />
+                              <use xlinkHref="#d" transform="rotate(120)" />
+                            </svg>
+                          </div>
+                          <svg
+                            width={1}
+                            height={24}
+                            viewBox="0 0 2 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect width={1} height={24} fill="currentColor" />
+                          </svg>
+                        </div>
+                      </div>
+                      <input
+                        className="bg-transparent focus:outline-none focus:border-none focus:ring-0 px-2 py-1 flex-grow min-w-0 border-none focus:outline-none bg-transparent"
+                        placeholder="Enter your Mobile Number"
+                        autoComplete="tel"
+                        inputMode="numeric"
+                        type="tel"
+                        value={mobile}
+                        data-gtm-form-interact-field-id={1}
+                        disabled
+                      />
+                      <div
+                        onClick={() => setTab(1)}
+                        className="flex-shrink-0 w-max"
+                      >
+                        <svg
+                          width={20}
+                          height={20}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clipPath="url(#clip0_3085_24)">
+                            <path
+                              d="M3.5 24H18.5C19.4297 23.9974 20.3204 23.626 20.9765 22.9674C21.6327 22.3087 22.0008 21.4167 22 20.487V12.95C22 12.6848 21.8946 12.4304 21.7071 12.2429C21.5196 12.0554 21.2652 11.95 21 11.95C20.7348 11.95 20.4804 12.0554 20.2929 12.2429C20.1054 12.4304 20 12.6848 20 12.95V20.487C20.0013 20.8864 19.8441 21.2701 19.5629 21.5537C19.2817 21.8374 18.8994 21.9979 18.5 22H3.5C3.10057 21.9979 2.7183 21.8374 2.43708 21.5537C2.15587 21.2701 1.99867 20.8864 2 20.487V5.513C1.99867 5.11357 2.15587 4.72993 2.43708 4.44627C2.7183 4.16262 3.10057 4.00212 3.5 4H11C11.2652 4 11.5196 3.89464 11.7071 3.70711C11.8946 3.51957 12 3.26522 12 3C12 2.73478 11.8946 2.48043 11.7071 2.29289C11.5196 2.10536 11.2652 2 11 2H3.5C2.57031 2.00265 1.67964 2.37403 1.02346 3.03265C0.367281 3.69126 -0.000797091 4.5833 1.29611e-06 5.513V20.487C-0.000797091 21.4167 0.367281 22.3087 1.02346 22.9674C1.67964 23.626 2.57031 23.9974 3.5 24Z"
+                              fill="var(--color-icon_primary1)"
+                            />
+                            <path
+                              d="M9.45499 10.5441L8.66599 14.1581C8.63027 14.322 8.63638 14.4923 8.68373 14.6532C8.73109 14.8142 8.81818 14.9606 8.93699 15.0791C9.05742 15.1946 9.20393 15.2793 9.36408 15.3261C9.52423 15.373 9.69331 15.3805 9.85699 15.3481L13.463 14.5571C13.6502 14.516 13.8217 14.4219 13.957 14.2861L23.071 5.1721C23.3496 4.89351 23.5706 4.56277 23.7214 4.19876C23.8722 3.83475 23.9498 3.4446 23.9498 3.0506C23.9498 2.65659 23.8722 2.26644 23.7214 1.90243C23.5706 1.53842 23.3496 1.20768 23.071 0.929096C22.4998 0.383232 21.7401 0.0786133 20.95 0.0786133C20.1599 0.0786133 19.4002 0.383232 18.829 0.929096L9.72899 10.0521C9.59241 10.1865 9.4973 10.3572 9.45499 10.5441ZM20.243 2.3441C20.4332 2.16184 20.6865 2.06009 20.95 2.06009C21.2135 2.06009 21.4667 2.16184 21.657 2.3441C21.842 2.53272 21.9456 2.78639 21.9456 3.0506C21.9456 3.3148 21.842 3.56847 21.657 3.7571L20.95 4.4641L19.536 3.0501L20.243 2.3441ZM11.343 11.2581L18.117 4.4671L19.517 5.8741L12.74 12.6671L10.945 13.0611L11.343 11.2581Z"
+                              fill="var(--color-icon_primary1)"
+                            />
                           </g>
-                          <use xlinkHref="#d" transform="rotate(60)" />
-                          <use xlinkHref="#d" transform="rotate(120)" />
+                          <defs>
+                            <clipPath id="clip0_3085_24">
+                              <rect width={24} height={24} fill="white" />
+                            </clipPath>
+                          </defs>
                         </svg>
                       </div>
-                      <svg
-                        width={1}
-                        height={24}
-                        viewBox="0 0 2 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                    </div>
+                    <div className="flex items-start w-full justify-between leading-normal px-1">
+                      <div className=" w-max  h-max" />
+                    </div>
+                  </div>
+                  <div className="mt-1 w-full flex flex-col gap-y-0.5 relative">
+                    <h1 className="text-xs font-medium text-text_primary3 ml-1">
+                      {getLanguage(LanguageKey.ENTER_OTP)} *
+                    </h1>
+                    <div className="grid grid-cols-4 gap-4">
+                      {[...Array(4)].map((_, index) => (
+                        <div className="relative" key={index}>
+                          <input
+                            ref={(el) => (inputs.current[index] = el)}
+                            onChange={(e) => handleInput(index, e)}
+                            inputMode="numeric"
+                            className="block w-full focus:outline-none   w-full h-[44px] text-center text-xl bg-bg_inputBgColor border rounded-md text-text_primary2 focus:border-border_secondary2 focus:ring-0 border-border_color_primary1"
+                            placeholder="−"
+                            aria-label="Digit 1 of OTP"
+                            autoComplete="one-time-code"
+                            pattern="[0-9]*"
+                            value={otpValues[index]}
+                            type="text"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex justify-end mt-1">
+                      <button
+                        onClick={handleOTP}
+                        type="button"
+                        disabled={timer > 0}
+                        className="text-text_primary3 font-bold text-xs sm:text-sm opacity-70 cursor-not-allowed"
                       >
-                        <rect width={1} height={24} fill="currentColor" />
-                      </svg>
+                        {timer > 0
+                          ? `Resend OTP in ${timer} seconds`
+                          : getLanguage(LanguageKey.RESEND)}
+                      </button>
                     </div>
                   </div>
-                  <input
-                    className="bg-transparent focus:outline-none focus:border-none focus:ring-0 px-2 py-1 flex-grow min-w-0 border-none focus:outline-none bg-transparent"
-                    placeholder="Enter your Mobile Number"
-                    autoComplete="tel"
-                    inputMode="numeric"
-                    type="tel"
-                    value={mobile}
-                    data-gtm-form-interact-field-id={1}
-                    disabled
-                  />
-                  <div
-                    onClick={() => setTab(1)}
-                    className="flex-shrink-0 w-max"
-                  >
-                    <svg
-                      width={20}
-                      height={20}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clipPath="url(#clip0_3085_24)">
-                        <path
-                          d="M3.5 24H18.5C19.4297 23.9974 20.3204 23.626 20.9765 22.9674C21.6327 22.3087 22.0008 21.4167 22 20.487V12.95C22 12.6848 21.8946 12.4304 21.7071 12.2429C21.5196 12.0554 21.2652 11.95 21 11.95C20.7348 11.95 20.4804 12.0554 20.2929 12.2429C20.1054 12.4304 20 12.6848 20 12.95V20.487C20.0013 20.8864 19.8441 21.2701 19.5629 21.5537C19.2817 21.8374 18.8994 21.9979 18.5 22H3.5C3.10057 21.9979 2.7183 21.8374 2.43708 21.5537C2.15587 21.2701 1.99867 20.8864 2 20.487V5.513C1.99867 5.11357 2.15587 4.72993 2.43708 4.44627C2.7183 4.16262 3.10057 4.00212 3.5 4H11C11.2652 4 11.5196 3.89464 11.7071 3.70711C11.8946 3.51957 12 3.26522 12 3C12 2.73478 11.8946 2.48043 11.7071 2.29289C11.5196 2.10536 11.2652 2 11 2H3.5C2.57031 2.00265 1.67964 2.37403 1.02346 3.03265C0.367281 3.69126 -0.000797091 4.5833 1.29611e-06 5.513V20.487C-0.000797091 21.4167 0.367281 22.3087 1.02346 22.9674C1.67964 23.626 2.57031 23.9974 3.5 24Z"
-                          fill="var(--color-icon_primary1)"
+                </Fragment>
+              )}
+              {mobileUsername === "username" &&
+                Settings.registration_username && (
+                  <div className="flex flex-col gap-y-0.5 w-full">
+                    <div title="Password *" className="flex flex-col w-full">
+                      <label
+                        htmlFor="password"
+                        className="font-roboto text-xs not-italic font-semibold leading-150 tracking-widest text-text_primary2 mb-1 px-1"
+                      >
+                        {getLanguage(LanguageKey.USERNAME)} *
+                      </label>
+                      <div className="flex items-center w-full w-full text-[13px] transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg  font-roboto not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
+                        <input
+                          {...register("username", { required: true })}
+                          className="focus:border-none focus:ring-0 px-2 py-1 flex-grow min-w-0 border-none focus:outline-none bg-transparent"
+                          placeholder="Enter Username"
+                          autoComplete="current-password"
+                          inputMode="text"
+                          type={"text"}
+                          value={user}
+                          readOnly
+                          data-gtm-form-interact-field-id={1}
                         />
-                        <path
-                          d="M9.45499 10.5441L8.66599 14.1581C8.63027 14.322 8.63638 14.4923 8.68373 14.6532C8.73109 14.8142 8.81818 14.9606 8.93699 15.0791C9.05742 15.1946 9.20393 15.2793 9.36408 15.3261C9.52423 15.373 9.69331 15.3805 9.85699 15.3481L13.463 14.5571C13.6502 14.516 13.8217 14.4219 13.957 14.2861L23.071 5.1721C23.3496 4.89351 23.5706 4.56277 23.7214 4.19876C23.8722 3.83475 23.9498 3.4446 23.9498 3.0506C23.9498 2.65659 23.8722 2.26644 23.7214 1.90243C23.5706 1.53842 23.3496 1.20768 23.071 0.929096C22.4998 0.383232 21.7401 0.0786133 20.95 0.0786133C20.1599 0.0786133 19.4002 0.383232 18.829 0.929096L9.72899 10.0521C9.59241 10.1865 9.4973 10.3572 9.45499 10.5441ZM20.243 2.3441C20.4332 2.16184 20.6865 2.06009 20.95 2.06009C21.2135 2.06009 21.4667 2.16184 21.657 2.3441C21.842 2.53272 21.9456 2.78639 21.9456 3.0506C21.9456 3.3148 21.842 3.56847 21.657 3.7571L20.95 4.4641L19.536 3.0501L20.243 2.3441ZM11.343 11.2581L18.117 4.4671L19.517 5.8741L12.74 12.6671L10.945 13.0611L11.343 11.2581Z"
-                          fill="var(--color-icon_primary1)"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_3085_24">
-                          <rect width={24} height={24} fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-                </div>
-                <div className="flex items-start w-full justify-between leading-normal px-1">
-                  <div className=" w-max  h-max" />
-                </div>
-              </div>
-              <div className="mt-1 w-full flex flex-col gap-y-0.5 relative">
-                <h1 className="text-xs font-medium text-text_primary3 ml-1">
-                  {getLanguage(LanguageKey.ENTER_OTP)} *
-                </h1>
-                <div className="grid grid-cols-4 gap-4">
-                  {[...Array(4)].map((_, index) => (
-                    <div className="relative" key={index}>
-                      <input
-                        ref={(el) => (inputs.current[index] = el)}
-                        onChange={(e) => handleInput(index, e)}
-                        inputMode="numeric"
-                        className="block w-full focus:outline-none   w-full h-[44px] text-center text-xl bg-bg_inputBgColor border rounded-md text-text_primary2 focus:border-border_secondary2 focus:ring-0 border-border_color_primary1"
-                        placeholder="−"
-                        aria-label="Digit 1 of OTP"
-                        autoComplete="one-time-code"
-                        pattern="[0-9]*"
-                        value={otpValues[index]}
-                        type="text"
-                      />
+                      </div>
                     </div>
-                  ))}
-                </div>
-                <div className="flex justify-end mt-1">
-                  <button
-                    onClick={handleOTP}
-                    type="button"
-                    disabled={timer > 0}
-                    className="text-text_primary3 font-bold text-xs sm:text-sm opacity-70 cursor-not-allowed"
-                  >
-                    {timer > 0
-                      ? `Resend OTP in ${timer} seconds`
-                      : getLanguage(LanguageKey.RESEND)}
-                  </button>
-                </div>
-              </div>
+                  </div>
+                )}
               <div className="flex flex-col gap-y-0.5 w-full">
                 <div title="Password *" className="flex flex-col w-full">
                   <label
