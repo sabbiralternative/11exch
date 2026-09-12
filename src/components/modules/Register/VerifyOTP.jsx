@@ -22,6 +22,7 @@ const VerifyOTP = ({
   order,
   user,
   mobileUsername,
+  setUserName,
 }) => {
   const { getLanguage } = useLanguage();
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ const VerifyOTP = ({
   };
   const onSubmit = async (data) => {
     const registerData = {
-      username: data?.username,
+      username: user,
       password: data?.password,
       confirmPassword: data?.confirmPassword,
       mobile: mobile,
@@ -295,7 +296,7 @@ const VerifyOTP = ({
                       </label>
                       <div className="flex items-center w-full w-full text-[13px] transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg  font-roboto not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
                         <input
-                          {...register("username", { required: true })}
+                          onChange={(e) => setUserName(e.target.value)}
                           className="focus:border-none focus:ring-0 px-2 py-1 flex-grow min-w-0 border-none focus:outline-none bg-transparent"
                           placeholder="Enter Username"
                           autoComplete="current-password"
