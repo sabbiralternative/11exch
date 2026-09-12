@@ -47,6 +47,7 @@ const Register = () => {
       )}
       {tab === 2 && (
         <VerifyOTP
+          setUserName={setUser}
           mobile={mobile}
           setTab={setTab}
           timer={timer}
