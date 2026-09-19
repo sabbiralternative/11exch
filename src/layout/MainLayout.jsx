@@ -43,6 +43,17 @@ const MainLayout = () => {
 
   return (
     <div className="w-full">
+      {Settings.metaDescription && (
+        <meta name="description" content={Settings.metaDescription} />
+      )}
+      {Settings.metaKeywords && (
+        <meta name="keywords" content={Settings.metaKeywords} />
+      )}
+      {Settings.gscTag && (
+        <meta name="google-site-verification" content={Settings.gscTag} />
+      )}
+      {Settings.metaTitle && <title>{Settings.metaTitle}</title>}
+      <meta name="robots" content="index, follow" />
       <div className=" w-full lg:w-[475px] flex items-start flex-col overflow-x-hidden h-dvh  justify-start bg-bg_appBackgroundColor">
         <Header />
         <Outlet />
