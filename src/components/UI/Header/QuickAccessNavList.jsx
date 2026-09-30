@@ -13,6 +13,8 @@ const QuickAccessNavList = () => {
   const handleNavigate = (item) => {
     if (item?.id === 5) {
       navigate(`/casino/sportsbook/550000`);
+    } else if (item?.id === 595001) {
+      navigate(`/casino/fantasy-11/595001`);
     } else {
       navigate(item.href);
     }
@@ -30,6 +32,11 @@ const QuickAccessNavList = () => {
       href: "/sports?eventTypeId=4",
     },
     { id: 5, label: getLanguage(LanguageKey.SPORTSBOOK), href: "/sportsbook" },
+    {
+      id: 595001,
+      label: getLanguage(LanguageKey.FANTASY_11),
+      href: "/fantasy-11",
+    },
     {
       id: 11,
       label: getLanguage(LanguageKey.HORSE),
