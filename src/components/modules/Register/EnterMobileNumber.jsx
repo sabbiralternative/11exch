@@ -1,10 +1,11 @@
 import toast from "react-hot-toast";
 import { useGetOtpMutation } from "../../../redux/features/auth/authApi";
-import { Settings } from "../../../api";
+import { API, Settings } from "../../../api";
 import { Link } from "react-router-dom";
 import useLanguage from "../../../hooks/use-language";
 import { LanguageKey } from "../../../const";
 import { FaMobileAlt, FaRegUser } from "react-icons/fa";
+import { AxiosSecure } from "../../../lib/AxiosSecure";
 
 const EnterMobileNumber = ({
   mobile,
@@ -31,6 +32,23 @@ const EnterMobileNumber = ({
       toast.success(res?.result?.message);
     } else {
       toast.error(res?.error?.errorMessage);
+    }
+  };
+
+  const getOtpOnWhatsapp = async () => {
+    const otpData = {
+      mobile: mobile,
+      type: "otpsend",
+    };
+
+    const res = await AxiosSecure.post(API.otpless, otpData);
+    const data = res.data;
+
+    if (data?.success) {
+      setTimer(60);
+      toast.success(data?.result?.message);
+    } else {
+      toast.error(data?.error?.errorMessage);
     }
   };
 
@@ -126,86 +144,44 @@ const EnterMobileNumber = ({
                   >
                     {getLanguage(LanguageKey.MOBILE_NUMBER)} *
                   </label>
-                  <div className="flex items-center w-full w-full text-sm transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-lg   not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
-                    <div className="flex-shrink-0 w-max">
-                      <div className="flex items-center gap-x-2 h-full ">
-                        <div className="flex items-center gap-x-1">
-                          {" "}
-                          <span className="leading-150 tracking-widest font-normal">
-                            +91
-                          </span>
+                  <div className="flex items-center w-full">
+                    {" "}
+                    <select
+                      id="dropdown-phone-button"
+                      className="rounded-l-lg border-none text-white py-3  px-3 bg-bg_inputBgColor"
+                    >
+                      {Settings.country_code?.map((item) => {
+                        return (
+                          <option key={item} value={item}>
+                            {item}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <div className="flex items-center w-full w-full text-sm transition-all ease-in-out duration-300 border border-solid  px-3 py-2 bg-bg_inputBgColor rounded-r-lg   not-italic font-medium leading-150 tracking-widest text-text_secondary1 opacity-80 focus-within:text-text_primary3 border-border_tertiary24 focus-within:opacity-100 focus-within:border-border_secondary2">
+                      <input
+                        onChange={handleMobileNo}
+                        value={mobile}
+                        className="bg-transparent focus:outline-none focus:border-none focus:ring-0 px-2 py-1 flex-grow min-w-0 border-none focus:outline-none bg-transparent"
+                        placeholder="Enter your Mobile Number"
+                        autoComplete="tel"
+                        inputMode="numeric"
+                        type="tel"
+                      />
+                      <div className="flex-shrink-0 w-max">
+                        <div className="w-5 h-5 rounded-md bg-bg_color_danger flex items-center justify-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            xmlnsXlink="http://www.w3.org/1999/xlink"
-                            width={18}
-                            height={18}
-                            viewBox="-45 -30 90 60"
-                            fill="#07038D"
+                            fill="var(--color-icon_error)"
+                            height={16}
+                            width={16}
+                            viewBox="0 0 384 512"
                           >
-                            <title>Flag of India</title>
-                            <path fill="#FFF" d="m-45-30h90v60h-90z" />
-                            <path fill="#FF6820" d="m-45-30h90v20h-90z" />
-                            <path fill="#046A38" d="m-45 10h90v20h-90z" />
-                            <circle r="9.25" />
-                            <circle fill="#FFF" r={8} />
-                            <circle r="1.6" />
-                            <g id="d">
-                              <g id="c">
-                                <g id="b">
-                                  <g id="a">
-                                    <path d="m0-8 .3 4.81409L0-.80235-.3-3.18591z" />
-                                    <circle
-                                      transform="rotate(7.5)"
-                                      r="0.35"
-                                      cy={-8}
-                                    />
-                                  </g>
-                                  <use xlinkHref="#a" transform="scale(-1)" />
-                                </g>
-                                <use xlinkHref="#b" transform="rotate(15)" />
-                              </g>
-                              <use xlinkHref="#c" transform="rotate(30)" />
-                            </g>
-                            <use xlinkHref="#d" transform="rotate(60)" />
-                            <use xlinkHref="#d" transform="rotate(120)" />
+                            <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
                           </svg>
                         </div>
-                        <svg
-                          width={1}
-                          height={24}
-                          viewBox="0 0 2 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect width={1} height={24} fill="currentColor" />
-                        </svg>
                       </div>
                     </div>
-                    <input
-                      onChange={handleMobileNo}
-                      value={mobile}
-                      className="bg-transparent focus:outline-none focus:border-none focus:ring-0 px-2 py-1 flex-grow min-w-0 border-none focus:outline-none bg-transparent"
-                      placeholder="Enter your Mobile Number"
-                      autoComplete="tel"
-                      inputMode="numeric"
-                      type="tel"
-                    />
-                    <div className="flex-shrink-0 w-max">
-                      <div className="w-5 h-5 rounded-md bg-bg_color_danger flex items-center justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="var(--color-icon_error)"
-                          height={16}
-                          width={16}
-                          viewBox="0 0 384 512"
-                        >
-                          <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-start w-full justify-between leading-normal px-1">
-                    <div className=" w-max  h-max" />
                   </div>
                 </div>
               )}
@@ -238,32 +214,64 @@ const EnterMobileNumber = ({
               <div className="w-full flex items-center justify-center gap-x-2">
                 {Settings.registration_mobile &&
                   mobileUsername === "mobile" && (
-                    <button
-                      onClick={handleOTP}
-                      disabled={mobile?.length < 10}
-                      type="button"
-                      className="relative overflow-hidden w-full mt-2 h-fit bg-exchRegisterGradient text-text_primary3 transition-all ease-in-out text-sm whitespace-nowrap p-2 rounded-lg active:scale-[0.98] active:opacity-95 disabled:opacity-70 font-medium relative flex items-center justify-center gap-x-2 font-bold"
-                    >
-                      <svg
-                        width={20}
-                        height={20}
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g id="fi_7182118">
-                          <path
-                            id="Vector"
-                            d="M15.8332 2.5H4.1665C2.74984 2.5 1.6665 3.58333 1.6665 5V17.5C1.6665 17.8333 1.83317 18.0833 2.08317 18.25C2.24984 18.3333 2.33317 18.3333 2.49984 18.3333C2.6665 18.3333 2.83317 18.3333 2.9165 18.25L6.6665 15.9167C6.83317 15.8333 6.99984 15.8333 7.1665 15.8333H15.8332C17.2498 15.8333 18.3332 14.75 18.3332 13.3333V5C18.3332 3.58333 17.2498 2.5 15.8332 2.5ZM6.6665 10C6.1665 10 5.83317 9.66667 5.83317 9.16667C5.83317 8.66667 6.1665 8.33333 6.6665 8.33333C7.1665 8.33333 7.49984 8.66667 7.49984 9.16667C7.49984 9.66667 7.1665 10 6.6665 10ZM9.99984 10C9.49984 10 9.1665 9.66667 9.1665 9.16667C9.1665 8.66667 9.49984 8.33333 9.99984 8.33333C10.4998 8.33333 10.8332 8.66667 10.8332 9.16667C10.8332 9.66667 10.4998 10 9.99984 10ZM13.3332 10C12.8332 10 12.4998 9.66667 12.4998 9.16667C12.4998 8.66667 12.8332 8.33333 13.3332 8.33333C13.8332 8.33333 14.1665 8.66667 14.1665 9.16667C14.1665 9.66667 13.8332 10 13.3332 10Z"
+                    <div className="w-full flex items-center justify-center gap-x-2">
+                      {Settings.otp_method?.includes("sms") && (
+                        <button
+                          onClick={handleOTP}
+                          disabled={mobile?.length < 10}
+                          type="button"
+                          className="relative overflow-hidden w-full mt-2 h-fit bg-exchRegisterGradient text-text_primary3 transition-all ease-in-out text-sm whitespace-nowrap p-2 rounded-lg active:scale-[0.98] active:opacity-95 disabled:opacity-70 font-medium relative flex items-center justify-center gap-x-2 font-bold"
+                        >
+                          <svg
+                            width={20}
+                            height={20}
+                            viewBox="0 0 20 20"
                             fill="currentColor"
-                          />
-                        </g>
-                      </svg>
-                      <span className="   ">
-                        {" "}
-                        {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
-                      </span>
-                    </button>
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g id="fi_7182118">
+                              <path
+                                id="Vector"
+                                d="M15.8332 2.5H4.1665C2.74984 2.5 1.6665 3.58333 1.6665 5V17.5C1.6665 17.8333 1.83317 18.0833 2.08317 18.25C2.24984 18.3333 2.33317 18.3333 2.49984 18.3333C2.6665 18.3333 2.83317 18.3333 2.9165 18.25L6.6665 15.9167C6.83317 15.8333 6.99984 15.8333 7.1665 15.8333H15.8332C17.2498 15.8333 18.3332 14.75 18.3332 13.3333V5C18.3332 3.58333 17.2498 2.5 15.8332 2.5ZM6.6665 10C6.1665 10 5.83317 9.66667 5.83317 9.16667C5.83317 8.66667 6.1665 8.33333 6.6665 8.33333C7.1665 8.33333 7.49984 8.66667 7.49984 9.16667C7.49984 9.66667 7.1665 10 6.6665 10ZM9.99984 10C9.49984 10 9.1665 9.66667 9.1665 9.16667C9.1665 8.66667 9.49984 8.33333 9.99984 8.33333C10.4998 8.33333 10.8332 8.66667 10.8332 9.16667C10.8332 9.66667 10.4998 10 9.99984 10ZM13.3332 10C12.8332 10 12.4998 9.66667 12.4998 9.16667C12.4998 8.66667 12.8332 8.33333 13.3332 8.33333C13.8332 8.33333 14.1665 8.66667 14.1665 9.16667C14.1665 9.66667 13.8332 10 13.3332 10Z"
+                                fill="currentColor"
+                              />
+                            </g>
+                          </svg>
+                          <span className="   ">
+                            {" "}
+                            {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                          </span>
+                        </button>
+                      )}
+                      {Settings.otp_method?.includes("whatsapp") && (
+                        <button
+                          onClick={getOtpOnWhatsapp}
+                          disabled={mobile?.length < 10}
+                          type="button"
+                          className="relative overflow-hidden w-full mt-2 h-fit bg-exchRegisterGradient text-text_primary3 transition-all ease-in-out text-sm whitespace-nowrap p-2 rounded-lg active:scale-[0.98] active:opacity-95 disabled:opacity-70 font-medium relative flex items-center justify-center gap-x-2 font-bold"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={24}
+                            height={24}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            stroke="currentColor"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+                          </svg>
+                          <span className="   ">
+                            {" "}
+                            {getLanguage(LanguageKey.GET_OTP_ON_WHATSAPP)}
+                          </span>
+                        </button>
+                      )}
+                    </div>
                   )}
                 {Settings.registration_username &&
                   mobileUsername === "username" && (

@@ -105,6 +105,22 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
       toast.error(data?.error?.errorMessage);
     }
   };
+  const getOtpOnWhatsapp = async () => {
+    const otpData = {
+      mobile: mobile,
+      type: "otpsend",
+    };
+
+    const res = await AxiosSecure.post(API.otpless, otpData);
+    const data = res.data;
+
+    if (data?.success) {
+      setTimer(60);
+      toast.success(data?.result?.message);
+    } else {
+      toast.error(data?.error?.errorMessage);
+    }
+  };
 
   useEffect(() => {
     if (timer > 0) {
@@ -171,58 +187,106 @@ const AddNewUser = ({ setShowAddNewUserModal }) => {
                   <div className="text-[10px] ml-1 md:text-xs lg:text-sm">
                     {getLanguage(LanguageKey.MOBILE_NUMBER)}
                   </div>
-                  <div className="flex w-full items-center py-2 bg-auth rounded-lg border">
-                    {/* <span
-               id="dropdown-phone-button"
-               className="flex-shrink-0 z-10 inline-flex items-center pl-2 pr-1 text-sm sm:text-md font-normal text-center"
-             >
-               +91
-             </span> */}
-                    <input
-                      onChange={(e) => {
-                        if (e.target.value.length <= 10) {
-                          setMobile(e.target.value);
-                        }
-                      }}
-                      id="mobile-no-input"
-                      className="px-2 block w-full focus:outline-none w-full  bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
-                      placeholder="Phone Number"
-                      type="text"
-                      value={mobile}
-                    />
-
-                    <div className="w-max">
-                      {timer ? (
-                        <button
-                          className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out -bold h-fit bg-bg_Primary text-white transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center !cursor-text"
-                          type="button"
-                        >
-                          <span className=" ">
-                            {" "}
-                            {getLanguage(LanguageKey.RETRY_IN)} {timer}
-                          </span>
-                          {/* <span className="shimmer"></span> */}
-                        </button>
-                      ) : (
-                        <div className="flex items-center">
-                          <button
-                            onClick={getOtp}
-                            className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out -bold h-fit bg-bg_Primary text-white transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
-                            type="button"
-                          >
-                            <span className=" ">
-                              {" "}
-                              {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
-                            </span>
-                            <span className="shimmer"></span>
-                          </button>
-                        </div>
-                      )}
+                  <div className="flex items-center">
+                    <select
+                      id="dropdown-phone-button"
+                      className="rounded-l-lg border text-black py-1.5  px-3 bg-auth"
+                    >
+                      {Settings.country_code?.map((item) => {
+                        return (
+                          <option key={item} value={item}>
+                            {item}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <div className="flex w-full items-center py-2 bg-auth rounded-r-lg border border-l-0">
+                      <input
+                        onChange={(e) => {
+                          if (e.target.value.length <= 10) {
+                            setMobile(e.target.value);
+                          }
+                        }}
+                        id="mobile-no-input"
+                        className="px-2 block w-full focus:outline-none w-full  bg-auth rounded-none text-text_Ternary pr-2 text-sm xs:text-md"
+                        placeholder="Phone Number"
+                        type="text"
+                        value={mobile}
+                      />
                     </div>
                   </div>
                 </div>
               </div>
-
+              <div className="w-full flex items-center justify-center gap-x-2">
+                {Settings.otp_method?.includes("sms") && !timer && (
+                  <button
+                    onClick={getOtp}
+                    disabled={mobile?.length < 10}
+                    type="button"
+                    className="relative overflow-hidden w-full mt-2 h-fit bg-exchRegisterGradient text-text_primary3 transition-all ease-in-out text-sm whitespace-nowrap p-2 rounded-lg active:scale-[0.98] active:opacity-95 disabled:opacity-70 font-medium relative flex items-center justify-center gap-x-2 font-bold"
+                  >
+                    <svg
+                      width={20}
+                      height={20}
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g id="fi_7182118">
+                        <path
+                          id="Vector"
+                          d="M15.8332 2.5H4.1665C2.74984 2.5 1.6665 3.58333 1.6665 5V17.5C1.6665 17.8333 1.83317 18.0833 2.08317 18.25C2.24984 18.3333 2.33317 18.3333 2.49984 18.3333C2.6665 18.3333 2.83317 18.3333 2.9165 18.25L6.6665 15.9167C6.83317 15.8333 6.99984 15.8333 7.1665 15.8333H15.8332C17.2498 15.8333 18.3332 14.75 18.3332 13.3333V5C18.3332 3.58333 17.2498 2.5 15.8332 2.5ZM6.6665 10C6.1665 10 5.83317 9.66667 5.83317 9.16667C5.83317 8.66667 6.1665 8.33333 6.6665 8.33333C7.1665 8.33333 7.49984 8.66667 7.49984 9.16667C7.49984 9.66667 7.1665 10 6.6665 10ZM9.99984 10C9.49984 10 9.1665 9.66667 9.1665 9.16667C9.1665 8.66667 9.49984 8.33333 9.99984 8.33333C10.4998 8.33333 10.8332 8.66667 10.8332 9.16667C10.8332 9.66667 10.4998 10 9.99984 10ZM13.3332 10C12.8332 10 12.4998 9.66667 12.4998 9.16667C12.4998 8.66667 12.8332 8.33333 13.3332 8.33333C13.8332 8.33333 14.1665 8.66667 14.1665 9.16667C14.1665 9.66667 13.8332 10 13.3332 10Z"
+                          fill="currentColor"
+                        />
+                      </g>
+                    </svg>
+                    <span className="   ">
+                      {" "}
+                      {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
+                    </span>
+                  </button>
+                )}
+                {Settings.otp_method?.includes("whatsapp") && !timer && (
+                  <button
+                    onClick={getOtpOnWhatsapp}
+                    disabled={mobile?.length < 10}
+                    type="button"
+                    className="relative overflow-hidden w-full mt-2 h-fit bg-exchRegisterGradient text-text_primary3 transition-all ease-in-out text-sm whitespace-nowrap p-2 rounded-lg active:scale-[0.98] active:opacity-95 disabled:opacity-70 font-medium relative flex items-center justify-center gap-x-2 font-bold"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      stroke="currentColor"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                      <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+                    </svg>
+                    <span className="   ">
+                      {" "}
+                      {getLanguage(LanguageKey.GET_OTP_ON_WHATSAPP)}
+                    </span>
+                  </button>
+                )}
+                {timer && (
+                  <button
+                    onClick={getOtpOnWhatsapp}
+                    type="button"
+                    className="relative overflow-hidden w-full mt-2 h-fit bg-exchRegisterGradient text-text_primary3 transition-all ease-in-out text-sm whitespace-nowrap p-2 rounded-lg active:scale-[0.98] active:opacity-95 disabled:opacity-70 font-medium relative flex items-center justify-center gap-x-2 font-bold"
+                  >
+                    <span className="   ">
+                      {" "}
+                      {getLanguage(LanguageKey.RETRY_IN)} {timer}s
+                    </span>
+                  </button>
+                )}
+              </div>
               <div className="flex flex-col gap-1">
                 <div title="passwordInput" className="w-full  uppercase">
                   <div className="text-[10px] ml-1 md:text-xs lg:text-sm">

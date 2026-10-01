@@ -62,6 +62,8 @@ export const API = {
 };
 
 export const Settings = {
+  country_code: [],
+  otp_method: [],
   gscTag: "",
   metaTitle: "",
   metaKeywords: "",
@@ -99,7 +101,6 @@ export const Settings = {
   otpWhatsapp: "",
   complaint: "",
   app_only: "",
-
   whatsapplink: "",
   instagramLink: "",
   telegramLink: "",
